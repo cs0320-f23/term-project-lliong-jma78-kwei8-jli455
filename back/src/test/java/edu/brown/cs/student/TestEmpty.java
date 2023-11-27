@@ -1,5 +1,3 @@
 package edu.brown.cs.student;
 
-public class TestEmpty {
-
-}
+public class TestEmpty {}

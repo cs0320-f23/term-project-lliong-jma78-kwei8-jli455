@@ -17,10 +17,11 @@ public class CreatorHandler implements Route {
   private final List<Map> collatedDatabase;
 
   public CreatorHandler() {
-    SubmittedCreators submittedData = new SubmittedCreators(
-        List.of(Map.of("name", "my business", "location", "Providence"),
-          Map.of("name", "second", "location", "Second location"))
-    );
+    SubmittedCreators submittedData =
+        new SubmittedCreators(
+            List.of(
+                Map.of("name", "my business", "location", "Providence"),
+                Map.of("name", "second", "location", "Second location")));
     this.collatedDatabase = submittedData.getSubmittedDatabase();
   }
 
