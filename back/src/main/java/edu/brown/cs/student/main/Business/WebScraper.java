@@ -19,6 +19,10 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+/**
+ * credit to https://nanonets.com/blog/java-web-scraping-tutorial/
+ */
+
 public class WebScraper {
   private String key;
 
