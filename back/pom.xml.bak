@@ -22,6 +22,13 @@
     <spotless.version>2.22.8</spotless.version>
   </properties>
 
+  <repositories>
+    <repository>
+      <id>jitpack.io</id>
+      <url>https://jitpack.io</url>
+    </repository>
+  </repositories>
+
   <dependencies>
     <dependency>
       <groupId>org.jsoup</groupId>
@@ -43,11 +50,12 @@
       <version>8.3.4</version>
     </dependency>
 
-<!--    <dependency>-->
-<!--      <groupId>com.github.thelinmichael</groupId>-->
-<!--      <artifactId>spotify-web-api-java</artifactId>-->
-<!--      <version>master-SNAPSHOT</version>-->
-<!--    </dependency>-->
+
+    <dependency>
+      <groupId>com.github.thelinmichael</groupId>
+      <artifactId>spotify-web-api-java</artifactId>
+      <version>master-SNAPSHOT</version>
+    </dependency>
 
     <!--
           Guava Import
@@ -367,11 +375,4 @@
       </plugin>
     </plugins>
   </reporting>
-
-  <repositories>
-    <repository>
-      <id>jitpack.io</id>
-      <url>https://jitpack.io</url>
-    </repository>
-  </repositories>
 </project>

@@ -1,4 +1,15 @@
+edu/brown/cs/student/main/Business/WebScraper$Result.class
+edu/brown/cs/student/main/Business/WebScraper$Info.class
 edu/brown/cs/student/main/Database/Creators/SubmittedCreators.class
+edu/brown/cs/student/main/Business/WebScraper$GeocodingResponse.class
+edu/brown/cs/student/main/Server/Handlers/BusinessHandler.class
+edu/brown/cs/student/main/Business/WebScraper$ProvidedLocation.class
+edu/brown/cs/student/main/Business/WebScraper$Location.class
 edu/brown/cs/student/main/Database/Creators/SpotifyCreators.class
-edu/brown/cs/student/main/Server/Handlers/CreatorHandler.class
+edu/brown/cs/student/main/Business/WebScraper.class
+edu/brown/cs/student/main/Business/WebScraper$Copyright.class
 edu/brown/cs/student/main/Server/Server.class
+edu/brown/cs/student/main/Business/WebScraper$LatLng.class
+edu/brown/cs/student/main/Server/Handlers/SpotifyHandler.class
+edu/brown/cs/student/main/Business/WebScraper$Options.class
+edu/brown/cs/student/main/Server/Handlers/CreatorHandler.class
