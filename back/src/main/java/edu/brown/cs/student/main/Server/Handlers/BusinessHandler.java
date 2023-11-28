@@ -3,6 +3,7 @@ package edu.brown.cs.student.main.Server.Handlers;
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 import com.squareup.moshi.Types;
+import edu.brown.cs.student.main.Business.WebScraper;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,6 +19,12 @@ public class BusinessHandler implements Route {
     Type mapObject = Types.newParameterizedType(Map.class, String.class, Object.class);
     JsonAdapter<Map<String, Object>> adapter = moshi.adapter(mapObject);
     Map<String, Object> responseMap = new HashMap<>();
-    return null;
+    WebScraper scraper = new WebScraper();
+    Object scrapedData = scraper.scrape();
+
+    responseMap.put("result", "success");
+    responseMap.put("data", scrapedData);
+    return adapter.toJson(responseMap);
+
   }
 }

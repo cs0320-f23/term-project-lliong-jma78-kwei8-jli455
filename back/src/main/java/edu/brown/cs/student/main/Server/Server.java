@@ -2,6 +2,7 @@ package edu.brown.cs.student.main.Server;
 
 import static spark.Spark.after;
 
+import edu.brown.cs.student.main.Server.Handlers.BusinessHandler;
 import edu.brown.cs.student.main.Server.Handlers.CreatorHandler;
 import spark.Spark;
 
@@ -24,6 +25,7 @@ public class Server {
         });
 
     Spark.get("creators", new CreatorHandler());
+    Spark.get("business", new BusinessHandler());
 
     // Wait for initialisation
     Spark.init();
