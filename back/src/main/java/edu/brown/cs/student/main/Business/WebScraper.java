@@ -6,13 +6,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import okio.Buffer;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -21,13 +18,14 @@ import org.jsoup.select.Elements;
 
 public class WebScraper {
   private String key;
+  private HashMap<String,Object> responseMap;
 
-  private HashMap<String, Double[]> addressToCoordMap;
 
-  public HashMap<String, Double[]> scrape() throws IOException {
-    this.addressToCoordMap = new HashMap<>();
+  public HashMap<String,Object> getBusinessInfo() throws Exception {
     this.key = "evtJ9UBqyUYofFNw5qmUmnAu8U6Dv5Xz";
-    String url = "https://www.boston.com/community/readers-say/aapi-and-asian-owned-businesses-to-shop-support-in-greater-boston/";
+    this.responseMap = new HashMap<>();
+    String url =
+        "https://www.boston.com/community/readers-say/aapi-and-asian-owned-businesses-to-shop-support-in-greater-boston/";
     URL obj = new URL(url);
     HttpURLConnection con = (HttpURLConnection) obj.openConnection();
     con.setRequestProperty("User-Agent", "Mozilla/5.0");
@@ -43,74 +41,137 @@ public class WebScraper {
     String html = response.toString();
     Document doc = Jsoup.parse(html);
     Elements names = doc.select("h3.wp-block-heading");
+
     for (Element name : names) {
-      String href = name.text(); //returns the restaurant names
-//      System.out.println(href);
+      System.out.println("6784iuf");
+      String href = name.text(); // returns the restaurant names
+      System.out.println(href);
       Element addressElement = name.nextElementSibling();
-      if (addressElement!=null) {
+      if (addressElement != null) {
+        System.out.println("89vwfb");
         Element addressEl = addressElement.selectFirst("em");
-        if (addressEl!=null) {
+        if (addressEl != null) {
+          System.out.println("riuhg");
           String unfiltAddress = addressEl.text();
-          String[] splitAddress = unfiltAddress.split(";");
-          String address = splitAddress[0];
-          System.out.println(address);
-          try {
-            String encodedAddress = URLEncoder.encode(address, StandardCharsets.UTF_8);
+          System.out.println("09 " + unfiltAddress);
+          String[] splitAddress = unfiltAddress.split("; ");
+          if (splitAddress.length != 1) {
+            String unfilteredPhone = splitAddress[1];
+            String phone = unfilteredPhone.replace("-","");
+            try {
+              String apiUrl =
+                  "https://api.yelp.com/v3/businesses/search/phone?phone=%2B1" + phone;
 
-            URL requestURL = new URL("https://www.mapquestapi.com/geocoding/v1/address?key="+this.key+"&location=" + encodedAddress);
+              URL apiURl = new URL(apiUrl);
+              HttpURLConnection connection = (HttpURLConnection) apiURl.openConnection();
 
-            HttpURLConnection clientConnection = (HttpURLConnection) requestURL.openConnection();
-            clientConnection.setRequestMethod("GET");
-            if (clientConnection.getResponseCode() != 200) {
-              throw new MalformedURLException();
+              connection.setRequestMethod("GET");
+
+//              String apiKey = "FDQTm9hJMyjiV-qp9iz9nyih3rKsgPJQPffhwmYN57c7qw-MoLTfX4RtndHm5v2W2BJjBPH28KnIGrReMH5mMFqT-F8yP5JgC9DBxe2K0H2lEOzbUAqBtrUZMxhmZXYx";
+              String apiKey = "CuEhZWAB406Ugt43aMLCBikvDL8DZIFYeoAKKzDlQ_FO7djlUrntE4iQ8OoanZaakD_r27LfhidwdwTVH1gSlpRwJKYvg6w52JNA0535L1TfIDhhPfeaznrpnqhmZXYx";
+              connection.setRequestProperty("Authorization", "Bearer " + apiKey);
+
+              int responseCode2 = connection.getResponseCode();
+              System.out.println(responseCode2);
+              if (responseCode2 !=200) {
+                throw new RuntimeException();
+              }
+
+              Moshi moshi = new Moshi.Builder().build();
+              JsonAdapter<YelpApiResponse> adapter = moshi.adapter(YelpApiResponse.class);
+              YelpApiResponse apiResponse = adapter.fromJson(new Buffer().readFrom(connection.getInputStream()));
+              System.out.println(apiResponse);
+
+              Double latitude = apiResponse.businesses.get(0).coordinates.latitude;
+              Double longitude = apiResponse.businesses.get(0).coordinates.longitude;
+
+              Double[] coords = new Double[2];
+              coords[0] = latitude;
+              coords[1] = longitude;
+              System.out.println("coords + " + coords);
+
+              String businessName = apiResponse.businesses.get(0).name;
+              System.out.println("business name: " + businessName);
+              String busType = apiResponse.businesses.get(0).categories.get(0).title;
+              System.out.println("bus type: " + busType);
+              String reviewCount = apiResponse.businesses.get(0).review_count;
+              System.out.println("review count: " + reviewCount);
+              String rating = apiResponse.businesses.get(0).rating;
+              System.out.println("rating: " + rating);
+              connection.disconnect();
+              this.serialize(coords, businessName,busType,reviewCount,rating);
+
+
+            } catch (Exception e) {
+              e.printStackTrace();
             }
-            Moshi moshi = new Moshi.Builder().build();
-            JsonAdapter<GeocodingResponse> adapter = moshi.adapter(GeocodingResponse.class);
-            GeocodingResponse geocodingResponse = adapter.fromJson(new Buffer().readFrom(clientConnection.getInputStream()));
-            Double lat = geocodingResponse.results().get(0).locations().get(0).latLng().lat();
-            Double lng = geocodingResponse.results().get(0).locations().get(0).latLng().lng();
-            Double[] coords = new Double[2];
-            coords[0] = lat;
-            coords[1] = lng;
-            this.addressToCoordMap.put(address,coords);
-
-          } catch (Exception e) {
-            System.out.println(e.getMessage());
           }
         }
       }
-    }
-    return this.addressToCoordMap;
+          }
 
-  }
-  public record GeocodingResponse(Info info, Options options, List<Result> results) {}
-
-
-    public record Info(int statuscode, Copyright copyright, List<String> messages) {
+    return this.responseMap;
   }
 
-  public record Copyright(String text, String imageUrl, String imageAltText) {
-  }
+  private void serialize(Double[] coords, String name, String busType, String reviewCount, String rating) {
+    HashMap<String, Object> businessMap = new HashMap<>();
+    businessMap.put("coordinates", coords);
+    businessMap.put("busType", busType);
+    businessMap.put("reviewCount", reviewCount);
+    businessMap.put("rating", rating);
 
-  public record Options(int maxResults, boolean ignoreLatLngInput) {
-  }
+    this.responseMap.put(name, businessMap);
 
-  public record Result(ProvidedLocation providedLocation, List<Location> locations) {
-  }
-
-  public static record ProvidedLocation(String location) {
   }
 
 
-  public record Location(String street, String adminArea6, String adminArea6Type, String adminArea5,
-                                String adminArea5Type, String adminArea4, String adminArea4Type, String adminArea3,
-                                String adminArea3Type, String adminArea1, String adminArea1Type, String postalCode,
-                                String geocodeQualityCode, String geocodeQuality, boolean dragPoint,
-                                String sideOfStreet, String linkId, String unknownInput, String type, LatLng latLng,
-                                LatLng displayLatLng, String mapUrl) {
+  public record YelpApiResponse(List<Business> businesses,
+                                int total,
+                               Region region) {
   }
 
-  public record LatLng(double lat, double lng) {
+  public record Business(
+      String id,
+      String alias,
+      String name,
+      String imageUrl,
+      String isClosed,
+      String url,
+      String review_count,
+      List<Category> categories,
+      String rating,
+      Coordinates coordinates,
+      List<String> transactions,
+      String price,
+      Location location,
+      String phone,
+      String displayPhone,
+      String distance) {
   }
+
+
+  public record Category(String alias, String title) {
+
+  }
+
+
+  public record Coordinates(double latitude, double longitude) {
+
+  }
+
+
+  public record Location(String address1, String address2, String address3, String city,
+                         String zipCode, String country, String state,
+                         List<String> displayAddress) {}
+
+
+  public record Region(Center center) {
+
+  }
+
+  public record Center(double longitude, double latitude) {
+
+  }
+
 
 }

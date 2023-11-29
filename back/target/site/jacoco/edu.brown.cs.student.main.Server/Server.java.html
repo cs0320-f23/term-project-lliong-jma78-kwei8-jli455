@@ -2,11 +2,12 @@
 
 import static spark.Spark.after;
 
+import edu.brown.cs.student.main.Server.Handlers.BusinessHandler;
 import edu.brown.cs.student.main.Server.Handlers.CreatorHandler;
 import spark.Spark;
 
 /** Server class to accept user requests and pass them to the appropriate user */
-<span class="nc" id="L9">public class Server {</span>
+<span class="nc" id="L10">public class Server {</span>
 
   /**
    * Main class to handle user input
@@ -15,21 +16,22 @@ import spark.Spark;
    */
   public static void main(String[] args) {
     // Start a port, perform setup
-<span class="nc" id="L18">    int port = 323;</span>
-<span class="nc" id="L19">    Spark.port(port);</span>
-<span class="nc" id="L20">    after(</span>
+<span class="nc" id="L19">    int port = 323;</span>
+<span class="nc" id="L20">    Spark.port(port);</span>
+<span class="nc" id="L21">    after(</span>
         (request, response) -&gt; {
-<span class="nc" id="L22">          response.header(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;);</span>
-<span class="nc" id="L23">          response.header(&quot;Access-Control-Allow-Methods&quot;, &quot;*&quot;);</span>
-<span class="nc" id="L24">        });</span>
+<span class="nc" id="L23">          response.header(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;);</span>
+<span class="nc" id="L24">          response.header(&quot;Access-Control-Allow-Methods&quot;, &quot;*&quot;);</span>
+<span class="nc" id="L25">        });</span>
 
-<span class="nc" id="L26">    Spark.get(&quot;creators&quot;, new CreatorHandler());</span>
+<span class="nc" id="L27">    Spark.get(&quot;creators&quot;, new CreatorHandler());</span>
+<span class="nc" id="L28">    Spark.get(&quot;business&quot;, new BusinessHandler());</span>
 
     // Wait for initialisation
-<span class="nc" id="L29">    Spark.init();</span>
-<span class="nc" id="L30">    Spark.awaitInitialization();</span>
+<span class="nc" id="L31">    Spark.init();</span>
+<span class="nc" id="L32">    Spark.awaitInitialization();</span>
 
-<span class="nc" id="L32">    System.out.println(&quot;Server started at http://localhost:&quot; + port);</span>
-<span class="nc" id="L33">  }</span>
+<span class="nc" id="L34">    System.out.println(&quot;Server started at http://localhost:&quot; + port);</span>
+<span class="nc" id="L35">  }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
