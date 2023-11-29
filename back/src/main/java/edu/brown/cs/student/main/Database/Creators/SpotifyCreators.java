@@ -1,8 +1,13 @@
 package edu.brown.cs.student.main.Database.Creators;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.model_objects.specification.ArtistSimplified;
 import se.michaelthelin.spotify.model_objects.specification.Recommendations;
 import se.michaelthelin.spotify.model_objects.specification.Track;
 import org.apache.hc.core5.http.ParseException;
@@ -27,33 +32,44 @@ public class SpotifyCreators {
 //    }
 //  }
 
-  private static final GetRecommendationsRequest getRecommendationsRequest = spotifyApi.getRecommendations()
-          .limit(10)
-//          .market(CountryCode.SE)
-//          .max_popularity(50)
-//          .min_popularity(10)
-//          .seed_artists("0LcJLqbBmaGUft1e9Mm8HV")
-          .seed_genres("philippines-opm")
-//          .seed_tracks("01iyCAUm8EvOFqVWYJ3dVX")
-//          .target_popularity(20)
-      .build();
+  public static Map<String, List<Map<String, Object>>> getRecommendations_Sync(
+      Integer numSongs, String[] reqGenres) {
+    Map<String, List<Map<String, Object>>> retMap = new HashMap<>();
 
-  public static Track[] getRecommendations_Sync() {
     try {
-      final Recommendations recommendations = getRecommendationsRequest.execute();
+      for (String oneGenre : reqGenres) {
+        GetRecommendationsRequest getRecommendationsRequest = spotifyApi.getRecommendations()
+            .limit(numSongs)
+            .seed_genres(oneGenre)
+            .build();
+        Recommendations recommendations = getRecommendationsRequest.execute();
 
-      System.out.println(recommendations.getTracks()[1]);
+        Track[] returnedTracks = recommendations.getTracks();
+        List<Map<String, Object>> editedTracks = new ArrayList<>();
+        for (Track oneTrack : returnedTracks) {
+          Map<String, Object> mapTrack = new HashMap<>();
+          mapTrack.put("name", oneTrack.getName());
 
-      System.out.println("Length: " + recommendations.getTracks().length);
-      return recommendations.getTracks();
+          List<String> artistNames = new ArrayList<>();
+          for (ArtistSimplified oneArtist : oneTrack.getArtists()){
+            artistNames.add(oneArtist.getName());
+          }
+
+          mapTrack.put("artists", artistNames);
+          mapTrack.put("album", oneTrack.getAlbum().getName());
+
+          mapTrack.put("popularity", oneTrack.getPopularity());
+          mapTrack.put("duration", oneTrack.getDurationMs());
+
+          editedTracks.add(mapTrack);
+        }
+
+        retMap.put(oneGenre, editedTracks);
+      }
     } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
-    return new Track[0];
+
+    return retMap;
   }
-
-
-
-
-
 }

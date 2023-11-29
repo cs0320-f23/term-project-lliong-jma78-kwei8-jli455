@@ -27,8 +27,6 @@ public class Server {
 
     Spark.get("creators", new CreatorHandler());
     Spark.get("business", new BusinessHandler());
-
-    // For debugging
     Spark.get("spotify", new SpotifyHandler());
 
     // Wait for initialisation
