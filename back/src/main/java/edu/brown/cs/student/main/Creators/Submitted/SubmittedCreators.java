@@ -107,7 +107,7 @@ public class SubmittedCreators {
   }
 
   private void addToMap(Map<String, String> base, String key, String value) {
-    if (value != "null") {
+    if (!(value.equals("null"))) {
       base.put(key, value);
     }
   }
