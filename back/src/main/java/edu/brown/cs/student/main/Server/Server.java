@@ -25,7 +25,8 @@ public class Server {
           response.header("Access-Control-Allow-Methods", "*");
         });
 
-    Spark.get("creators", new CreatorHandler());
+    Spark.get("creators", new CreatorHandler(
+        "data/SubmittedData.csv"));
     Spark.get("business", new BusinessHandler());
     Spark.get("spotify", new SpotifyHandler());
 

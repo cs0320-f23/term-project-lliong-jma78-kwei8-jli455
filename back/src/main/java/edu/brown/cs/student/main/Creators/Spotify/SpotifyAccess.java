@@ -1,4 +1,4 @@
-package edu.brown.cs.student.main.Database.Creators;
+package edu.brown.cs.student.main.Creators.Spotify;
 
 import java.io.IOException;
 import org.apache.hc.core5.http.ParseException;

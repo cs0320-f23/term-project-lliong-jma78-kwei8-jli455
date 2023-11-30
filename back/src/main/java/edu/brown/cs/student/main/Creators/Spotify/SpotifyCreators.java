@@ -1,5 +1,6 @@
-package edu.brown.cs.student.main.Database.Creators;
+package edu.brown.cs.student.main.Creators.Spotify;
 
+import edu.brown.cs.student.main.Creators.Spotify.SpotifyAccess;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
