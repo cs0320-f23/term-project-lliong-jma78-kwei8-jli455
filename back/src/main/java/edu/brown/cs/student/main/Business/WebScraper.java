@@ -92,7 +92,7 @@ public class WebScraper {
           }
         }
       }
-    }
+          }
 
     return this.responseMap;
   }
@@ -112,7 +112,7 @@ public class WebScraper {
 
   public record YelpApiResponse(List<Business> businesses,
                                 int total,
-                                Region region) {
+                               Region region) {
   }
 
   public record Business(
