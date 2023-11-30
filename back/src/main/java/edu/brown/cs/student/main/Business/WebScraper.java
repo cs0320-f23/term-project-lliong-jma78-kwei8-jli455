@@ -3,13 +3,12 @@ package edu.brown.cs.student.main.Business;
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import okio.Buffer;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -43,17 +42,12 @@ public class WebScraper {
     Elements names = doc.select("h3.wp-block-heading");
 
     for (Element name : names) {
-      System.out.println("6784iuf");
       String href = name.text(); // returns the restaurant names
-      System.out.println(href);
       Element addressElement = name.nextElementSibling();
       if (addressElement != null) {
-        System.out.println("89vwfb");
         Element addressEl = addressElement.selectFirst("em");
         if (addressEl != null) {
-          System.out.println("riuhg");
           String unfiltAddress = addressEl.text();
-          System.out.println("09 " + unfiltAddress);
           String[] splitAddress = unfiltAddress.split("; ");
           if (splitAddress.length != 1) {
             String unfilteredPhone = splitAddress[1];
@@ -73,34 +67,24 @@ public class WebScraper {
 
               int responseCode2 = connection.getResponseCode();
               System.out.println(responseCode2);
-              if (responseCode2 !=200) {
-                throw new RuntimeException();
+              if (responseCode2 ==200) {
+                Moshi moshi = new Moshi.Builder().build();
+                JsonAdapter<YelpApiResponse> adapter = moshi.adapter(YelpApiResponse.class);
+                YelpApiResponse apiResponse = adapter.fromJson(new Buffer().readFrom(connection.getInputStream()));
+                Double latitude = apiResponse.businesses.get(0).coordinates.latitude;
+                Double longitude = apiResponse.businesses.get(0).coordinates.longitude;
+                String businessName = apiResponse.businesses.get(0).name;
+                ArrayList<String> busType = new ArrayList<>();
+
+                for (Category category:apiResponse.businesses.get(0).categories) {
+                  busType.add(category.title);
+                }
+
+                String reviewCount = apiResponse.businesses.get(0).review_count;
+                String rating = apiResponse.businesses.get(0).rating;
+                connection.disconnect();
+                this.serialize(latitude, longitude, businessName,busType,reviewCount,rating);
               }
-
-              Moshi moshi = new Moshi.Builder().build();
-              JsonAdapter<YelpApiResponse> adapter = moshi.adapter(YelpApiResponse.class);
-              YelpApiResponse apiResponse = adapter.fromJson(new Buffer().readFrom(connection.getInputStream()));
-              System.out.println(apiResponse);
-
-              Double latitude = apiResponse.businesses.get(0).coordinates.latitude;
-              Double longitude = apiResponse.businesses.get(0).coordinates.longitude;
-
-              Double[] coords = new Double[2];
-              coords[0] = latitude;
-              coords[1] = longitude;
-              System.out.println("coords + " + coords);
-
-              String businessName = apiResponse.businesses.get(0).name;
-              System.out.println("business name: " + businessName);
-              String busType = apiResponse.businesses.get(0).categories.get(0).title;
-              System.out.println("bus type: " + busType);
-              String reviewCount = apiResponse.businesses.get(0).review_count;
-              System.out.println("review count: " + reviewCount);
-              String rating = apiResponse.businesses.get(0).rating;
-              System.out.println("rating: " + rating);
-              connection.disconnect();
-              this.serialize(coords, businessName,busType,reviewCount,rating);
-
 
             } catch (Exception e) {
               e.printStackTrace();
@@ -113,9 +97,10 @@ public class WebScraper {
     return this.responseMap;
   }
 
-  private void serialize(Double[] coords, String name, String busType, String reviewCount, String rating) {
+  private void serialize(Double latitude, Double longitude, String name, List<String> busType, String reviewCount, String rating) {
     HashMap<String, Object> businessMap = new HashMap<>();
-    businessMap.put("coordinates", coords);
+    businessMap.put("latitude", latitude);
+    businessMap.put("longitude", longitude);
     businessMap.put("busType", busType);
     businessMap.put("reviewCount", reviewCount);
     businessMap.put("rating", rating);
