@@ -1,0 +1,8 @@
+.song_single {
+  display: flex;
+  background-image: url("https://img.freepik.com/free-photo/crumpled-yellow-paper-background-close-up_60487-2390.jpg?size=626&ext=jpg");
+}
+
+.entry-footer .song_single p {
+  word-wrap: break-word;
+}
