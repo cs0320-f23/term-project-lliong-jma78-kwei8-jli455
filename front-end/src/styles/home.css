@@ -1,0 +1,33 @@
+#home-page{
+    background-image: url('../images/background.png');
+    height: 100vh;
+    width: 100vw;
+    padding: 10px;
+}
+
+#header-row{
+    display: flex;
+}
+
+.nav-page-columns{
+    flex: 70%;
+    padding-top: 10px;
+    height: 20vh;
+    padding-left: 50px;
+    padding-right: 50px;
+    width: 50px;
+}
+
+.site-icons{
+    padding-top: 10px;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+#home-logo img{
+    display: block;
+    margin-left: 40%;
+    margin-right: 75%;
+    width: 25%;
+}
+
