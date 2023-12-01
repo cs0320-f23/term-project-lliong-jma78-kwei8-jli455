@@ -17,6 +17,15 @@ export default function HomePage() {
 
     const[activeIndex, setActive] = useState(0)
 
+
+    const setArtists = () => {
+        setArtistsVisible(true)
+    }
+
+    const setBusinesses = () => {
+        setBusinessVisible(true)
+    }
+
     const handleMouseHover = () => {
         setDropDownVisible(true);
     }
@@ -51,7 +60,15 @@ export default function HomePage() {
             <header id="header-row" aria-label="Navigation Bar" style={{float:"right"}}>
                 <div className="nav-page-columns" onMouseEnter={handleMouseHover} onMouseLeave={handleMouseLeave}>
                     <h2>Explore</h2>
-                    {isDropDownVisible ? <DropDownMenu></DropDownMenu> : null}
+                    {isDropDownVisible ? 
+                        <div className="dropdown-menu">
+                            <ul style={{padding: "unset", margin:"unset"}}>
+                                <h3 onClick={setArtists}>Explore Creators</h3>
+                                <h3 onClick={setBusinesses}>Explore Businesses</h3>
+                            </ul>
+                        </div>
+                    
+                    : null}
                 </div>
                 <div className="nav-page-columns">
                     <h2>Submit</h2>
