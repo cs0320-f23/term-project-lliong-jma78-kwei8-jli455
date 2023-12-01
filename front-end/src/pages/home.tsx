@@ -15,8 +15,6 @@ export default function HomePage() {
         setDropDownVisible(false);
     }
 
-
-
     return (
         <div id="home-page">
             <header id="header-row" aria-label="Navigation Bar" style={{float:"right"}}>
