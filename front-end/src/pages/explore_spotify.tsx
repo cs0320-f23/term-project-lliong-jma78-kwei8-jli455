@@ -42,20 +42,30 @@ export function SpotifySongs(props: SpotifyPageProps) {
   // probably need to do checking to make sure it is correct type when actually fetching from api
 
   // i don't know where the best place is to put this use effect...
+  // should i even be populating songs in this use effect??
   useEffect(() => {
     console.log("use effect for song");
-    const all_songs = small_song_dataset.values();
-    console.log(all_songs);
-    console.log(all_songs[1]);
 
-    //small_song_dataset[1];
+    console.log("size" + small_song_dataset.size);
 
-    // props.setSongs([
-    //   ...props.songs,
-    //   {
+    for (let key of small_song_dataset.keys()) {
+      // need error checking
+      if (key !== undefined) {
+        const values = small_song_dataset.get(key);
 
-    //   },
-    // ]);
+        if (values !== undefined) {
+          console.log(values.entries());
+
+          for (let property of values.entries()) {
+          }
+
+          for (let i = 0; i < values.length; i++) {
+            values[1];
+            console.log(values[1]);
+          }
+        }
+      }
+    }
   }, []);
 
   return (
