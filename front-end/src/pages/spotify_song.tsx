@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/styles.css";
 
-interface SongProps {
+export interface SongProps {
   name: string;
   duration: number;
   artists: string[];
@@ -15,8 +15,8 @@ export function Song(props: SongProps) {
 
   return (
     <div className="song_single">
-      <p>song name here</p>
-      <p>artist here</p>
+      <h1>song name here</h1>
+      <h2>artist here</h2>
     </div>
   );
 }

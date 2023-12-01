@@ -3,35 +3,24 @@ import React from "react";
 import Navbar from "./components/NavBarElements";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useState } from "react";
 
 // import Home from "./pages/home";
 // import About from "./pages/about";
 //import { Artists } from "./pages/explore_artists";
-import { Song } from "./pages/spotify_song";
+import { Song, SongProps } from "./pages/spotify_song";
+import { SpotifySongs } from "./pages/explore_spotify";
 
 /**
  * This is the main class that runs our app.
  * @returns
  */
 function App() {
+  const [songs, setSongs] = useState<SongProps[]>([]);
+
   return (
     <div className="App">
-      <Song
-        name={"name"}
-        duration={100}
-        artists={["artist!"]}
-        album={"album"}
-        popularity={100}
-        genre={"pop"}
-      />
-      <Song
-        name={"name"}
-        duration={100}
-        artists={["artist!"]}
-        album={"album"}
-        popularity={100}
-        genre={"pop"}
-      />
+      <SpotifySongs songs={songs} setSongs={setSongs} />
     </div>
   );
 }
