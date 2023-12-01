@@ -1,25 +1,26 @@
 import React, { useState } from "react";
 
-export default function DropDownMenu(){
+interface dropdown{
+    artistsIsActive: boolean;
+    businessIsActive: boolean;
+}
 
-    const[areArtistsVisible, setArtistsVisible] = useState<boolean>(false)
+export default function DropDownMenu(props: dropdown){
 
-    function handleExploreCreators(){
-        console.log("clicked");
-        setArtistsVisible(true)
+    const setArtists = () => {
+        props.artistsIsActive = true
+    }
+
+    const setBusinesses = () => {
+        props.businessIsActive = true
     }
 
     return(
         <div className="dropdown-menu">
             <ul style={{padding: "unset", margin:"unset"}}>
-                <h3 onClick={handleExploreCreators}>Explore Creators</h3>
-                <h3>Explore Businesses</h3>
+                <h3 onClick={setArtists}>Explore Creators</h3>
+                <h3 onClick={setBusinesses}>Explore Businesses</h3>
             </ul>
-
-            <div>
-                {areArtistsVisible ? <Artists></Artists> : null}
-            </div>
-
         </div>
     );
 }

@@ -3,16 +3,47 @@ import '../styles/home.css'
 import DropDownMenu from "../components/DropDown";
 import accountImg from '../images/account-icon.png';
 import logoPlaceholder from '../images/nugget-dino3.png';
+import { Artists } from "./explore_artists";
 
 export default function HomePage() {
     const[isDropDownVisible, setDropDownVisible] = useState<boolean>(false);
+
+    const[artistIsActive, setArtistsVisible] = useState<boolean>(false);
+    const[businessIsActive, setBusinessVisible] = useState<boolean>(false);
+    const[resourceIsActive, setResourceVisible] = useState<boolean>(false);
+    const[submitIsActive, setSubmitVisible] = useState<boolean>(false); 
+    const[accountIsActive, setAccountVisible] = useState<boolean>(false); 
+    const[homeIsActive, setHomeVisible] = useState<boolean>(true)
+
+    const[activeIndex, setActive] = useState(0)
 
     const handleMouseHover = () => {
         setDropDownVisible(true);
     }
 
-    const handleMouseLeave = () =>{
+    const handleMouseLeave = () => {
         setDropDownVisible(false);
+    }
+
+    const onShow = () => {
+        if(homeIsActive){
+            setActive(0)
+        }
+        else if(artistIsActive){
+            setActive(1)
+        }
+        else if(businessIsActive){
+            setActive(2)
+        }
+        else if(submitIsActive){
+            setActive(3)
+        }
+        else if(resourceIsActive){
+            setActive(4)
+        }
+        else if(accountIsActive){
+            setActive(5)
+        }
     }
 
     return (
@@ -32,13 +63,20 @@ export default function HomePage() {
                     <img src={accountImg} style={{width: '50px', paddingTop:"8px", paddingLeft:"10px"}}></img>
                 </div>
             </header>
-            <div id="home-logo">
-                <img src={logoPlaceholder}></img>
-            </div>
-            <div id="home-name">
-                <h1 style={{textAlign:'center', fontSize:'100px'}}>Ablaze</h1>
-                <h2 style={{textAlign: 'center'}}>Discover Asian American and Pacific Islander creators and businesses!</h2>
-            </div>
+            {homeIsActive ?
+                <div>
+                    <div id="home-logo">
+                        <img src={logoPlaceholder}></img>
+                    </div>
+
+                    <div id="home-name">
+                        <h1 style={{textAlign:'center', fontSize:'100px'}}>Ablaze</h1>
+                        <h2 style={{textAlign: 'center'}}>Discover Asian American and Pacific Islander creators and businesses!</h2>
+                    </div>
+                </div>  
+            : null}
+            {artistIsActive ? <div><Artists></Artists></div> : null}
+            
         </div>
     );
   }
