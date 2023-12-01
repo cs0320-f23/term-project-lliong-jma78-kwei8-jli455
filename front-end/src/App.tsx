@@ -3,12 +3,12 @@ import React from "react";
 import Navbar from "./components/NavBarElements";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // import Home from "./pages/home";
 // import About from "./pages/about";
 //import { Artists } from "./pages/explore_artists";
-import { Song, SongProps } from "./pages/spotify_song";
+import { Song, SongProps } from "./pages/single_song";
 import { SpotifySongs } from "./pages/explore_spotify";
 
 /**

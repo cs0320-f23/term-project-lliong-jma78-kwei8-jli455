@@ -7,16 +7,16 @@ export interface SongProps {
   artists: string[];
   album: string;
   popularity: number;
-  genre: string;
 }
 
 export function Song(props: SongProps) {
-  // probably get the info here from another file?
-
   return (
     <div className="song_single">
-      <h1>song name here</h1>
-      <h2>artist here</h2>
+      <h1>{props.name}</h1>
+      <h2>artist: {props.artists}</h2>
+      <h2>album: {props.album}</h2>
+      <h2>duration: {props.duration}</h2>
+      <h2>popularity: {props.popularity}</h2>
     </div>
   );
 }
