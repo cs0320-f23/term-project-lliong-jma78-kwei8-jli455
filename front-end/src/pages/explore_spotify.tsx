@@ -43,29 +43,29 @@ export function SpotifySongs(props: SpotifyPageProps) {
 
   // i don't know where the best place is to put this use effect...
   // should i even be populating songs in this use effect??
+
+  // useEffect(() => {
+  //   const req = small_song_dataset.get("alternative");
+  //   if (req == undefined) {
+  //     console.log("undefined!");
+  //   } else {
+  //     console.log(req);
+  //     const name = req[1];
+  //     console.log(name);
+  //   }
+  // }, []);
+
   useEffect(() => {
-    console.log("use effect for song");
-
-    console.log("size" + small_song_dataset.size);
-
-    for (let key of small_song_dataset.keys()) {
-      // need error checking
-      if (key !== undefined) {
-        const values = small_song_dataset.get(key);
-
-        if (values !== undefined) {
-          console.log(values.entries());
-
-          for (let property of values.entries()) {
-          }
-
-          for (let i = 0; i < values.length; i++) {
-            values[1];
-            console.log(values[1]);
-          }
-        }
-      }
-    }
+    props.setSongs([
+      ...props.songs,
+      {
+        name: "xs",
+        duration: 12345,
+        artists: ["rina sawayama"],
+        album: "sawayama",
+        popularity: 100,
+      },
+    ]);
   }, []);
 
   return (
