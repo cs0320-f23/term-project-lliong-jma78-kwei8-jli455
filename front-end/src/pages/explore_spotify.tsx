@@ -18,26 +18,61 @@ import { small_song_dataset } from "../mocks/mock_songs";
 //   json.genre,
 // ]);
 
+// fetch here in this class!
+// okay if you can justify
+
+// post request - sending post request from front end to back end when adding artist
+
 interface SpotifyPageProps {
   // should i make this an array of songs instead? how?
   songs: SongProps[];
   setSongs: React.Dispatch<React.SetStateAction<SongProps[]>>;
 }
 
-export function SpotifySongs(props: SpotifyPageProps) {
-  // need error checking
-  // useEffect(() => {
-  //   console.log("use effect songs");
-  //   fetch("http://localhost:3232")
-  //     .then((response: Response) => response.json())
-  //     .then((json) => {
-  //       console.log(json);
-  //     })
-  //     .then((data) => console.log("ahhh")),
-  //     [];
-  // });
+interface jsonSpotifyResponse {
+  result: string;
+  data: string[][];
+}
 
-  console.log(props.songs);
+// is this right/complete?
+// type preedicate to check if successful spotify repsonse
+function isSpotifyResponse(rjson: any): rjson is jsonSpotifyResponse {
+  if (!("result" in rjson)) return false;
+  if (!("data" in rjson)) return false;
+  if (!(rjson["result"] === "success")) {
+    return false;
+  }
+  return true;
+}
+// is the difference between rjson["result"] and rjson.result?
+
+function getSongs() {
+  const url = "http://localhost:323/spotify";
+
+  return fetch(url)
+    .then((response: Response) => response.json())
+    .then((json) => {
+      if (!isSpotifyResponse(json)) {
+        // how/what to tell user?
+        console.log("not a valid response");
+      } else {
+        const data = json.data;
+        console.log(data);
+      }
+      //data.keys
+      // const newSong: SongProps = {
+      //   name: "",
+      // };
+    });
+}
+
+export function SpotifySongs(props: SpotifyPageProps) {
+  //need error checking
+  useEffect(() => {
+    getSongs(), [];
+  });
+
+  //console.log(props.songs);
 
   // probably need to do checking to make sure it is correct type when actually fetching from api
 
@@ -55,18 +90,18 @@ export function SpotifySongs(props: SpotifyPageProps) {
   //   }
   // }, []);
 
-  useEffect(() => {
-    props.setSongs([
-      ...props.songs,
-      {
-        name: "xs",
-        duration: 12345,
-        artists: ["rina sawayama"],
-        album: "sawayama",
-        popularity: 100,
-      },
-    ]);
-  }, []);
+  // useEffect(() => {
+  //   props.setSongs([
+  //     ...props.songs,
+  //     {
+  //       name: "xs",
+  //       duration: 12345,
+  //       artists: ["rina sawayama"],
+  //       album: "sawayama",
+  //       popularity: 100,
+  //     },
+  //   ]);
+  // }, []);
 
   return (
     // check if filtered? then map it

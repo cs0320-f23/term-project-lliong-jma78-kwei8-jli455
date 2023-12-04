@@ -9,3 +9,29 @@
   column-gap: 50px;
   row-gap: 50px;
 }
+
+.searchbar-container {
+  display: flex;
+  background-color: #8b1a10;
+  border-radius: 10px;
+  padding: 3px 10px;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: 500px;
+  margin: auto;
+}
+
+.search-input {
+  flex: 1;
+  background-color: #8b1a10;
+  border: none;
+  border-radius: 25px;
+  padding: 10px;
+  margin-right: 10px;
+}
+
+input::placeholder {
+  font-family: "Tenor Sans";
+  font-size: 20px;
+  color: white;
+}
