@@ -47,29 +47,62 @@ function isSpotifyResponse(rjson: any): rjson is jsonSpotifyResponse {
 // is the difference between rjson["result"] and rjson.result?
 
 function getSongs() {
-  const url = "http://localhost:323/spotify";
+  // const url = "http://localhost:323/spotify";
+  // return fetch(url)
+  //   .then((response: Response) => response.json())
+  //   .then((json) => {
+  //     if (!isSpotifyResponse(json)) {
+  //       // how/what to tell user?
+  //       console.log("not a valid response");
+  //     } else {
+  //       const data = json.data;
+  //       console.log(data);
+  //     }
+  //     //data.keys
+  //     // const newSong: SongProps = {
+  //     //   name: "",
+  //     // };
+  //   });
+}
 
-  return fetch(url)
-    .then((response: Response) => response.json())
-    .then((json) => {
-      if (!isSpotifyResponse(json)) {
-        // how/what to tell user?
-        console.log("not a valid response");
-      } else {
-        const data = json.data;
-        console.log(data);
-      }
-      //data.keys
-      // const newSong: SongProps = {
-      //   name: "",
-      // };
-    });
+function getMockSongs() {
+  const genreValues = small_song_dataset.values();
+
+  const songArray = Array.from(genreValues);
+
+  //songArray.map((name) => name.get("name"));
+
+  //console.log(name);
+
+  //console.log(songArray);
+  for (let i = 0; i < songArray.size; i++) {
+    console.log("in loop");
+
+    let name = array[i].get("name");
+    console.log(name);
+  }
+  // array.map(
+  //   (key) => console.log(key.get("name")),
+  //   // (artists = key.get("artists")),
+  //   // (album = key.get("album")),
+  //   // (duration = key.get("duration")),
+  //   // (popularity = key.get("popularity")),
+
+  //   console.log("name" + name)
+  //   //console.log("popularity" + popularity)
+  // );
+
+  const songValues = genreValues.values;
+  //console.log(songsArray);
+  // for (let i = 0; i < small_song_dataset.size(), i++) {
+
+  // }
 }
 
 export function SpotifySongs(props: SpotifyPageProps) {
   //need error checking
   useEffect(() => {
-    getSongs(), [];
+    getMockSongs(), [];
   });
 
   //console.log(props.songs);
