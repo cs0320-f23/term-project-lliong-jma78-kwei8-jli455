@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import '../styles/home.css'
 import DropDownMenu from "../components/DropDown";
-import accountImg from '../images/account-icon.png';
-import logoPlaceholder from '../images/nugget-dino3.png';
+// import accountImg from '../images/account-icon.png';
+// import logoPlaceholder from '../images/nugget-dino3.png';
 import { Artists } from "./explore_artists";
 import { useNavigate } from "react-router";
 
@@ -80,15 +80,10 @@ export default function HomePage() {
                 <div className="nav-page-columns">
                     <h2>Resources</h2>
                 </div>
-                <div className="site-icons">
-                    <img src={accountImg} style={{width: '50px', paddingTop:"8px", paddingLeft:"10px"}}></img>
-                </div>
+
             </header>
             {homeIsActive ?
                 <div>
-                    <div id="home-logo">
-                        <img src={logoPlaceholder}></img>
-                    </div>
 
                     <div id="home-name">
                         <h1 style={{textAlign:'center', fontSize:'100px'}}>Ablaze</h1>
@@ -101,4 +96,12 @@ export default function HomePage() {
         </div>
     );
   }
+
+//   <div id="home-logo">
+//   <img src={logoPlaceholder}></img>
+// </div>
+
+{/* <div className="site-icons">
+<img src={accountImg} style={{width: '50px', paddingTop:"8px", paddingLeft:"10px"}}></img>
+</div> */}
   
