@@ -4,6 +4,7 @@ import DropDownMenu from "../components/DropDown";
 import accountImg from '../images/account-icon.png';
 import logoPlaceholder from '../images/nugget-dino3.png';
 import { Artists } from "./explore_artists";
+import { useNavigate } from "react-router";
 
 export default function HomePage() {
     const[isDropDownVisible, setDropDownVisible] = useState<boolean>(false);
@@ -14,6 +15,8 @@ export default function HomePage() {
     const[submitIsActive, setSubmitVisible] = useState<boolean>(false); 
     const[accountIsActive, setAccountVisible] = useState<boolean>(false); 
     const[homeIsActive, setHomeVisible] = useState<boolean>(true)
+
+    const navigate = useNavigate();
 
     const[activeIndex, setActive] = useState(0)
 
@@ -63,6 +66,7 @@ export default function HomePage() {
                     {isDropDownVisible ? 
                         <div className="dropdown-menu">
                             <ul style={{padding: "unset", margin:"unset"}}>
+                                <h3 onClick={() => navigate("/artists")}>Explore Artists</h3>
                                 <h3 onClick={setArtists}>Explore Creators</h3>
                                 <h3 onClick={setBusinesses}>Explore Businesses</h3>
                             </ul>
