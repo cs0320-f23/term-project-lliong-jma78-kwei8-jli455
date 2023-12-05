@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 import { SongProps, Song } from "./single_song";
 
@@ -73,6 +73,8 @@ const newSong: SongProps = {
   popularity: 100,
 };
 
+const allSongs: SongProps[] = [];
+
 export function getMockSongs(props: SpotifyPageProps) {
   console.log("mocking");
   const genreValues = small_song_dataset.values();
@@ -83,12 +85,10 @@ export function getMockSongs(props: SpotifyPageProps) {
     const songName: string = songArray[i].get("name");
 
     // fix to extract value from array
-    let songArtists: string[] = songArray[i].get("artists");
-    let songAlbum: string = songArray[i].get("album");
-    let songDuration: number = songArray[i].get("duration");
-    let songPopularity: number = songArray[i].get("popularity");
-
-    console.log(songDuration);
+    const songArtists: string[] = songArray[i].get("artists");
+    const songAlbum: string = songArray[i].get("album");
+    const songDuration: number = songArray[i].get("duration");
+    const songPopularity: number = songArray[i].get("popularity");
 
     const song: SongProps = {
       name: songName,
@@ -98,16 +98,26 @@ export function getMockSongs(props: SpotifyPageProps) {
       popularity: songPopularity,
     };
 
-    props.setSongs([...props.songs, song]);
+    allSongs.push(song);
+
+    console.log(song);
+
+    //props.setSongs([...props.songs]);
     console.log(props.songs);
   }
+  return allSongs;
 }
 
 export function SpotifySongs(props: SpotifyPageProps) {
+  const mockSongsRef = useRef(false);
+
   //need error checking
-  // useEffect(() => {
-  //   getMockSongs(props), [];
-  // });
+  // why is it being called twice??
+  useEffect(() => {
+    if (mockSongsRef.current) return;
+    mockSongsRef.current = true;
+    props.setSongs(getMockSongs(props)), [];
+  });
 
   //console.log(props.songs);
 

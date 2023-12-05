@@ -22,8 +22,7 @@ function App() {
   const [songs, setSongs] = useState<SongProps[]>([]);
   const [commandString, setCommandString] = useState<string>("");
 
-  getMockSongs(songs, setSongs);
-
+  
   return (
     <div className="App">
       <Searchbar
