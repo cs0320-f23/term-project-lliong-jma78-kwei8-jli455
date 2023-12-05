@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
 // import About from "./pages/about";
 //import { Artists } from "./pages/explore_artists";
 import { Song, SongProps } from "./pages/single_song";
-import { SpotifySongs } from "./pages/explore_spotify";
+import { getMockSongs, SpotifySongs } from "./pages/explore_spotify";
 
 import { small_song_dataset } from "./mocks/mock_songs";
 import { Searchbar } from "./pages/search_bar";
@@ -21,6 +21,8 @@ import { Searchbar } from "./pages/search_bar";
 function App() {
   const [songs, setSongs] = useState<SongProps[]>([]);
   const [commandString, setCommandString] = useState<string>("");
+
+  getMockSongs(songs, setSongs);
 
   return (
     <div className="App">

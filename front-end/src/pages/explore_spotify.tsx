@@ -65,45 +65,49 @@ function getSongs() {
   //   });
 }
 
-function getMockSongs() {
-  const genreValues = small_song_dataset.values();
+const newSong: SongProps = {
+  name: "name",
+  artists: ["artist"],
+  duration: 2,
+  album: "hihih",
+  popularity: 100,
+};
 
+export function getMockSongs(props: SpotifyPageProps) {
+  console.log("mocking");
+  const genreValues = small_song_dataset.values();
   const songArray = Array.from(genreValues);
 
-  //songArray.map((name) => name.get("name"));
+  console.log(songArray.length);
+  for (let i = 0; i < songArray.length; i++) {
+    const songName: string = songArray[i].get("name");
 
-  //console.log(name);
+    // fix to extract value from array
+    let songArtists: string[] = songArray[i].get("artists");
+    let songAlbum: string = songArray[i].get("album");
+    let songDuration: number = songArray[i].get("duration");
+    let songPopularity: number = songArray[i].get("popularity");
 
-  //console.log(songArray);
-  for (let i = 0; i < songArray.size; i++) {
-    console.log("in loop");
+    console.log(songDuration);
 
-    let name = array[i].get("name");
-    console.log(name);
+    const song: SongProps = {
+      name: songName,
+      artists: songArtists,
+      album: songAlbum,
+      duration: songDuration,
+      popularity: songPopularity,
+    };
+
+    props.setSongs([...props.songs, song]);
+    console.log(props.songs);
   }
-  // array.map(
-  //   (key) => console.log(key.get("name")),
-  //   // (artists = key.get("artists")),
-  //   // (album = key.get("album")),
-  //   // (duration = key.get("duration")),
-  //   // (popularity = key.get("popularity")),
-
-  //   console.log("name" + name)
-  //   //console.log("popularity" + popularity)
-  // );
-
-  const songValues = genreValues.values;
-  //console.log(songsArray);
-  // for (let i = 0; i < small_song_dataset.size(), i++) {
-
-  // }
 }
 
 export function SpotifySongs(props: SpotifyPageProps) {
   //need error checking
-  useEffect(() => {
-    getMockSongs(), [];
-  });
+  // useEffect(() => {
+  //   getMockSongs(props), [];
+  // });
 
   //console.log(props.songs);
 
@@ -111,30 +115,6 @@ export function SpotifySongs(props: SpotifyPageProps) {
 
   // i don't know where the best place is to put this use effect...
   // should i even be populating songs in this use effect??
-
-  // useEffect(() => {
-  //   const req = small_song_dataset.get("alternative");
-  //   if (req == undefined) {
-  //     console.log("undefined!");
-  //   } else {
-  //     console.log(req);
-  //     const name = req[1];
-  //     console.log(name);
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-  //   props.setSongs([
-  //     ...props.songs,
-  //     {
-  //       name: "xs",
-  //       duration: 12345,
-  //       artists: ["rina sawayama"],
-  //       album: "sawayama",
-  //       popularity: 100,
-  //     },
-  //   ]);
-  // }, []);
 
   return (
     // check if filtered? then map it
