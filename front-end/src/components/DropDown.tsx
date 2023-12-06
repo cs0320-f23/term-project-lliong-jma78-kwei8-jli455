@@ -1,27 +1,13 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
+import logo from "../images/nugget-dino3.png";
 
-interface dropdown{
-    artistsIsActive: boolean;
-    businessIsActive: boolean;
-}
-
-export default function DropDownMenu(props: dropdown){
-
-    const setArtists = () => {
-        props.artistsIsActive = true
-    }
-
-    const setBusinesses = () => {
-        props.businessIsActive = true
-    }
-
+export default function DropDownNav(){
     return(
-        <div className="dropdown-menu">
-            <ul style={{padding: "unset", margin:"unset"}}>
-                <h3 onClick={setArtists}>Explore Creators</h3>
-                <h3 onClick={setBusinesses}>Explore Businesses</h3>
-            </ul>
+        <div>
+            <nav>
+                <h1>hi</h1>
+                <img src={logo}></img>
+            </nav>
         </div>
     );
 }
-
