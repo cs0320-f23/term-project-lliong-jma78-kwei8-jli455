@@ -22,7 +22,7 @@ function App() {
   const [songs, setSongs] = useState<SongProps[]>([]);
   const [commandString, setCommandString] = useState<string>("");
 
-  
+
   return (
     <div className="App">
       <Searchbar

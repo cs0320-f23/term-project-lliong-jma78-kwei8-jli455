@@ -67,7 +67,7 @@ function getSongs() {
 
 const newSong: SongProps = {
   name: "name",
-  artists: ["artist"],
+  artists: "artist",
   duration: 2,
   album: "hihih",
   popularity: 100,
@@ -81,14 +81,19 @@ export function getMockSongs(props: SpotifyPageProps) {
   const songArray = Array.from(genreValues);
 
   console.log(songArray.length);
-  console.log(songArray);
 
   for (let i = 0; i < songArray.length; i++) {
     for (let j = 0; j < songArray[i].length; j++) {
       const songName: string = songArray[i][j].get("name");
 
       // fix to extract value from array
-      const songArtists: string[] = songArray[i][j].get("artists");
+      const songArtistsArray: string[] = songArray[i][j].get("artists");
+      const songArtists: string = "";
+
+      for (let k = 0; k < songArtistsArray.length; k++) {
+        songArtists.concat(songArtistsArray[k] + ", ");
+        console.log(songArtists);
+      }
       const songAlbum: string = songArray[i][j].get("album");
       const songDuration: number = songArray[i][j].get("duration");
       const songPopularity: number = songArray[i][j].get("popularity");
