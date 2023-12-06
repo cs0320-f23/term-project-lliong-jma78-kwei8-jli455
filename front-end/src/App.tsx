@@ -22,7 +22,6 @@ function App() {
   const [songs, setSongs] = useState<SongProps[]>([]);
   const [commandString, setCommandString] = useState<string>("");
 
-
   return (
     <div className="App">
       <Searchbar
@@ -30,6 +29,8 @@ function App() {
         setValue={setCommandString}
         ariaLabel={"search bar"}
       />
+      <br></br>
+      <br></br>
       <SpotifySongs songs={songs} setSongs={setSongs} />
     </div>
   );

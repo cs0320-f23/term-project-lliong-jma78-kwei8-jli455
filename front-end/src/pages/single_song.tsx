@@ -13,7 +13,8 @@ export function Song(props: SongProps) {
   return (
     <div className="song_single">
       <h1>{props.name}</h1>
-      <h2>artist:</h2> <h3>{props.artists}</h3>
+      <br></br>
+      <h2>artist: {props.artists}</h2>
       <h2>album: {props.album}</h2>
       <h2>duration: {props.duration}</h2>
       <h2>popularity: {props.popularity}</h2>

@@ -7,30 +7,30 @@
 
 h1 {
   font-family: "Tenor Sans";
+  color: #8b1a10;
+  font-size: 30px;
 }
 
 h2 {
   font-family: "Tenor Sans";
-}
-
-h3 {
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  color: #8b1a10;
+  font-size: 20px;
 }
 
 .spotify_grid {
-  display: grid;
-  column-gap: 50px;
-  row-gap: 50px;
+  display: inline-grid;
+  grid-template-columns: repeat(3, auto);
+  column-gap: 30px;
+  row-gap: 30px;
 }
 
 .searchbar-container {
   display: flex;
-  background-color: #8b1a10;
+  background-color: #ffffff;
   border-radius: 10px;
-  padding: 3px 10px;
   align-items: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  width: 500px;
+  width: 600px;
   margin: auto;
 }
 
@@ -38,9 +38,12 @@ h3 {
   flex: 1;
   background-color: #8b1a10;
   border: none;
-  border-radius: 25px;
+  border-radius: 10px;
   padding: 10px;
-  margin-right: 10px;
+  margin-right: 150px;
+  font-family: "Tenor Sans";
+  font-size: 20px;
+  color: #ffffff;
 }
 
 input::placeholder {
