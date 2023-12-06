@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { SongProps, Song } from "./single_song";
 
 import { small_song_dataset } from "../mocks/mock_songs";
+import { FilterBox } from "./filter";
 
 // maybe need file for each artist and use this file as main component to hold them?
 // should this act like REPLHistory and I need another file for REPLInput? / another place to get songs?

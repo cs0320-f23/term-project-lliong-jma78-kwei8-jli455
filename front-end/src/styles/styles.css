@@ -73,3 +73,18 @@ input::placeholder {
   font-size: 20px;
   color: white;
 }
+
+.filter-box {
+  font-family: "Tenor Sans";
+  color: #64130c;
+  font-weight: bold;
+  border-radius: 50px;
+  width: 300px;
+  border: 2px solid #8b1a10;
+  background-color: #ffd4d4;
+}
+
+.spotify-page {
+  text-align: center;
+  justify-content: left;
+}
