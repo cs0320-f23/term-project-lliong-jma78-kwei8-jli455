@@ -33,18 +33,41 @@ export function Search(props: SearchProps) {
     }
 
     // what about for multiple genres???
-    // add condition for when it is both not a valid genre/number?
 
+    // is this too many if statements rippppp
+
+    // if you are entering number of songs more than there are that exist, should there be a cap? i don't think so...
     if (numCommandString) {
       const num = parseInt(numCommandString);
+
       if (isNaN(num)) {
         setMessage("Please enter a valid number!");
+        if (!allGenres.includes(commandString)) {
+          setMessage("Please enter a valid genre and a valid number!");
+        }
       } else {
-        if (songsToDisplay) {
-          songsToDisplay.splice(num);
-          console.log("modifying num");
-          console.log(songsToDisplay);
-          props.setSongs(songsToDisplay);
+        if (num < 0) {
+          setMessage("Please enter a number greater than or equal to zero");
+        } else {
+          setMessage("");
+          if (!commandString) {
+            const splicedSongs = allSongs.slice(0, num);
+            props.setSongs(splicedSongs);
+          } else {
+            if (!allGenres.includes(commandString)) {
+              setMessage("Please enter a valid genre!");
+              const splicedSongs = allSongs.slice(0, num);
+              props.setSongs(splicedSongs);
+              console.log("invalid genre but valid number");
+            } else {
+              setMessage("");
+              if (songsToDisplay) {
+                songsToDisplay.splice(num);
+                props.setSongs(songsToDisplay);
+                console.log("num songs display");
+              }
+            }
+          }
         }
       }
     }
