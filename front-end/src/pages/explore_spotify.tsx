@@ -65,14 +65,6 @@ function getSongs() {
   //   });
 }
 
-const newSong: SongProps = {
-  name: "name",
-  artists: "artist",
-  duration: 2,
-  album: "hihih",
-  popularity: 100,
-};
-
 const allSongs: SongProps[] = [];
 
 export function getMockSongs(props: SpotifyPageProps) {
@@ -80,36 +72,49 @@ export function getMockSongs(props: SpotifyPageProps) {
   const genreValues = small_song_dataset.values();
   const songArray = Array.from(genreValues);
 
+  const genres = small_song_dataset.keys();
+  const genreArray = Array.from(genres);
+
   console.log(songArray.length);
 
-  for (let i = 0; i < songArray.length; i++) {
-    for (let j = 0; j < songArray[i].length; j++) {
-      const songName: string = songArray[i][j].get("name");
+  for (let i = 0; i < genreArray.length; i++) {
+    const songs = small_song_dataset.get(genreArray[i]);
 
-      // fix to extract value from array
-      const songArtistsArray: string[] = songArray[i][j].get("artists");
-      const songArtists: string = songArtistsArray.join();
+    // do better error checking
+    if (songs != undefined) {
+      const songArray = Array.from(songs);
+      console.log(songArray);
 
-      const songAlbum: string = songArray[i][j].get("album");
-      const songDuration: number = songArray[i][j].get("duration");
-      const songPopularity: number = songArray[i][j].get("popularity");
+      for (let i = 0; i < songArray.length; i++) {
+        const songName: string = songArray[i].get("name");
 
-      const song: SongProps = {
-        name: songName,
-        artists: songArtists,
-        album: songAlbum,
-        duration: songDuration,
-        popularity: songPopularity,
-      };
+        // fix to extract value from array
+        const songArtistsArray: string[] = songArray[i].get("artists");
+        const songArtists: string = songArtistsArray.join();
 
-      allSongs.push(song);
+        const songAlbum: string = songArray[i].get("album");
+        const songDuration: number = songArray[i].get("duration");
+        const songPopularity: number = songArray[i].get("popularity");
 
-      console.log(song);
+        const song: SongProps = {
+          name: songName,
+          artists: songArtists,
+          album: songAlbum,
+          duration: songDuration,
+          popularity: songPopularity,
+          genre: genreArray[i],
+        };
 
-      //props.setSongs([...props.songs]);
-      console.log(props.songs);
+        allSongs.push(song);
+
+        console.log("genre" + genreArray[i]);
+
+        //props.setSongs([...props.songs]);
+        console.log(props.songs);
+      }
     }
   }
+
   return allSongs;
 }
 
@@ -142,6 +147,7 @@ export function SpotifySongs(props: SpotifyPageProps) {
           album={song.album}
           duration={song.duration}
           popularity={song.popularity}
+          genre={song.genre}
         />
       ))}
     </div>
