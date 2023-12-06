@@ -43,6 +43,11 @@ export function Searchbar({ value, setValue, ariaLabel }: SearchbarProps) {
   );
 }
 
+/**
+ * search bar for entering number of songs to be displayed
+ * @param param0
+ * @returns
+ */
 export function NumberInput({
   numValue,
   setNumValue,

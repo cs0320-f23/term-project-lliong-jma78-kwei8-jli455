@@ -23,10 +23,13 @@ function App() {
       <Search />
       <br></br>
       <br></br>
+      <div className="spotify-page">
+        <FilterBox />
 
-      <FilterBox />
-
-      <SpotifySongs songs={songs} setSongs={setSongs} />
+        <div className="right-component">
+          <SpotifySongs songs={songs} setSongs={setSongs} />
+        </div>
+      </div>
     </div>
   );
 }

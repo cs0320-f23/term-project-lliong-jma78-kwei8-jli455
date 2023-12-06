@@ -78,13 +78,19 @@ input::placeholder {
   font-family: "Tenor Sans";
   color: #64130c;
   font-weight: bold;
+  font-size: 25px;
   border-radius: 50px;
   width: 300px;
+  height: 500px;
   border: 2px solid #8b1a10;
   background-color: #ffd4d4;
 }
 
 .spotify-page {
-  text-align: center;
-  justify-content: left;
+  display: inline-grid;
+  column-gap: 20px;
+}
+
+.right-component {
+  grid-column: 2 / 3;
 }
