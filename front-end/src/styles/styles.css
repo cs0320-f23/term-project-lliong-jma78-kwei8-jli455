@@ -79,18 +79,22 @@ input::placeholder {
   color: #64130c;
   font-weight: bold;
   font-size: 25px;
-  border-radius: 50px;
-  width: 300px;
+  border-radius: 25px;
+  width: 250px;
   height: 500px;
   border: 2px solid #8b1a10;
   background-color: #ffd4d4;
 }
 
-.spotify-page {
+.spotify-content {
   display: inline-grid;
   column-gap: 20px;
 }
 
 .right-component {
   grid-column: 2 / 3;
+}
+
+.spotify-page {
+  text-align: center;
 }

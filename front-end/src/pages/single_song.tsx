@@ -1,6 +1,9 @@
 import React from "react";
 import "../styles/styles.css";
 
+/**
+ * props for each individual song
+ */
 export interface SongProps {
   name: string;
   duration: number;
@@ -10,6 +13,12 @@ export interface SongProps {
   genre: string;
 }
 
+/**
+ * function representing a single song component that will be displayed
+ * displays song artist, album, duration, popularity, and genre
+ * @param props 
+ * @returns 
+ */
 export function Song(props: SongProps) {
   return (
     <div className="song_single">
