@@ -1,27 +1,37 @@
 import React from "react";
 import { useState } from "react";
-import { Searchbar } from "./search_bar";
+import { Searchbar, NumberInput } from "./search_bar";
 
 export function Search() {
   const [commandString, setCommandString] = useState<string>("");
+  const [numCommandString, setNumCommandString] = useState<string>("");
 
-  function handleSubmit(commandString: string) {
+  function handleSubmit() {
     setCommandString("");
     console.log("button clicked");
     console.log(commandString);
+    setNumCommandString("");
   }
 
   return (
     <div className="searchbar-container">
-      <Searchbar
-        value={commandString}
-        setValue={setCommandString}
-        ariaLabel={"search bar"}
-      />
+      <div>
+        <Searchbar
+          value={commandString}
+          setValue={setCommandString}
+          ariaLabel={"genre search bar"}
+        />
+        <br></br>
+        <NumberInput
+          numValue={numCommandString}
+          setNumValue={setNumCommandString}
+          ariaLabel={"number search bar"}
+        />
+      </div>
       <button
         className="submit-button"
         aria-label="submit button"
-        onClick={() => handleSubmit(commandString)}
+        onClick={() => handleSubmit()}
       >
         Submit
       </button>
