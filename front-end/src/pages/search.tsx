@@ -39,7 +39,13 @@ export function Search(props: SearchProps) {
       const num = parseInt(numCommandString);
       if (isNaN(num)) {
         setMessage("Please enter a valid number!");
-        console.log("not a valid number");
+      } else {
+        if (songsToDisplay) {
+          songsToDisplay.splice(num);
+          console.log("modifying num");
+          console.log(songsToDisplay);
+          props.setSongs(songsToDisplay);
+        }
       }
     }
 
