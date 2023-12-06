@@ -66,19 +66,18 @@ function getSongs() {
   //   });
 }
 
-const allSongs: SongProps[] = [];
+export const allSongs: SongProps[] = [];
+export const allGenres: string[] = [];
 
 export function getMockSongs(props: SpotifyPageProps) {
-  console.log("mocking");
   const genreValues = small_song_dataset.values();
   const songArray = Array.from(genreValues);
 
   const genres = small_song_dataset.keys();
   const genreArray = Array.from(genres);
 
-  console.log(songArray.length);
-
   for (let i = 0; i < genreArray.length; i++) {
+    allGenres.push(genreArray[i]);
     const songs = small_song_dataset.get(genreArray[i]);
 
     const genre = genreArray[i];

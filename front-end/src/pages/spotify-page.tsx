@@ -9,12 +9,14 @@ import { small_song_dataset } from "../mocks/mock_songs";
 import { Search } from "./search";
 import { FilterBox } from "./filter";
 
+// fix so that filter box does not move around
+// perhaps a show all songs button? or on the filter
 export function SpotifyPage() {
   const [songs, setSongs] = useState<SongProps[]>([]);
 
   return (
     <div className="spotify-page">
-      <Search />
+      <Search songs={songs} setSongs={setSongs} />
       <br></br>
       <br></br>
       <div className="spotify-content">
