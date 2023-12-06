@@ -81,29 +81,33 @@ export function getMockSongs(props: SpotifyPageProps) {
   const songArray = Array.from(genreValues);
 
   console.log(songArray.length);
+  console.log(songArray);
+
   for (let i = 0; i < songArray.length; i++) {
-    const songName: string = songArray[i].get("name");
+    for (let j = 0; j < songArray[i].length; j++) {
+      const songName: string = songArray[i][j].get("name");
 
-    // fix to extract value from array
-    const songArtists: string[] = songArray[i].get("artists");
-    const songAlbum: string = songArray[i].get("album");
-    const songDuration: number = songArray[i].get("duration");
-    const songPopularity: number = songArray[i].get("popularity");
+      // fix to extract value from array
+      const songArtists: string[] = songArray[i][j].get("artists");
+      const songAlbum: string = songArray[i][j].get("album");
+      const songDuration: number = songArray[i][j].get("duration");
+      const songPopularity: number = songArray[i][j].get("popularity");
 
-    const song: SongProps = {
-      name: songName,
-      artists: songArtists,
-      album: songAlbum,
-      duration: songDuration,
-      popularity: songPopularity,
-    };
+      const song: SongProps = {
+        name: songName,
+        artists: songArtists,
+        album: songAlbum,
+        duration: songDuration,
+        popularity: songPopularity,
+      };
 
-    allSongs.push(song);
+      allSongs.push(song);
 
-    console.log(song);
+      console.log(song);
 
-    //props.setSongs([...props.songs]);
-    console.log(props.songs);
+      //props.setSongs([...props.songs]);
+      console.log(props.songs);
+    }
   }
   return allSongs;
 }
