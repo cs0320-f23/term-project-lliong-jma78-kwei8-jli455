@@ -7,6 +7,7 @@ export interface SongProps {
   artists: string;
   album: string;
   popularity: number;
+  genre: string;
 }
 
 export function Song(props: SongProps) {
@@ -18,6 +19,7 @@ export function Song(props: SongProps) {
       <h2>album: {props.album}</h2>
       <h2>duration: {props.duration}</h2>
       <h2>popularity: {props.popularity}</h2>
+      <h2>genre: {props.genre}</h2>
     </div>
   );
 }

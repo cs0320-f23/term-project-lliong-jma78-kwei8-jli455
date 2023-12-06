@@ -25,7 +25,7 @@ interface SearchbarProps {
 export function Searchbar({ value, setValue, ariaLabel }: SearchbarProps) {
   return (
     // index automatically into input box?
-    <div className="searchbar-container">
+    <div>
       <input
         type="text"
         className="search-input"

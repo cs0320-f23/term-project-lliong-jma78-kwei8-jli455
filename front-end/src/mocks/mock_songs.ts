@@ -41,8 +41,6 @@ const long_flight_map = new Map<string, string | string[] | number>([
   ["popularity", 300],
 ]);
 
-Array<Map<string, string>>
-
 export const small_song_dataset = new Map<string, Array<Map<string, string | string[] | number>>>([
   ["alternative", [slide_tackle_map, imagining_map]],
   ["pop", [limbo_map, la_la_lost_you_map]], ["kpop", [long_flight_map]]

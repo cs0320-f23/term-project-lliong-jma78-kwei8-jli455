@@ -80,6 +80,8 @@ export function getMockSongs(props: SpotifyPageProps) {
   for (let i = 0; i < genreArray.length; i++) {
     const songs = small_song_dataset.get(genreArray[i]);
 
+    const genre = genreArray[i];
+
     // do better error checking
     if (songs != undefined) {
       const songArray = Array.from(songs);
@@ -102,12 +104,10 @@ export function getMockSongs(props: SpotifyPageProps) {
           album: songAlbum,
           duration: songDuration,
           popularity: songPopularity,
-          genre: genreArray[i],
+          genre: genre,
         };
 
         allSongs.push(song);
-
-        console.log("genre" + genreArray[i]);
 
         //props.setSongs([...props.songs]);
         console.log(props.songs);

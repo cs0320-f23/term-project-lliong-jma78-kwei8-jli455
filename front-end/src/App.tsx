@@ -12,7 +12,7 @@ import { Song, SongProps } from "./pages/single_song";
 import { getMockSongs, SpotifySongs } from "./pages/explore_spotify";
 
 import { small_song_dataset } from "./mocks/mock_songs";
-import { Searchbar } from "./pages/search_bar";
+import { Search } from "./pages/search";
 
 /**
  * This is the main class that runs our app.
@@ -20,15 +20,10 @@ import { Searchbar } from "./pages/search_bar";
  */
 function App() {
   const [songs, setSongs] = useState<SongProps[]>([]);
-  const [commandString, setCommandString] = useState<string>("");
 
   return (
     <div className="App">
-      <Searchbar
-        value={commandString}
-        setValue={setCommandString}
-        ariaLabel={"search bar"}
-      />
+      <Search />
       <br></br>
       <br></br>
       <SpotifySongs songs={songs} setSongs={setSongs} />
@@ -37,3 +32,5 @@ function App() {
 }
 
 export default App;
+
+// should we make page contents shrink as the page shrinks?
