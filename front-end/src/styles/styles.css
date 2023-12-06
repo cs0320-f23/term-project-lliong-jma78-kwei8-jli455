@@ -40,6 +40,8 @@ h2 {
   border-radius: 10px;
   padding: 10px;
   width: 460px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
+  outline: none;
   font-family: "Tenor Sans";
   font-size: 20px;
   color: #ffffff;
@@ -51,9 +53,19 @@ h2 {
   border-radius: 10px;
   padding: 10px;
   width: 120px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
   font-family: "Tenor Sans";
   font-size: 20px;
   color: #ffffff;
+}
+
+.submit-button:hover {
+  background-color: #b9271a;
+}
+
+.submit-button:active {
+  transform: scale(0.9);
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
 }
 
 input::placeholder {
