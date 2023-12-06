@@ -88,12 +88,8 @@ export function getMockSongs(props: SpotifyPageProps) {
 
       // fix to extract value from array
       const songArtistsArray: string[] = songArray[i][j].get("artists");
-      const songArtists: string = "";
+      const songArtists: string = songArtistsArray.join();
 
-      for (let k = 0; k < songArtistsArray.length; k++) {
-        songArtists.concat(songArtistsArray[k] + ", ");
-        console.log(songArtists);
-      }
       const songAlbum: string = songArray[i][j].get("album");
       const songDuration: number = songArray[i][j].get("duration");
       const songPopularity: number = songArray[i][j].get("popularity");

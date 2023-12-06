@@ -1,7 +1,20 @@
 .song_single {
-  width: 200px;
-  height: 300px;
-  background-image: url("https://www.solidbackgrounds.com/images/2560x1440/2560x1440-light-red-ochre-solid-color-background.jpg");
+  border-radius: 50px;
+  width: 300px;
+  border: 2px solid #8b1a10;
+  background-color: none;
+}
+
+h1 {
+  font-family: "Tenor Sans";
+}
+
+h2 {
+  font-family: "Tenor Sans";
+}
+
+h3 {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .spotify_grid {
