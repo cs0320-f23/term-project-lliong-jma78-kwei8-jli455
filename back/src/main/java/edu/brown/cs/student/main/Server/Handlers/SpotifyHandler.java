@@ -6,6 +6,7 @@ import com.squareup.moshi.Types;
 import edu.brown.cs.student.main.Creators.Spotify.SpotifyAccess;
 import edu.brown.cs.student.main.Creators.Spotify.SpotifyCreators;
 import edu.brown.cs.student.main.Creators.Spotify.SpotifyValidGenres;
+import edu.brown.cs.student.main.Server.Server;
 import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -61,14 +62,18 @@ public class SpotifyHandler implements Route {
 
     if ((reqGenres == null) && (reqNum == null)) {
       String[] defaultGenres = {"indian", "k-pop", "mandopop"};
-      responseMap.put("data",
-          spotify.getRecommendations_Sync(10, Arrays.asList(defaultGenres)));
-      responseMap.put("genres", Arrays.asList(defaultGenres));
+      List<Map<String, Object>> retrievedSongs =
+          spotify.getRecommendations_Sync(10, Arrays.asList(defaultGenres));
+      responseMap.put("data", retrievedSongs);
+      Server.setCurrSongs(retrievedSongs);
+      responseMap.put("valid genres", Arrays.asList(defaultGenres));
     } else if (reqGenres == null) { // Num provided
       String[] defaultGenres = {"indian", "k-pop", "mandopop"};
       try {
-        responseMap.put("data",
-            spotify.getRecommendations_Sync(Integer.valueOf(reqNum), Arrays.asList(defaultGenres)));
+        List<Map<String, Object>> retrievedSongs =
+            spotify.getRecommendations_Sync(Integer.valueOf(reqNum), Arrays.asList(defaultGenres));
+        responseMap.put("data", retrievedSongs);
+        Server.setCurrSongs(retrievedSongs);
         responseMap.put("genres", Arrays.asList(defaultGenres));
       } catch (NumberFormatException e) {
         responseMap.put("result", "error");
@@ -90,12 +95,16 @@ public class SpotifyHandler implements Route {
         responseMap.put("details", "no valid genres requested");
         return adapter.toJson(responseMap);
       } else if (reqNum == null) {
-        responseMap.put("data",
-            spotify.getRecommendations_Sync(10, validGens));
+        List<Map<String, Object>> retrievedSongs =
+            spotify.getRecommendations_Sync(10, validGens);
+        responseMap.put("data", retrievedSongs);
+        Server.setCurrSongs(retrievedSongs);
       } else {
         try {
-          responseMap.put("data",
-              spotify.getRecommendations_Sync(Integer.valueOf(reqNum), validGens));
+          List<Map<String, Object>> retrievedSongs =
+              spotify.getRecommendations_Sync(Integer.valueOf(reqNum), validGens);
+          responseMap.put("data", retrievedSongs);
+          Server.setCurrSongs(retrievedSongs);
         } catch (NumberFormatException e) {
           responseMap.put("result", "error");
           responseMap.put("details", "Number of songs must be an integer value");
@@ -104,6 +113,7 @@ public class SpotifyHandler implements Route {
       }
     }
 
+    responseMap.put("result", "success");
     return adapter.toJson(responseMap);
   }
 }

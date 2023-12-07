@@ -31,6 +31,7 @@ public class SpotifyCreators {
         GetRecommendationsRequest getRecommendationsRequest = this.spotifyApi.getRecommendations()
             .limit(numSongs)
             .seed_genres(oneGenre)
+            .min_popularity(10)
             .build();
         Recommendations recommendations = getRecommendationsRequest.execute();
 
@@ -49,7 +50,19 @@ public class SpotifyCreators {
           mapTrack.put("album", oneTrack.getAlbum().getName());
 
           mapTrack.put("popularity", oneTrack.getPopularity());
-          mapTrack.put("duration", oneTrack.getDurationMs());
+
+          Integer trackDuration = oneTrack.getDurationMs();
+          mapTrack.put("MSDuration", trackDuration);
+
+          int sDuration = trackDuration / 1000;
+          Integer minutes = sDuration / 60;
+          Integer seconds = sDuration % 60;
+          int zeroCheck = seconds.toString().length();
+          if (zeroCheck == 1) {
+            mapTrack.put("duration", minutes + ":0" + seconds);
+          } else {
+            mapTrack.put("duration", minutes + ":" + seconds);
+          }
 
           retList.add(mapTrack);
         }
