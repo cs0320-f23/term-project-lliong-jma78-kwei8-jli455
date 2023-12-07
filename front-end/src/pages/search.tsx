@@ -16,8 +16,15 @@ export function Search(props: SearchProps) {
   const [message, setMessage] = useState<string>("");
 
   // add errors - where to display - below the input boxes
+
+  // case where both fields are empty - default
+  // ^ shuffled songs! new recs!
+
   function handleSubmit() {
     const songsToDisplay: SongProps[] = [];
+
+    const commandStringArray: string[] = commandString.split(",");
+
     if (commandString) {
       if (!allGenres.includes(commandString)) {
         setMessage("Please enter a valid genre!");
@@ -33,6 +40,7 @@ export function Search(props: SearchProps) {
     }
 
     // what about for multiple genres???
+    // for multple genres maybe say "----" is not valid
 
     // is this too many if statements rippppp
 
