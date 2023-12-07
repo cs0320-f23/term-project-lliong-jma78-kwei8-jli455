@@ -1,14 +1,11 @@
 import React, { useState } from "react";
-import '../styles/home.css'
+import "../styles/home.css";
 // import accountImg from '../images/account-icon.png';
 // import logoPlaceholder from '../images/nugget-dino3.png';
 import { useNavigate } from "react-router";
 
-export default function Home(){
-    return(
-        <div>
-        </div>
-    )
+export default function Home() {
+  return <div></div>;
 }
 
 // export default function HomePage() {
@@ -17,14 +14,13 @@ export default function Home(){
 //     const[artistIsActive, setArtistsVisible] = useState<boolean>(false);
 //     const[businessIsActive, setBusinessVisible] = useState<boolean>(false);
 //     const[resourceIsActive, setResourceVisible] = useState<boolean>(false);
-//     const[submitIsActive, setSubmitVisible] = useState<boolean>(false); 
-//     const[accountIsActive, setAccountVisible] = useState<boolean>(false); 
+//     const[submitIsActive, setSubmitVisible] = useState<boolean>(false);
+//     const[accountIsActive, setAccountVisible] = useState<boolean>(false);
 //     const[homeIsActive, setHomeVisible] = useState<boolean>(true)
 
 //     const navigate = useNavigate();
 
 //     const[activeIndex, setActive] = useState(0)
-
 
 //     const setArtists = () => {
 //         setArtistsVisible(true)
@@ -68,7 +64,7 @@ export default function Home(){
 //             <header id="header-row" aria-label="Navigation Bar" style={{float:"right"}}>
 //                 <div className="nav-page-columns" onMouseEnter={handleMouseHover} onMouseLeave={handleMouseLeave}>
 //                     <h2>Explore</h2>
-//                     {isDropDownVisible ? 
+//                     {isDropDownVisible ?
 //                         <div className="dropdown-menu">
 //                             <ul style={{padding: "unset", margin:"unset"}}>
 //                                 <h3 onClick={() => navigate("/artists")}>Explore Artists</h3>
@@ -76,7 +72,7 @@ export default function Home(){
 //                                 <h3 onClick={setBusinesses}>Explore Businesses</h3>
 //                             </ul>
 //                         </div>
-                    
+
 //                     : null}
 //                 </div>
 //                 <div className="nav-page-columns">
@@ -94,19 +90,20 @@ export default function Home(){
 //                         <h1 style={{textAlign:'center', fontSize:'100px'}}>Ablaze</h1>
 //                         <h2 style={{textAlign: 'center'}}>Discover Asian American and Pacific Islander creators and businesses!</h2>
 //                     </div>
-//                 </div>  
+//                 </div>
 //             : null}
 //             {artistIsActive ? <div><Artists></Artists></div> : null}
-            
+
 //         </div>
 //     );
 //   }
 
-// //   <div id="home-logo">
-// //   <img src={logoPlaceholder}></img>
-// // </div>
+//   <div id="home-logo">
+//   <img src={logoPlaceholder}></img>
+// </div>
 
-// {/* <div className="site-icons">
-// <img src={accountImg} style={{width: '50px', paddingTop:"8px", paddingLeft:"10px"}}></img>
-// </div> */}
-  
+{
+  /* <div className="site-icons">
+<img src={accountImg} style={{width: '50px', paddingTop:"8px", paddingLeft:"10px"}}></img>
+</div> */
+}
