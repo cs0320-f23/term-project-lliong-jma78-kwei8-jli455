@@ -26,7 +26,6 @@ public class SpotifyAccess {
 
       // Set access token for further "spotifyApi" object usage
       spotifyApi.setAccessToken(clientCredentials.getAccessToken());
-      System.out.println(clientCredentials.getAccessToken());
     } catch (SpotifyWebApiException | ParseException | IOException e) {
       System.out.println("Error: " + e.getMessage());
     }
