@@ -84,8 +84,16 @@ export function Search(props: SearchProps) {
     setNumCommandString("");
   }
 
+  const keyDownHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.code === "Enter") {
+      handleSubmit();
+      setCommandString("");
+      setNumCommandString("");
+    }
+  };
+
   return (
-    <div className="searchbar-container">
+    <div className="searchbar-container" onKeyDown={keyDownHandler}>
       <div>
         <Searchbar
           value={commandString}
