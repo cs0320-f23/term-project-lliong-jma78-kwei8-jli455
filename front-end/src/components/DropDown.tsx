@@ -28,14 +28,6 @@ export default function DropDownNav(){
         <div id="nav-bar">
             <nav className="nav-container">
                 <header id="header-row" aria-label="dropdown navigation bar" style={{float:"right"}}>
-                    {/* <div className="nav-pages">
-                        <div>
-                            <img src={logo} style={{left:"10px", float: "left", position:"absolute", width:"90px", height:"90px", paddingTop:"0px"}}></img>
-
-                        </div>
-                        <div><h1 style={{left: "10px", float: "left", position: "absolute"}}>Ablaze</h1>
-                        </div>
-                    </div> */}
                     <div className="nav-pages" onMouseEnter={handleHoverExplore} onMouseLeave={handleMouseLeave}>
                         <h2>Explore</h2>
                         {showExplore ? 
