@@ -29,13 +29,13 @@ export default function DropDownNav(){
             <nav className="nav-container">
                 <header id="header-row" aria-label="dropdown navigation bar" style={{float:"right"}}> 
                     <div className="nav-pages" style={{}}>
-                        <img src={logo} style={{width: "60px", height:"50px", paddingInline:"70px"}} onClick={() => navigate("/home")}></img>
+                        <img src={logo} style={{width: "90px", height:"80px", paddingInline:"50px"}} onClick={() => navigate("/home")}></img>
                     </div>
                     <div className="nav-pages" style={{float:"left", paddingRight:"50vw"}}>
-                        <h1 onClick={() => navigate("/home")}>Ablaze</h1>
+                        <h1 onClick={() => navigate("/home")} style={{fontSize:"40px"}}>Ablaze</h1>
                     </div>   
                     <div className="nav-pages" onMouseEnter={handleHoverExplore} onMouseLeave={handleMouseLeave}>
-                        <h2>Explore</h2>
+                        <h2 style={{paddingTop:"20px"}}>Explore</h2>
                         {showExplore ? 
                             <div>
                                 <div className="dropdown-menu">
@@ -47,7 +47,7 @@ export default function DropDownNav(){
                             </div> : null}
                     </div>
                     <div className="nav-pages" onMouseEnter={handleHoverSubmit} onMouseLeave={handleMouseLeave}>
-                        <h2>Submit</h2>
+                        <h2 style={{paddingTop:"20px"}}>Submit</h2>
                         {showSubmit ? 
                             <div>
                                 <div className="dropdown-menu">
@@ -61,13 +61,13 @@ export default function DropDownNav(){
                     </div>
 
                     <div className="nav-pages">
-                        <h2 onClick={() => navigate("/resources")}>Resources</h2>
+                        <h2 style={{paddingTop:"20px"}} onClick={() => navigate("/resources")}>Resources</h2>
                     </div>
                     <div className="nav-pages">
-                        <h2 onClick={() => navigate("/about")}>About</h2>
+                        <h2 style={{paddingTop:"20px"}} onClick={() => navigate("/about")}>About</h2>
                     </div>
                     <div className="nav-pages">
-                        <img src={accountLogo} className="acc-logo"></img>
+                        <img src={accountLogo} style={{paddingTop:"20px"}} className="acc-logo"></img>
                     </div>
 
                 </header>
