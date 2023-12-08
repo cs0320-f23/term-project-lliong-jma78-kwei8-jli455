@@ -106,6 +106,39 @@ public class SubmittedCreators {
     return uniqueID;
   }
 
+  // TODO: Make this more efficient? Honestly hashing, but I dont have energy for that
+  public Boolean deleteCreator(String toDelete) throws IOException {
+    System.out.println("getting here");
+    this.rDatabase = new FileReader(this.databaseName);
+    BufferedReader bReader = new BufferedReader(this.rDatabase);
+    String oneLine = bReader.readLine();
+    List<String> fullFile = new ArrayList<>();
+    List<String> editedFile = new ArrayList<>();
+    Boolean retBool = false;
+
+    while (oneLine != null) {
+      fullFile.add(oneLine);
+      oneLine = bReader.readLine();
+    }
+
+    for (String oneCreator : fullFile) {
+      if (oneCreator.startsWith(toDelete + ",")) {
+        retBool = true;
+      } else {
+        editedFile.add(oneCreator);
+      }
+    }
+
+    BufferedWriter bWriter = new BufferedWriter(new FileWriter(this.databaseName));
+    for (String oneCreator : editedFile) {
+      bWriter.write(oneCreator);
+      bWriter.newLine();
+    }
+    bWriter.flush();
+
+    return retBool;
+  }
+
   private void addToMap(Map<String, String> base, String key, String value) {
     if (!(value.equals("null"))) {
       base.put(key, value);
@@ -153,5 +186,9 @@ public class SubmittedCreators {
     }
 
     return retList;
+  }
+
+  public List<Map<String, String>> getTypeDatabase(String toFind) throws IOException {
+    return new SubmittedFiltering().filterType(this.getDatabase(), toFind);
   }
 }
