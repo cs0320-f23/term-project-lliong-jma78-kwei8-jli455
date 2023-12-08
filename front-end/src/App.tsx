@@ -12,13 +12,12 @@ import SubmitBusinesses from "./pages/submit_business";
 import Resources from "./pages/resources";
 
 export default function App() {
-
   return (
-      <div>
-        <Router>
+    <>
+      <Router>
           <Routes>
-            <Route path="/" element={<DropDownNav/>}>
-              <Route index element={<Home/>}></Route>
+            <Route element={<DropDownNav/>}>
+              <Route path="/" index element={<Home/>}></Route>
               <Route path="/home" element={<Home/>}/>
               <Route path="/about" element={<AboutPage/>}/>
               <Route path="/explore_artists" element={<Artists/>}/>
@@ -28,11 +27,7 @@ export default function App() {
               <Route path="/resources" element={<Resources/>}/>
             </Route>
           </Routes>
-
-        </Router>
-
-      </div>
-
-
+      </Router>
+    </>
   );
 }

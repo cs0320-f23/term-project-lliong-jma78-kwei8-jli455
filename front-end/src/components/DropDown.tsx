@@ -27,7 +27,13 @@ export default function DropDownNav(){
     return(
         <div id="nav-bar">
             <nav className="nav-container">
-                <header id="header-row" aria-label="dropdown navigation bar" style={{float:"right"}}>
+                <header id="header-row" aria-label="dropdown navigation bar" style={{float:"right"}}> 
+                    <div className="nav-pages" style={{}}>
+                        <img src={logo} style={{width: "60px", height:"50px", paddingInline:"70px"}} onClick={() => navigate("/home")}></img>
+                    </div>
+                    <div className="nav-pages" style={{float:"left", paddingRight:"50vw"}}>
+                        <h1 onClick={() => navigate("/home")}>Ablaze</h1>
+                    </div>   
                     <div className="nav-pages" onMouseEnter={handleHoverExplore} onMouseLeave={handleMouseLeave}>
                         <h2>Explore</h2>
                         {showExplore ? 
@@ -53,12 +59,17 @@ export default function DropDownNav(){
                             </div>
                         : null}
                     </div>
+
                     <div className="nav-pages">
                         <h2 onClick={() => navigate("/resources")}>Resources</h2>
                     </div>
                     <div className="nav-pages">
+                        <h2 onClick={() => navigate("/about")}>About</h2>
+                    </div>
+                    <div className="nav-pages">
                         <img src={accountLogo} className="acc-logo"></img>
                     </div>
+
                 </header>
             </nav>
         </div>
