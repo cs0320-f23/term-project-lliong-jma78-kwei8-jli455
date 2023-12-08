@@ -191,4 +191,8 @@ public class SubmittedCreators {
   public List<Map<String, String>> getTypeDatabase(String toFind) throws IOException {
     return new SubmittedFiltering().filterType(this.getDatabase(), toFind);
   }
+
+  public List<Map<String, String>> getKeywordDatabase(String toFind) throws IOException {
+    return new SubmittedFiltering().searchKeyword(this.getDatabase(), toFind);
+  }
 }

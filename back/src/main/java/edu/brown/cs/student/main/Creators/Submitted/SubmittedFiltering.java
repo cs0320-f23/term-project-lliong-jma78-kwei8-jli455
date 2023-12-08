@@ -18,4 +18,16 @@ public class SubmittedFiltering {
     return retList;
   }
 
+  public List<Map<String, String>> searchKeyword(List<Map<String, String>> fullDatabase, String toFind) {
+    List<Map<String, String>> retList = new ArrayList<>();
+
+    for (Map<String, String> oneCreator : fullDatabase) {
+      if (oneCreator.values().toString().toLowerCase().contains(toFind.toLowerCase())) {
+        retList.add(oneCreator);
+      }
+    }
+
+    return retList;
+  }
+
 }
