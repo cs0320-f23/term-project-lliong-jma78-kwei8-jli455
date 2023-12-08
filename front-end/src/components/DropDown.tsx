@@ -35,7 +35,7 @@ export default function DropDownNav(){
                         <h1 onClick={() => navigate("/home")} style={{fontSize:"40px"}}>Ablaze</h1>
                     </div>   
                     <div className="nav-pages" onMouseEnter={handleHoverExplore} onMouseLeave={handleMouseLeave}>
-                        <h2 style={{paddingTop:"20px"}}>Explore</h2>
+                        <h2 style={{paddingTop:"25px"}}>Explore</h2>
                         {showExplore ? 
                             <div>
                                 <div className="dropdown-menu">
@@ -47,7 +47,7 @@ export default function DropDownNav(){
                             </div> : null}
                     </div>
                     <div className="nav-pages" onMouseEnter={handleHoverSubmit} onMouseLeave={handleMouseLeave}>
-                        <h2 style={{paddingTop:"20px"}}>Submit</h2>
+                        <h2 style={{paddingTop:"25px"}}>Submit</h2>
                         {showSubmit ? 
                             <div>
                                 <div className="dropdown-menu">
@@ -61,13 +61,13 @@ export default function DropDownNav(){
                     </div>
 
                     <div className="nav-pages">
-                        <h2 style={{paddingTop:"20px"}} onClick={() => navigate("/resources")}>Resources</h2>
+                        <h2 style={{paddingTop:"25px"}} onClick={() => navigate("/resources")}>Resources</h2>
                     </div>
                     <div className="nav-pages">
-                        <h2 style={{paddingTop:"20px"}} onClick={() => navigate("/about")}>About</h2>
+                        <h2 style={{paddingTop:"25px"}} onClick={() => navigate("/about")}>About</h2>
                     </div>
                     <div className="nav-pages">
-                        <img src={accountLogo} style={{paddingTop:"20px"}} className="acc-logo"></img>
+                        <img src={accountLogo} style={{paddingTop:"25px"}} className="acc-logo"></img>
                     </div>
 
                 </header>
