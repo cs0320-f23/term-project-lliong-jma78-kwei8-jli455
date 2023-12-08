@@ -90,6 +90,18 @@ public class CreatorHandler implements Route {
         responseMap.put("data", retData);
         return adapter.toJson(responseMap);
       }
+    } else if (reqAction.equals("search")) {
+      String toFind = request.queryParams("searchterm");
+      if (toFind == null) {
+        responseMap.put("result", "error");
+        responseMap.put("details", "no search term provided");
+        return adapter.toJson(responseMap);
+      } else {
+        List<Map<String, String>> retData = this.submittedCreators.getKeywordDatabase(toFind);
+        responseMap.put("result", "success");
+        responseMap.put("data", retData);
+        return adapter.toJson(responseMap);
+      }
     }
 
 
