@@ -11,7 +11,9 @@ import { HiMiniWrenchScrewdriver, HiStar } from "react-icons/hi2";
 
 // maybe add somewhere the different types of visual arts, performing arts, etc.
 // because i don't there are enough icons to display the wide range
+// open url in new tab? is this automatic?
 
+// do on clicks for buttons
 export function CreatorFilterButtons() {
   // wait do we want to be able to filter for multiple ? or just one at a time?
   return (

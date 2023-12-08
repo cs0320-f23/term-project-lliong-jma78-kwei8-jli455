@@ -8,7 +8,7 @@ export function CreatorPage() {
 
   return (
     <div className="spotify-page">
-      <Search />
+      <Search creators={creators} setCreators={setCreators} />
       <br></br>
       <br></br>
       <div className="spotify-content">

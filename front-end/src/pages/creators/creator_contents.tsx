@@ -5,18 +5,21 @@ import React, { useEffect, useRef } from "react";
 import { Creator, CreatorProps } from "./single_creator";
 import { small_creators_dataset } from "../../mocks/mock_creators";
 
+// how to stop components shifting around when screen width changes? though I guess this
+// is a problem for both spotify and creators
+
 // drop down box for selecting types
 
 // visual art, performing art, literary art, artisans, other
 
 // should i be using an enum??
-export enum typeOfCreator {
-  visual_art = "visual art",
-  performing_art = "performing art",
-  literary_art = "literary art",
-  artisans = "artisans",
-  other = "other",
-}
+// export enum typeOfCreator {
+//   visual_art = "visual art",
+//   performing_art = "performing art",
+//   literary_art = "literary art",
+//   artisans = "artisans",
+//   other = "other",
+// }
 
 interface CreatorPageProps {
   creators: CreatorProps[];
@@ -30,7 +33,7 @@ function getMockCreators(props: CreatorPageProps) {
     const creatorName: string = small_creators_dataset[i].get("name");
 
     // not sure if this enum will work...
-    const creatorType: typeOfCreator = small_creators_dataset[i].get("type");
+    const creatorType: string = small_creators_dataset[i].get("type");
     const creatorDescription: string =
       small_creators_dataset[i].get("description");
     const creatorWebsite: string | undefined =
@@ -38,7 +41,7 @@ function getMockCreators(props: CreatorPageProps) {
     const creatorInstagram: string | undefined =
       small_creators_dataset[i].get("instagram");
     const creatorFacebook: string | undefined =
-      small_creators_dataset[i].get("faecebook");
+      small_creators_dataset[i].get("facebook");
     const creatorSpotify: string | undefined =
       small_creators_dataset[i].get("spotify");
     const creatorPrice: string | undefined =

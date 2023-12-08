@@ -153,7 +153,7 @@ label {
 .creator-single {
   border-radius: 30px;
   width: 300px;
-  height: 450px;
+  height: 350px;
   border: 2px solid #8b1a10;
   background-color: none;
   position: relative;
@@ -175,6 +175,7 @@ label {
   display: flex;
   justify-content: space-around;
   margin: auto;
+  width: 1200px;
 }
 
 .creator-filter-button {
@@ -182,7 +183,7 @@ label {
   border-radius: 10px;
   border: 2px solid #8b1a10;
   padding: 7px;
-  width: 150px;
+  width: 180px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   font-family: "Tenor Sans";
   font-size: 17px;
@@ -211,4 +212,18 @@ label {
   display: flex;
   justify-content: center;
   column-gap: 8px;
+}
+
+.creator-type {
+  background-color: none;
+  border-radius: 10px;
+  border: 2px solid #4f100a;
+  padding: 5px;
+  width: 180px;
+  font-family: "Tenor Sans";
+  font-size: 15px;
+  color: #4f100a;
+  position: absolute;
+  bottom: 15px;
+  margin-left: 20px;
 }
