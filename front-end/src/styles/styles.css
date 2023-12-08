@@ -170,3 +170,9 @@ label {
   position: absolute;
   bottom: 20px;
 }
+
+.creator-filters {
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+}
