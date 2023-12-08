@@ -35,13 +35,13 @@ public class CreatorHandler implements Route {
     Map<String, Object> responseMap = new HashMap<>();
 
     String reqAction = request.queryParams("action");
+    Type mapObject = Types.newParameterizedType(Map.class, String.class, Object.class);
+    JsonAdapter<Map<String, Object>> adapter = moshi.adapter(mapObject);
 
     if (reqAction == null) {
       responseMap.put("data", this.submittedCreators.getDatabase());
-      responseMap.put("status", "success");
+      responseMap.put("result", "success");
 
-      Type mapObject = Types.newParameterizedType(Map.class, String.class, Object.class);
-      JsonAdapter<Map<String, Object>> adapter = moshi.adapter(mapObject);
       return adapter.toJson(responseMap);
     } else if (reqAction.equals("add")) {
       String name = getAttr(request.queryParams("name"));
@@ -56,19 +56,45 @@ public class CreatorHandler implements Route {
       String creatorStr = name + "," + type + "," + price + "," + description + "," + instagram + "," +
           facebook + "," + website + "," + spotify;
       Integer uniqueID = this.submittedCreators.addCreator(creatorStr);
-      responseMap.put("status", "success");
+      responseMap.put("result", "success");
       responseMap.put("ID", uniqueID);
 
-      Type intObject = Types.newParameterizedType(Map.class, String.class, Object.class);
-      JsonAdapter<Map<String, Object>> intAdapter = moshi.adapter(intObject);
-      return intAdapter.toJson(responseMap);
+      return adapter.toJson(responseMap);
+    } else if (reqAction.equals("delete")) {
+      String id = request.queryParams("id");
+      if (id == null) {
+        responseMap.put("result", "error");
+        responseMap.put("details", "no id provided to delete");
+        return adapter.toJson(responseMap);
+      } else {
+        Boolean retBool = this.submittedCreators.deleteCreator(id);
+        if (retBool) {
+          responseMap.put("result", "success");
+          responseMap.put("details", "successfully deleted " + id);
+          return adapter.toJson(responseMap);
+        } else {
+          responseMap.put("result", "error");
+          responseMap.put("details", "id provided was not found");
+          return adapter.toJson(responseMap);
+        }
+      }
+    } else if (reqAction.equals("filtertype")) {
+      String type = request.queryParams("type");
+      if (type == null) {
+        responseMap.put("result", "error");
+        responseMap.put("details", "no type provided to filter on");
+        return adapter.toJson(responseMap);
+      } else {
+        List<Map<String, String>> retData = this.submittedCreators.getTypeDatabase(type);
+        responseMap.put("result", "success");
+        responseMap.put("data", retData);
+        return adapter.toJson(responseMap);
+      }
     }
 
 
-    responseMap.put("status", "error");
+    responseMap.put("result", "error");
     responseMap.put("details", "used unspecified action");
-    Type mapObject = Types.newParameterizedType(Map.class, String.class, Object.class);
-    JsonAdapter<Map<String, Object>> adapter = moshi.adapter(mapObject);
     return adapter.toJson(responseMap);
   }
 }

@@ -64,16 +64,15 @@ public class SpotifySorting {
     return sortedList;
   }
 
-  public List<Map<String, Object>> sortBoth(String popMode, String durMode,
-      List<Map<String, Object>> toSort) {
+  public List<Map<String, Object>> sortBoth(String popMode, String durMode, Integer weightPop,
+      Integer weightDur, List<Map<String, Object>> toSort) {
     Integer numToSort = toSort.size();
     List<Map<String, Object>> sortedList = new ArrayList<>();
     List<Map<String, Object>> sortedPop = sortPopularity(popMode, toSort);
     List<Map<String, Object>> sortedDur = sortDuration(durMode, toSort);
 
-    Comparator<Map<String, Object>> weightTracks = (track1, track2) ->
-        (sortedPop.indexOf(track1) + sortedDur.indexOf(track1)) -
-            (sortedPop.indexOf(track2) + sortedPop.indexOf(track2));
+    Comparator<Map<String, Object>> weightTracks = Comparator.comparingInt(
+        track -> ((sortedPop.indexOf(track) * weightPop) + (sortedDur.indexOf(track) * weightDur)));
 
     PriorityQueue<Map<String, Object>> trackPQ = new PriorityQueue<>(numToSort, weightTracks);
     for (Map<String, Object> oneTrack : toSort) {

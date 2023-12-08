@@ -45,7 +45,7 @@ public class SpotifySortHandler implements Route {
     } else if ((reqPop == null)) {
       responseMap.put("data", sorter.sortDuration(reqDur, this.toSort));
     } else {
-      responseMap.put("data", sorter.sortBoth(reqPop, reqDur, this.toSort));
+      responseMap.put("data", sorter.sortBoth(reqPop, reqDur, 1, 1, this.toSort));
     }
 
     responseMap.put("result", "success");
