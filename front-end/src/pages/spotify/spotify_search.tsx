@@ -1,8 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { Search } from "react-router-dom";
-import { allSongs, allGenres } from "./explore_spotify";
-import { Searchbar, NumberInput } from "./search_bar";
+import { allSongs, allGenres } from "./spotify_contents";
+import { Searchbar, NumberInput } from "./spotify_search_bar";
 import { SongProps } from "./single_song";
 
 interface SearchProps {
@@ -87,13 +87,11 @@ export function Search(props: SearchProps) {
   const keyDownHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.code === "Enter") {
       handleSubmit();
-      setCommandString("");
-      setNumCommandString("");
     }
   };
 
   return (
-    <div className="searchbar-container" onKeyDown={keyDownHandler}>
+    <div className="spotify-searchbar-container" onKeyDown={keyDownHandler}>
       <div>
         <Searchbar
           value={commandString}

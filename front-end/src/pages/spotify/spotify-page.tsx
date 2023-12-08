@@ -1,13 +1,12 @@
-import "../styles/styles.css";
+import "../../styles/styles.css";
 import React from "react";
 
-import { useState, useEffect } from "react";
-import { Song, SongProps } from "./single_song";
-import { getMockSongs, SpotifySongs } from "./explore_spotify";
+import { useState } from "react";
+import { SongProps } from "./single_song";
+import { SpotifySongs } from "./spotify_contents";
 
-import { small_song_dataset } from "../mocks/mock_songs";
-import { Search } from "./search";
-import { FilterBox } from "./filter";
+import { Search } from "./spotify_search";
+import { FilterBox } from "./spotify_filter";
 
 // fix so that filter box does not move around
 // perhaps a show all songs button? or on the filter

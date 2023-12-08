@@ -1,4 +1,4 @@
-// etails for the song "slide tackle"
+// details for the song "slide tackle"
 const slide_tackle_map = new Map<string, string | string[] | number>([
   ["name", "slide tackle"],
   ["duration", 123456],

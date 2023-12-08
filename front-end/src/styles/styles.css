@@ -1,4 +1,4 @@
-.song_single {
+.song-single {
   border-radius: 50px;
   width: 300px;
   border: 2px solid #8b1a10;
@@ -17,18 +17,28 @@ h2 {
   font-size: 20px;
 }
 
-.spotify_grid {
+.spotify-grid {
   display: inline-grid;
   grid-template-columns: repeat(3, auto);
   column-gap: 30px;
   row-gap: 30px;
 }
 
-.searchbar-container {
+.spotify-searchbar-container {
   display: flex;
   background-color: #ffffff;
   border-radius: 10px;
   align-items: center;
+  width: 650px;
+  margin: auto;
+  justify-content: space-between;
+}
+
+.creator-searchbar-container {
+  display: flex;
+  background-color: #ffffff;
+  border-radius: 10px;
+  align-items: flex-start;
   width: 650px;
   margin: auto;
   justify-content: space-between;
@@ -138,4 +148,25 @@ label {
 .sort-submit-button:active {
   transform: scale(0.9);
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+}
+
+.creator-single {
+  border-radius: 30px;
+  width: 300px;
+  height: 450px;
+  border: 2px solid #8b1a10;
+  background-color: none;
+  position: relative;
+}
+
+.creator-id {
+  display: flex;
+  font-family: "Tenor Sans";
+  color: #4f100a;
+  font-size: 20px;
+  text-align: right;
+  margin-left: 230px;
+  font-weight: bold;
+  position: absolute;
+  bottom: 20px;
 }

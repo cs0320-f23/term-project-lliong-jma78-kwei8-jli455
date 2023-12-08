@@ -3,8 +3,7 @@ import { useEffect, useRef } from "react";
 
 import { SongProps, Song } from "./single_song";
 
-import { small_song_dataset } from "../mocks/mock_songs";
-import { FilterBox } from "./filter";
+import { small_song_dataset } from "../../mocks/mock_songs";
 
 // maybe need file for each artist and use this file as main component to hold them?
 // should this act like REPLHistory and I need another file for REPLInput? / another place to get songs?
@@ -139,7 +138,7 @@ export function SpotifySongs(props: SpotifyPageProps) {
   return (
     // check if filtered? then map it
 
-    <div className="spotify_grid">
+    <div className="spotify-grid">
       {props.songs?.map((song, index) => (
         <Song
           name={song.name}

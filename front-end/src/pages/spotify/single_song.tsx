@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/styles.css";
+import "../../styles/styles.css";
 
 /**
  * props for each individual song
@@ -21,7 +21,7 @@ export interface SongProps {
  */
 export function Song(props: SongProps) {
   return (
-    <div className="song_single">
+    <div className="song-single">
       <h1>{props.name}</h1>
       <br></br>
       <h2>artist: {props.artists}</h2>

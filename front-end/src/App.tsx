@@ -4,7 +4,10 @@ import Navbar from "./components/NavBarElements";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import { SpotifyPage } from "./pages/spotify-page";
+import { SpotifyPage } from "./pages/spotify/spotify-page";
+import { CreatorPage } from "./pages/creators/creator_page";
+
+//<SpotifyPage />
 
 /**
  * This is the main class that runs our app.
@@ -13,7 +16,7 @@ import { SpotifyPage } from "./pages/spotify-page";
 function App() {
   return (
     <div className="App">
-      <SpotifyPage />
+      <CreatorPage />
     </div>
   );
 }
