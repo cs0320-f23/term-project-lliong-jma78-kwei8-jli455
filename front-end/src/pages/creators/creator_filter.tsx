@@ -3,11 +3,11 @@ import React from "react";
 export function CreatorFilterButtons() {
   return (
     <div className="creator-filters">
-      <button>Visual Arts</button>
-      <button>Performing Arts</button>
-      <button>Literary Arts</button>
-      <button>Artisans</button>
-      <button>Other</button>
+      <button className="creator-filter-button">Visual Arts</button>
+      <button className="creator-filter-button">Performing Arts</button>
+      <button className="creator-filter-button">Literary Arts</button>
+      <button className="creator-filter-button">Artisans</button>
+      <button className="creator-filter-button">Other</button>
     </div>
   );
 }

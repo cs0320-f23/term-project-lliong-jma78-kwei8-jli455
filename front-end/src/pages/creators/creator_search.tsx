@@ -38,7 +38,8 @@ export function Search() {
           Submit
         </button>
       </div>
-      <div className="creator-filters">
+      <br></br>
+      <div>
         <CreatorFilterButtons />
       </div>
     </div>

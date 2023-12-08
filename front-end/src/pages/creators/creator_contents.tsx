@@ -73,7 +73,7 @@ export function Creators(props: CreatorPageProps) {
   });
 
   return (
-    <div className="spotify-grid">
+    <div className="creator-grid">
       {props.creators?.map((creator, index) => (
         <Creator
           name={creator.name}
