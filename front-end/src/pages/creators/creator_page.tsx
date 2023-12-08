@@ -13,11 +13,9 @@ export function CreatorPage() {
       <br></br>
       <div className="spotify-content">
         <div className="right-component">
-          <Creators creators={creators} setCreators={setCreators}/>
+          <Creators creators={creators} setCreators={setCreators} />
         </div>
       </div>
     </div>
   );
 }
-
- 

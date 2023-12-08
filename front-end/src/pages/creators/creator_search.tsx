@@ -39,7 +39,7 @@ export function Search() {
         </button>
       </div>
       <br></br>
-      <div>
+      <div className="creator-filters">
         <CreatorFilterButtons />
       </div>
     </div>
