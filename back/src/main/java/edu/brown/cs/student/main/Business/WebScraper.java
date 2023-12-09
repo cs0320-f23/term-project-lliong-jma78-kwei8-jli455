@@ -17,11 +17,11 @@ import org.jsoup.select.Elements;
 
 public class WebScraper {
   private String key;
-  private HashMap<String,Object> responseMap;
+  private HashMap<String,YelpApiResponse> responseMap;
   private List<YelpApiResponse> responseList;
 
 
-  public List<YelpApiResponse> getBusinessInfo() throws Exception {
+  public HashMap<String,YelpApiResponse> getBusinessInfo() throws Exception {
     this.key = "evtJ9UBqyUYofFNw5qmUmnAu8U6Dv5Xz";
     this.responseMap = new HashMap<>();
     this.responseList = new ArrayList<>();
@@ -63,8 +63,9 @@ public class WebScraper {
 
               connection.setRequestMethod("GET");
 
-              String apiKey = "FDQTm9hJMyjiV-qp9iz9nyih3rKsgPJQPffhwmYN57c7qw-MoLTfX4RtndHm5v2W2BJjBPH28KnIGrReMH5mMFqT-F8yP5JgC9DBxe2K0H2lEOzbUAqBtrUZMxhmZXYx";
+//              String apiKey = "FDQTm9hJMyjiV-qp9iz9nyih3rKsgPJQPffhwmYN57c7qw-MoLTfX4RtndHm5v2W2BJjBPH28KnIGrReMH5mMFqT-F8yP5JgC9DBxe2K0H2lEOzbUAqBtrUZMxhmZXYx";
 //              String apiKey = "CuEhZWAB406Ugt43aMLCBikvDL8DZIFYeoAKKzDlQ_FO7djlUrntE4iQ8OoanZaakD_r27LfhidwdwTVH1gSlpRwJKYvg6w52JNA0535L1TfIDhhPfeaznrpnqhmZXYx";
+              String apiKey = "bhozNdoULe7VaEW2Uzg7Udcp6c0Eb6iy8JypHkwEN7HGGhRZF4_gkGOoZcQ5sFXzllk--vvj5B-tSPEHpVcCCjc-FIdRG9OBX1pJNsEO4pznD5wPm7XfUS9qfFdzZXYx";
               connection.setRequestProperty("Authorization", "Bearer " + apiKey);
 
               int responseCode2 = connection.getResponseCode();
@@ -73,25 +74,11 @@ public class WebScraper {
                 Moshi moshi = new Moshi.Builder().build();
                 JsonAdapter<YelpApiResponse> adapter = moshi.adapter(YelpApiResponse.class);
                 YelpApiResponse apiResponse = adapter.fromJson(new Buffer().readFrom(connection.getInputStream()));
-                this.responseList.add(apiResponse);
+                if (apiResponse != null) {
+                  this.serialize(apiResponse);
+                }
 
-
-
-
-//
-//                Double latitude = apiResponse.businesses.get(0).coordinates.latitude;
-//                Double longitude = apiResponse.businesses.get(0).coordinates.longitude;
-//                String businessName = apiResponse.businesses.get(0).name;
-//                ArrayList<String> busType = new ArrayList<>();
-//
-//                for (Category category:apiResponse.businesses.get(0).categories) {
-//                  busType.add(category.title);
-//                }
-//
-//                String reviewCount = apiResponse.businesses.get(0).review_count;
-//                String rating = apiResponse.businesses.get(0).rating;
                 connection.disconnect();
-//                this.serialize(latitude, longitude, businessName,busType,reviewCount,rating);
               }
 
             } catch (Exception e) {
@@ -102,18 +89,12 @@ public class WebScraper {
       }
           }
 
-    return this.responseList;
+    return this.responseMap;
   }
 
-  private void serialize(Double latitude, Double longitude, String name, List<String> busType, String reviewCount, String rating) {
-    HashMap<String, Object> businessMap = new HashMap<>();
-    businessMap.put("latitude", latitude);
-    businessMap.put("longitude", longitude);
-    businessMap.put("busType", busType);
-    businessMap.put("reviewCount", reviewCount);
-    businessMap.put("rating", rating);
-
-    this.responseMap.put(name, businessMap);
+  private void serialize(YelpApiResponse business) {
+    String name = business.businesses.get(0).name;
+    this.responseMap.put(name, business);
 
   }
 
