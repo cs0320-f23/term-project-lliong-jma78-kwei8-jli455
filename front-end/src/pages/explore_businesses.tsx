@@ -7,7 +7,7 @@ export default function Businesses(){
         <div className="business-container">
             <div style={{width:"500px"}}>
             </div>
-            <div className="business-map">
+            <div className="business-map" style={{width: "500px"}}>
                 <MapBox></MapBox>
             </div>
             
