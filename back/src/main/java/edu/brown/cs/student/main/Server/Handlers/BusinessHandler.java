@@ -16,30 +16,29 @@ import spark.Route;
 
 public class BusinessHandler implements Route {
 
-  private List<YelpApiResponse> scrapedData;
+  private HashMap<String,YelpApiResponse> scrapedData;
 
   @Override
   public Object handle(Request request, Response response) throws Exception {
     try {
       Moshi moshi = new Moshi.Builder().build();
-      Type mapObject = Types.newParameterizedType(List.class, YelpApiResponse.class);
-      JsonAdapter<List<YelpApiResponse>> adapter = moshi.adapter(mapObject);
+      Type mapObject = Types.newParameterizedType(Map.class, String.class, YelpApiResponse.class);
+      JsonAdapter<HashMap<String, YelpApiResponse>> adapter = moshi.adapter(mapObject);
       if (this.scrapedData == null) {
         WebScraper scraper = new WebScraper();
         this.scrapedData = scraper.getBusinessInfo();
       }
       if (request.queryParams("searchTerm") != null && this.scrapedData != null) {
-        System.out.println("flab");
+        Type listYelp = Types.newParameterizedType(List.class, YelpApiResponse.class);
+        JsonAdapter<List<YelpApiResponse>> adapter1 = moshi.adapter(listYelp);
         SearchBusiness searcher = new SearchBusiness();
-        List<YelpApiResponse> filtered = searcher.search(request.queryParams("searchTerm"), scrapedData);
-        return adapter.toJson(filtered);
+        List<YelpApiResponse> filtered = searcher.search(request.queryParams("searchTerm"), this.scrapedData);
+        return adapter1.toJson(filtered);
       }
       return adapter.toJson(this.scrapedData);
-
     } catch (Exception e) {
       e.printStackTrace();
     }
-
     return "error";
   }
 }
