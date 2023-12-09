@@ -8,7 +8,7 @@ public class BusinessRanker implements Comparator<YelpApiResponse> {
 
   public BusinessRanker() {}
 
-  private Double computeWeightedRank(YelpApiResponse business) {
+  public Double computeWeightedRank(YelpApiResponse business) {
     try {
       Double weightedRating = Double.parseDouble(business.businesses().get(0).rating()) * 0.5;
       Double weightedReview = Double.parseDouble(business.businesses().get(0).review_count()) * 0.4;
