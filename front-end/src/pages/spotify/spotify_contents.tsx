@@ -21,6 +21,8 @@ import { small_song_dataset } from "../../mocks/mock_songs";
 // fetch here in this class!
 // okay if you can justify
 
+// is the difference between rjson["result"] and rjson.result?
+
 // post request - sending post request from front end to back end when adding artist
 
 interface SpotifyPageProps {
@@ -31,7 +33,9 @@ interface SpotifyPageProps {
 
 interface jsonSpotifyResponse {
   result: string;
-  data: string[][];
+  // is this the right type?
+
+  data: Array<Map<string, object>>;
 }
 
 // is this right/complete?
@@ -44,26 +48,82 @@ function isSpotifyResponse(rjson: any): rjson is jsonSpotifyResponse {
   }
   return true;
 }
-// is the difference between rjson["result"] and rjson.result?
 
-function getSongs() {
-  // const url = "http://localhost:323/spotify";
-  // return fetch(url)
-  //   .then((response: Response) => response.json())
-  //   .then((json) => {
-  //     if (!isSpotifyResponse(json)) {
-  //       // how/what to tell user?
-  //       console.log("not a valid response");
-  //     } else {
-  //       const data = json.data;
-  //       console.log(data);
-  //     }
-  //     //data.keys
-  //     // const newSong: SongProps = {
-  //     //   name: "",
-  //     // };
-  //   });
+async function getSongs() {
+  const url = "http://localhost:323/spotify";
+
+  return fetch(url)
+    .then((response: Response) => response.json())
+    .then((json) => {
+      if (!isSpotifyResponse(json)) {
+        // how/what to tell user?
+        console.log("not a valid response");
+      } else {
+        const data = json.data;
+
+        for (let i = 0; i < data.length; i++) {
+          const song = data[i];
+
+          let map: Map<string, object> = new Map();
+
+          map.set("name", song.get("name"));
+
+          console.log(data[i]);
+          const songName: object = song.get("name");
+          // const songArtistsArray: string[] = data[i].get("artists");
+          // const songArtists: string = songArtistsArray.join();
+
+          // const songAlbum: string = data[i].get("album");
+          // const songDuration: string = data[i].get("duration");
+          // const songPopularity: number = data[i].get("popularity");
+          // const songGenre: string = data[i].get("genre");
+
+          console.log(songName);
+        }
+      }
+    });
 }
+
+// const response = await fetch(url);
+
+// const responseObject = await response.json();
+
+// if (!isSpotifyResponse(responseObject)) {
+//   console.log("not a valid response");
+// } else {
+//   const data = responseObject.data;
+//   console.log(data[0]);
+//   console.log(data[0].get("duration"));
+//   //let name = data[0].get("name");
+// }
+
+// return fetch(url)
+//   .then((response: Response) => response.json())
+//   .then((json) => {
+//     if (!isSpotifyResponse(json)) {
+//       // how/what to tell user?
+//       console.log("not a valid response");
+//     } else {
+//       const data = json.data;
+//       for (let i = 0; i < data.length; i++) {
+//         console.log(data[i]);
+//         const songName: string = data[i].get("name");
+//         // const songArtistsArray: string[] = data[i].get("artists");
+//         // const songArtists: string = songArtistsArray.join();
+
+//         // const songAlbum: string = data[i].get("album");
+//         // const songDuration: string = data[i].get("duration");
+//         // const songPopularity: number = data[i].get("popularity");
+//         // const songGenre: string = data[i].get("genre");
+
+//         console.log(songName);
+//       }
+//     }
+//     //data.keys
+//     // const newSong: SongProps = {
+//     //   name: "",
+//     // };
+//   });
 
 export const allSongs: SongProps[] = [];
 export const allGenres: string[] = [];
@@ -120,13 +180,15 @@ export function getMockSongs(props: SpotifyPageProps) {
 export function SpotifySongs(props: SpotifyPageProps) {
   const mockSongsRef = useRef(false);
 
+  getSongs();
   //need error checking
   // why is it being called twice??
-  useEffect(() => {
-    if (mockSongsRef.current) return;
-    mockSongsRef.current = true;
-    props.setSongs(getMockSongs(props)), [];
-  });
+
+  // useEffect(() => {
+  //   if (mockSongsRef.current) return;
+  //   mockSongsRef.current = true;
+  //   props.setSongs(getMockSongs(props)), [];
+  // });
 
   //console.log(props.songs);
 

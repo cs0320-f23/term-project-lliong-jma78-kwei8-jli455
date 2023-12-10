@@ -1,45 +1,37 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, BrowserRouter, useNavigate } from "react-router-dom"; 
-import NavBarElements from "./components/NavBarElements";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  BrowserRouter,
+  useNavigate,
+} from "react-router-dom";
+//import NavBarElements from "./components/NavBarElements";
 import DropDownNav from "./components/DropDown";
 
 import Home from "./pages/home";
 import AboutPage from "./pages/about";
-import {Artists} from "./pages/explore_artists";
 import Businesses from "./pages/explore_businesses";
 import SubmitArtist from "./pages/submit_artist";
 import SubmitBusinesses from "./pages/submit_business";
 import Resources from "./pages/resources";
 
-<<<<<<< HEAD
 import { SpotifyPage } from "./pages/spotify/spotify-page";
 import { CreatorPage } from "./pages/creators/creator_page";
+import { Creator } from "./pages/creators/single_creator";
 
 //<SpotifyPage />
-=======
+
 export default function App() {
->>>>>>> main
-
   return (
-<<<<<<< HEAD
-    <div className="App">
-      <SpotifyPage />
-    </div>
-  );
-}
-
-export default App;
-
-// should we make page contents shrink as the page shrinks?
-=======
-      <div>
-        <Router>
+    <div>
+      {/* <Router>
           <Routes>
             <Route path="/" element={<DropDownNav/>}>
               <Route index element={<Home/>}></Route>
               <Route path="/home" element={<Home/>}/>
               <Route path="/about" element={<AboutPage/>}/>
-              <Route path="/explore_artists" element={<Artists/>}/>
+              <Route path="/explore_artists" element={<CreatorPage/>}/>
               <Route path="/explore_businesses" element={<Businesses/>}/>
               <Route path="/submit_artists" element={<SubmitArtist/>}/>
               <Route path="/submit_businesses" element={<SubmitBusinesses/>}/>
@@ -47,11 +39,11 @@ export default App;
             </Route>
           </Routes>
 
-        </Router>
+        </Router> */}
 
-      </div>
-
-
+      <SpotifyPage />
+    </div>
   );
 }
->>>>>>> main
+
+// should we make page contents shrink as the page shrinks?
