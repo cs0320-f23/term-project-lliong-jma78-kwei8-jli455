@@ -16,7 +16,7 @@ import { CreatorPage } from "./pages/creators/creator_page";
 function App() {
   return (
     <div className="App">
-      <CreatorPage />
+      <SpotifyPage />
     </div>
   );
 }

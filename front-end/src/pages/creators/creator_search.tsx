@@ -71,10 +71,7 @@ export function Search(props: SearchProps) {
       </div>
       <br></br>
       <div>
-        <CreatorFilterButtons
-          creators={props.creators}
-          setCreators={props.setCreators}
-        />
+        <CreatorFilterButtons creators={props.creators} setCreators={props.setCreators}/>
       </div>
     </div>
   );
