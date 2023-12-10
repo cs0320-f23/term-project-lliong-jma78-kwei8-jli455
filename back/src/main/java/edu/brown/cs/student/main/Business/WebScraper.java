@@ -2,6 +2,7 @@ package edu.brown.cs.student.main.Business;
 
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
+import edu.brown.cs.student.main.privates.Keys;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import okio.Buffer;
+import org.checkerframework.checker.units.qual.K;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -17,12 +19,14 @@ import org.jsoup.select.Elements;
 
 public class WebScraper {
   private String key;
-  private HashMap<String,Object> responseMap;
+  private HashMap<String,YelpApiResponse> responseMap;
+  private List<YelpApiResponse> responseList;
 
 
-  public HashMap<String,Object> getBusinessInfo() throws Exception {
+  public HashMap<String,YelpApiResponse> getBusinessInfo() throws Exception {
     this.key = "evtJ9UBqyUYofFNw5qmUmnAu8U6Dv5Xz";
     this.responseMap = new HashMap<>();
+    this.responseList = new ArrayList<>();
     String url =
         "https://www.boston.com/community/readers-say/aapi-and-asian-owned-businesses-to-shop-support-in-greater-boston/";
     URL obj = new URL(url);
@@ -61,9 +65,8 @@ public class WebScraper {
 
               connection.setRequestMethod("GET");
 
-//              String apiKey = "FDQTm9hJMyjiV-qp9iz9nyih3rKsgPJQPffhwmYN57c7qw-MoLTfX4RtndHm5v2W2BJjBPH28KnIGrReMH5mMFqT-F8yP5JgC9DBxe2K0H2lEOzbUAqBtrUZMxhmZXYx";
-              String apiKey = "CuEhZWAB406Ugt43aMLCBikvDL8DZIFYeoAKKzDlQ_FO7djlUrntE4iQ8OoanZaakD_r27LfhidwdwTVH1gSlpRwJKYvg6w52JNA0535L1TfIDhhPfeaznrpnqhmZXYx";
-              connection.setRequestProperty("Authorization", "Bearer " + apiKey);
+              Keys keys = new Keys();
+              connection.setRequestProperty("Authorization", "Bearer " + keys.getKey());
 
               int responseCode2 = connection.getResponseCode();
               System.out.println(responseCode2);
@@ -71,19 +74,11 @@ public class WebScraper {
                 Moshi moshi = new Moshi.Builder().build();
                 JsonAdapter<YelpApiResponse> adapter = moshi.adapter(YelpApiResponse.class);
                 YelpApiResponse apiResponse = adapter.fromJson(new Buffer().readFrom(connection.getInputStream()));
-                Double latitude = apiResponse.businesses.get(0).coordinates.latitude;
-                Double longitude = apiResponse.businesses.get(0).coordinates.longitude;
-                String businessName = apiResponse.businesses.get(0).name;
-                ArrayList<String> busType = new ArrayList<>();
-
-                for (Category category:apiResponse.businesses.get(0).categories) {
-                  busType.add(category.title);
+                if (apiResponse != null) {
+                  this.serialize(apiResponse);
                 }
 
-                String reviewCount = apiResponse.businesses.get(0).review_count;
-                String rating = apiResponse.businesses.get(0).rating;
                 connection.disconnect();
-                this.serialize(latitude, longitude, businessName,busType,reviewCount,rating);
               }
 
             } catch (Exception e) {
@@ -97,15 +92,9 @@ public class WebScraper {
     return this.responseMap;
   }
 
-  private void serialize(Double latitude, Double longitude, String name, List<String> busType, String reviewCount, String rating) {
-    HashMap<String, Object> businessMap = new HashMap<>();
-    businessMap.put("latitude", latitude);
-    businessMap.put("longitude", longitude);
-    businessMap.put("busType", busType);
-    businessMap.put("reviewCount", reviewCount);
-    businessMap.put("rating", rating);
-
-    this.responseMap.put(name, businessMap);
+  private void serialize(YelpApiResponse business) {
+    String name = business.businesses.get(0).name;
+    this.responseMap.put(name, business);
 
   }
 

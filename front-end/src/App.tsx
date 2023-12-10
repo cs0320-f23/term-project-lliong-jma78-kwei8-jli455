@@ -1,20 +1,27 @@
-import "./styles/App.css";
-import React from "react";
-import Navbar from "./components/NavBarElements";
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route, BrowserRouter, useNavigate } from "react-router-dom"; 
+import NavBarElements from "./components/NavBarElements";
+import DropDownNav from "./components/DropDown";
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/home";
+import AboutPage from "./pages/about";
+import {Artists} from "./pages/explore_artists";
+import Businesses from "./pages/explore_businesses";
+import SubmitArtist from "./pages/submit_artist";
+import SubmitBusinesses from "./pages/submit_business";
+import Resources from "./pages/resources";
 
+<<<<<<< HEAD
 import { SpotifyPage } from "./pages/spotify/spotify-page";
 import { CreatorPage } from "./pages/creators/creator_page";
 
 //<SpotifyPage />
+=======
+export default function App() {
+>>>>>>> main
 
-/**
- * This is the main class that runs our app.
- * @returns
- */
-function App() {
   return (
+<<<<<<< HEAD
     <div className="App">
       <SpotifyPage />
     </div>
@@ -24,3 +31,27 @@ function App() {
 export default App;
 
 // should we make page contents shrink as the page shrinks?
+=======
+      <div>
+        <Router>
+          <Routes>
+            <Route path="/" element={<DropDownNav/>}>
+              <Route index element={<Home/>}></Route>
+              <Route path="/home" element={<Home/>}/>
+              <Route path="/about" element={<AboutPage/>}/>
+              <Route path="/explore_artists" element={<Artists/>}/>
+              <Route path="/explore_businesses" element={<Businesses/>}/>
+              <Route path="/submit_artists" element={<SubmitArtist/>}/>
+              <Route path="/submit_businesses" element={<SubmitBusinesses/>}/>
+              <Route path="/resources" element={<Resources/>}/>
+            </Route>
+          </Routes>
+
+        </Router>
+
+      </div>
+
+
+  );
+}
+>>>>>>> main

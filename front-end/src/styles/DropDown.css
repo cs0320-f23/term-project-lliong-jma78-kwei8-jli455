@@ -1,0 +1,42 @@
+#header-row{
+    display: flex;
+}
+
+#nav-bar{
+    background-image: url('../images/background.png');
+    height: 100vh;
+    width: 100vw;
+    padding: 10px;
+}
+
+.nav-pages{
+    flex: 70%;
+    padding-top: 10px;
+    height: 20vh;
+    padding-left: 50px;
+    padding-right: 50px;
+    width: 50px;
+}
+
+.nav-pages-left{
+    flex: 70%;
+    padding-top: 10px;
+    height: 20vh;
+    padding-left: 50px;
+    padding-right: 50px;
+    width: 50px;
+    float: left;
+    position: absolute;
+}
+
+.acc-logo{
+    width: 60px;
+    height: 60px;
+}
+
+.logo{
+    float: left;
+    position: absolute;
+    left:0px;
+
+}
