@@ -49,6 +49,8 @@ function isSpotifyResponse(rjson: any): rjson is jsonSpotifyResponse {
   return true;
 }
 
+export const allSongs: SongProps[] = [];
+
 async function getSongs() {
   const url = "http://localhost:323/spotify";
 
@@ -62,70 +64,39 @@ async function getSongs() {
         const data = json.data;
 
         for (let i = 0; i < data.length; i++) {
-          const song = data[i];
-
+          const songMap = data[i];
+          // converting it into a map?
           let map: Map<string, object> = new Map();
 
-          map.set("name", song.get("name"));
+          // add types?
+          const songName: string = songMap["name"];
+          const songArtistsArray: string[] = songMap["artists"];
+          const songArtists: string = songArtistsArray.join();
 
-          console.log(data[i]);
-          const songName: object = song.get("name");
-          // const songArtistsArray: string[] = data[i].get("artists");
-          // const songArtists: string = songArtistsArray.join();
+          const songAlbum: string = songMap["album"];
+          const songDuration: number = songMap["duration"];
+          const songPopularity: number = songMap["popularity"];
+          const songGenre: string = songMap["genre"];
 
-          // const songAlbum: string = data[i].get("album");
-          // const songDuration: string = data[i].get("duration");
-          // const songPopularity: number = data[i].get("popularity");
-          // const songGenre: string = data[i].get("genre");
+          const song: SongProps = {
+            name: songName,
+            artists: songArtists,
+            album: songAlbum,
+            duration: songDuration,
+            popularity: songPopularity,
+            genre: songGenre,
+          };
 
-          console.log(songName);
+          allSongs.push(song);
         }
+        console.log(allSongs);
+        return allSongs;
       }
-    });
+    })
+    .catch((error) => console.log("error"));
 }
 
-// const response = await fetch(url);
-
-// const responseObject = await response.json();
-
-// if (!isSpotifyResponse(responseObject)) {
-//   console.log("not a valid response");
-// } else {
-//   const data = responseObject.data;
-//   console.log(data[0]);
-//   console.log(data[0].get("duration"));
-//   //let name = data[0].get("name");
-// }
-
-// return fetch(url)
-//   .then((response: Response) => response.json())
-//   .then((json) => {
-//     if (!isSpotifyResponse(json)) {
-//       // how/what to tell user?
-//       console.log("not a valid response");
-//     } else {
-//       const data = json.data;
-//       for (let i = 0; i < data.length; i++) {
-//         console.log(data[i]);
-//         const songName: string = data[i].get("name");
-//         // const songArtistsArray: string[] = data[i].get("artists");
-//         // const songArtists: string = songArtistsArray.join();
-
-//         // const songAlbum: string = data[i].get("album");
-//         // const songDuration: string = data[i].get("duration");
-//         // const songPopularity: number = data[i].get("popularity");
-//         // const songGenre: string = data[i].get("genre");
-
-//         console.log(songName);
-//       }
-//     }
-//     //data.keys
-//     // const newSong: SongProps = {
-//     //   name: "",
-//     // };
-//   });
-
-export const allSongs: SongProps[] = [];
+//export const allSongs: SongProps[] = [];
 export const allGenres: string[] = [];
 
 export function getMockSongs(props: SpotifyPageProps) {
@@ -180,17 +151,17 @@ export function getMockSongs(props: SpotifyPageProps) {
 export function SpotifySongs(props: SpotifyPageProps) {
   const mockSongsRef = useRef(false);
 
-  getSongs();
-  //need error checking
-  // why is it being called twice??
+  getSongs().then((response) => {
+    if (response != undefined) {
+      props.setSongs(response);
+    }
+  });
 
   // useEffect(() => {
   //   if (mockSongsRef.current) return;
   //   mockSongsRef.current = true;
   //   props.setSongs(getMockSongs(props)), [];
   // });
-
-  //console.log(props.songs);
 
   // probably need to do checking to make sure it is correct type when actually fetching from api
 

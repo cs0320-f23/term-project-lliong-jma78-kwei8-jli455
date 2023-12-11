@@ -6,11 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0642f82e-cf99-4681-924e-82a13a34ce4f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/brown/cs/student/main/Creators/Spotify/SpotifyAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/brown/cs/student/main/Creators/Spotify/SpotifyAccess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/src/components/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/components/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../front-end/src/pages/spotify/spotify_contents.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/pages/spotify/spotify_contents.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
