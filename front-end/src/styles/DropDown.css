@@ -4,7 +4,7 @@
 
 #nav-bar{
     background-image: url('../images/background.png');
-    height: 13vh;
+    height: 20vh;
     width: 100vw;
     padding: 10px;
 }
@@ -13,26 +13,21 @@
     flex: 70%;
     padding-top: 10px;
     height: 20vh;
-    padding-left: 50px;
-    padding-right: 50px;
-    width: 50px;
+    padding-left: 20px;
+    padding-right: 10px;
+    position: relative;
 }
 
-.nav-pages-left{
-    flex: 70%;
-    padding-top: 10px;
-    height: 20vh;
-    padding-left: 50px;
-    padding-right: 50px;
-    width: 50px;
-    float: left;
-    position: absolute;
+.drop-down{
+    width: 9vw;
 }
 
 .acc-logo{
     width: 60px;
     height: 60px;
     padding-top: 2.5vh;
+    padding-left: 20px;
+    padding-right: 10px;
 }
 
 .logo{

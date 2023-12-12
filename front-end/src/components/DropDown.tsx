@@ -37,10 +37,7 @@ export default function DropDownNav(){
                         {showExplore ? 
                             <div>
                                 <div className="dropdown-menu">
-                                    <ul style={{padding: "unset", margin: "unset"}}>
-                                        <h3>
-                                            <Link to="/home">Home</Link>
-                                        </h3>
+                                    <ul style={{padding: "unset", margin: "unset"}} className="drop-down">
                                         <h3>
                                             <Link to="/explore_artists">Explore Artists</Link>
                                         </h3>
@@ -56,7 +53,7 @@ export default function DropDownNav(){
                         {showSubmit ? 
                             <div>
                                 <div className="dropdown-menu">
-                                    <ul style={{padding: "unset", margin: "unset"}}>
+                                    <ul style={{padding: "unset", margin: "unset"}} className="drop-down">
                                         <h3><Link to="/submit_artists">Submit Artists</Link></h3>
                                         <h3><Link to="/submit_businesses">Submit Businesses</Link></h3>
                                     </ul>
