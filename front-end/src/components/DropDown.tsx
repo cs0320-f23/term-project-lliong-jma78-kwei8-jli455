@@ -27,10 +27,14 @@ export default function DropDownNav(){
             <nav className="nav-container">
                 <header id="header-row" aria-label="dropdown navigation bar">
                     <div className="logo">
-                        <img src={logo} style={{width:"110px", height:"100px", float:"left", paddingLeft:"0.5vw"}}></img>
+                        <Link to="/">
+                            <img src={logo} style={{width:"110px", height:"100px", float:"left", paddingLeft:"0.5vw"}}></img>
+                        </Link>
                     </div>
                     <div className="title" style={{float:"left", paddingRight:"50vw", paddingLeft:"6vw", paddingTop:"1vh"}}>
-                        <h1 style={{fontSize:"5vh"}}>Ablaze</h1>
+                        <Link to="/">
+                            <h1 style={{fontSize:"5vh"}}>Ablaze</h1>
+                        </Link>
                     </div>
                     <div className="nav-pages" onMouseEnter={handleHoverExplore} onMouseLeave={handleMouseLeave}>
                         <h2>Explore</h2>

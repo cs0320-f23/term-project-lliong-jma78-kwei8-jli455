@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Map, {Layer, MapLayerMouseEvent, Source, ViewStateChangeEvent} from "react-map-gl";
-import "mapbox-gl/dist/mapbox-gl.css"
+// import "mapbox-gl/dist/mapbox-gl.css"
 import { APIKey } from "../../private/key";
 
 export default function MapBox(){
