@@ -4,7 +4,7 @@
 
 #nav-bar{
     background-image: url('../images/background.png');
-    height: 10vh;
+    height: 13vh;
     width: 100vw;
     padding: 10px;
 }
@@ -32,6 +32,7 @@
 .acc-logo{
     width: 60px;
     height: 60px;
+    padding-top: 2.5vh;
 }
 
 .logo{
@@ -39,4 +40,8 @@
     position: absolute;
     left:0px;
 
+}
+
+h2{
+    padding-top: 2.5vh;
 }
