@@ -1,6 +1,8 @@
+
 .business-container{
     display: flex;
     overflow: scroll;
+    background-image: url('../images/similar-background.png');
 }
 
 .business-map{

@@ -13,7 +13,7 @@ import Resources from "./pages/resources";
 export default function App() {
 
   return (
-      <div>
+      <div className="App">
         <BrowserRouter>
           <DropDownNav/>
           <Routes>
@@ -25,11 +25,8 @@ export default function App() {
               <Route path="/submit_artists" element={<SubmitArtist/>}/>
               <Route path="/submit_businesses" element={<SubmitBusinesses/>}/>
               <Route path="/resources" element={<Resources/>}/>
-            {/* </Route> */}
           </Routes>
         </BrowserRouter>
       </div>
-
-
   );
 }
