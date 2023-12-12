@@ -17,8 +17,8 @@ export default function App() {
         <BrowserRouter>
           <DropDownNav/>
           <Routes>
-            {/* <Route path="/" element={}> */}
               <Route path="/home" element={<Home/>}/>
+              <Route path="/" element={<Home/>}/>
               <Route path="/about" element={<AboutPage/>}/>
               <Route path="/explore_artists" element={<Artists/>}/>
               <Route path="/explore_businesses" element={<Businesses/>}/>
