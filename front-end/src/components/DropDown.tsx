@@ -1,15 +1,13 @@
 import React, {useEffect, useState} from "react";
 import logo from "../images/nugget-dino3.png";
 import accountLogo from "../images/account-icon.png"
-import { Route, Router, useNavigate } from "react-router-dom";
+import { Link, Outlet, Route, Router, useNavigate } from "react-router-dom";
 import "../styles/DropDown.css"
 
 export default function DropDownNav(){
 
     const [showExplore, setShowExplore] = useState<boolean>(false);
     const [showSubmit, setShowSubmit] = useState<boolean>(false);
-
-    const navigate = useNavigate();
 
     function handleHoverExplore(){
         setShowExplore(true);
@@ -34,8 +32,15 @@ export default function DropDownNav(){
                             <div>
                                 <div className="dropdown-menu">
                                     <ul style={{padding: "unset", margin: "unset"}}>
-                                        <h3 onClick={() => navigate("/explore_artists")}>Explore Artists</h3>
-                                        <h3 onClick={() => navigate("/explore_businesses")}>Explore Businesses</h3>
+                                        <h3>
+                                            <Link to="/home">Home</Link>
+                                        </h3>
+                                        <h3>
+                                            <Link to="/explore_artists">Explore Artists</Link>
+                                        </h3>
+                                        <h3>
+                                            <Link to="/explore_businesses">Explore Businesses</Link>
+                                        </h3>
                                     </ul>
                                 </div>
                             </div> : null}
@@ -46,21 +51,22 @@ export default function DropDownNav(){
                             <div>
                                 <div className="dropdown-menu">
                                     <ul style={{padding: "unset", margin: "unset"}}>
-                                        <h3 onClick={() => navigate("/submit_artists")}>Submit Artists</h3>
-                                        <h3 onClick={() => navigate("/submit_businesses")}>Submit Businesses</h3>
+                                        <h3><Link to="/submit_artists">Submit Artists</Link></h3>
+                                        <h3><Link to="/submit_businesses">Submit Businesses</Link></h3>
                                     </ul>
                                 </div>
                             </div>
                         : null}
                     </div>
                     <div className="nav-pages">
-                        <h2 onClick={() => navigate("/resources")}>Resources</h2>
+                        <h2><Link to="/resources">Resources</Link></h2>
                     </div>
                     <div className="nav-pages">
                         <img src={accountLogo} className="acc-logo"></img>
                     </div>
                 </header>
             </nav>
+            <Outlet />
         </div>
     );
 }

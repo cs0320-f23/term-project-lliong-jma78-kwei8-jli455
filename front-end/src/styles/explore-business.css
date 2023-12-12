@@ -1,0 +1,8 @@
+.business-container{
+    display: flex;
+    overflow: scroll;
+}
+
+.business-map{
+    width: 50vw;
+}
