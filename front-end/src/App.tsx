@@ -41,7 +41,7 @@ export default function App() {
 
         </Router> */}
 
-      <SpotifyPage />
+      <CreatorPage />
     </div>
   );
 }

@@ -26,7 +26,70 @@ interface CreatorPageProps {
   setCreators: React.Dispatch<React.SetStateAction<CreatorProps[]>>;
 }
 
+interface jsonCreatorResponse {
+  result: string;
+  // is this the right type? do i need to change to a dict
+  data: Array<Map<string, object>>;
+}
+
+// check valid and invalid?
+// is this right/complete?
+// type preedicate to check if successful spotify repsonse
+function isCreatorResponse(rjson: any): rjson is jsonCreatorResponse {
+  if (!("result" in rjson)) return false;
+  if (!("data" in rjson)) return false;
+  if (!(rjson["result"] === "success")) {
+    return false;
+  }
+  return true;
+}
+
 export const allCreators: CreatorProps[] = [];
+
+function getCreators(props: CreatorPageProps) {
+  const url = "http://localhost:323/creators";
+
+  return fetch(url)
+    .then((response: Response) => response.json())
+    .then((json) => {
+      if (!isCreatorResponse(json)) {
+        // how/what to tell user?
+        console.log("not a valid response");
+      } else {
+        const data = json.data;
+
+        for (let i = 0; i < data.length; i++) {
+          const creatorMap = data[i];
+          const creatorName = creatorMap["name"];
+          const creatorType = creatorMap["type"];
+          const creatorDescription = creatorMap["description"];
+          const creatorWebsite = creatorMap["website"];
+          const creatorInstagram = creatorMap["instagram"];
+          const creatorFacebook = creatorMap["facebook"];
+          const creatorSpotify = creatorMap["spotify"];
+          const creatorPrice = creatorMap["price"];
+          const creatorID = creatorMap["id"];
+
+          const creator: CreatorProps = {
+            name: creatorName,
+            type: creatorType,
+            description: creatorDescription,
+            website: creatorWebsite,
+            instagram: creatorInstagram,
+            facebook: creatorFacebook,
+            spotify: creatorSpotify,
+            price: creatorPrice,
+            id: creatorID,
+          };
+
+          allCreators.push(creator);
+        }
+
+        return allCreators;
+      }
+    })
+    .catch((error) => console.log("error"));
+}
 
 function getMockCreators(props: CreatorPageProps) {
   for (let i = 0; i < small_creators_dataset.length; i++) {
@@ -69,10 +132,16 @@ function getMockCreators(props: CreatorPageProps) {
 export function Creators(props: CreatorPageProps) {
   const mockCreatorsRef = useRef(false);
 
-  useEffect(() => {
-    if (mockCreatorsRef.current) return;
-    mockCreatorsRef.current = true;
-    props.setCreators(getMockCreators(props)), [];
+  // useEffect(() => {
+  //   if (mockCreatorsRef.current) return;
+  //   mockCreatorsRef.current = true;
+  //   props.setCreators(getMockCreators(props)), [];
+  // });
+
+  getCreators(props).then((response) => {
+    if (response != undefined) {
+      props.setCreators(response);
+    }
   });
 
   return (

@@ -36,9 +36,11 @@ interface jsonSpotifyResponse {
   // is this the right type?
 
   data: Array<Map<string, object>>;
-  validgenres: string[];
+  invalid: string[] | undefined;
+  genres: string[];
 }
 
+// check valid and invalid?
 // is this right/complete?
 // type preedicate to check if successful spotify repsonse
 function isSpotifyResponse(rjson: any): rjson is jsonSpotifyResponse {
@@ -64,7 +66,7 @@ async function getSongs() {
         console.log("not a valid response");
       } else {
         const data = json.data;
-        const genres = json.validgenres;
+        const genres = json.genres;
         console.log("genres" + genres);
 
         for (let i = 0; i < data.length; i++) {
