@@ -28,6 +28,7 @@ export function CreatorFilterButtons(props: FilterProps) {
 
   // would i have to end up calling this every time that the button is clicked?
   function filterVisualArts() {
+    console.log(allCreators);
     const visualArtCreators: CreatorProps[] = [];
     for (let i = 0; i < allCreators.length; i++) {
       if (allCreators[i].type == "Visual Arts") {

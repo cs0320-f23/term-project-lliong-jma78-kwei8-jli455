@@ -57,6 +57,7 @@ function getCreators(props: CreatorPageProps) {
         console.log("not a valid response");
       } else {
         const data = json.data;
+        console.log(data.length);
 
         for (let i = 0; i < data.length; i++) {
           const creatorMap = data[i];
@@ -84,7 +85,7 @@ function getCreators(props: CreatorPageProps) {
 
           allCreators.push(creator);
         }
-
+        console.log(allCreators);
         return allCreators;
       }
     })
