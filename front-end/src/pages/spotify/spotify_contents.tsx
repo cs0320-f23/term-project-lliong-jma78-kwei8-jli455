@@ -36,6 +36,7 @@ interface jsonSpotifyResponse {
   // is this the right type?
 
   data: Array<Map<string, object>>;
+  validgenres: string[];
 }
 
 // is this right/complete?
@@ -50,6 +51,7 @@ function isSpotifyResponse(rjson: any): rjson is jsonSpotifyResponse {
 }
 
 export const allSongs: SongProps[] = [];
+export const allGenres: string[] = [];
 
 async function getSongs() {
   const url = "http://localhost:323/spotify";
@@ -62,13 +64,12 @@ async function getSongs() {
         console.log("not a valid response");
       } else {
         const data = json.data;
+        const genres = json.validgenres;
+        console.log("genres" + genres);
 
         for (let i = 0; i < data.length; i++) {
           const songMap = data[i];
-          // converting it into a map?
-          let map: Map<string, object> = new Map();
 
-          // add types?
           const songName: string = songMap["name"];
           const songArtistsArray: string[] = songMap["artists"];
           const songArtists: string = songArtistsArray.join();
@@ -89,7 +90,6 @@ async function getSongs() {
 
           allSongs.push(song);
         }
-        console.log(allSongs);
         return allSongs;
       }
     })
@@ -97,7 +97,7 @@ async function getSongs() {
 }
 
 //export const allSongs: SongProps[] = [];
-export const allGenres: string[] = [];
+//export const allGenres: string[] = [];
 
 export function getMockSongs(props: SpotifyPageProps) {
   const genreValues = small_song_dataset.values();
