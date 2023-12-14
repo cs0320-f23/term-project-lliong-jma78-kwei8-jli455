@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import '../styles/explore-business.css';
 import MapBox from "../components/MapBox";
-import mockedBusinesses from "../mocks/business/mock_businesses.ts";
-import DisplayBusiness from '../components/BusinessCard.tsx';
+import { Link } from "react-router-dom";
+import DisplayBusiness from "../components/DisplayBusinesses.tsx";
 
 export default function Businesses(){
+
     return(
         <div className="business-container">
             <div style={{width:"500px"}}>
-
+                <DisplayBusiness></DisplayBusiness>
             </div>
             <div className="business-map" style={{width: "500px"}}>
                 <MapBox></MapBox>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Map, {Layer, MapLayerMouseEvent, Source, ViewStateChangeEvent} from "react-map-gl";
-// import "mapbox-gl/dist/mapbox-gl.css"
+import "mapbox-gl/dist/mapbox-gl.css"
 import { APIKey } from "../../private/key";
 
 export default function MapBox(){
@@ -24,7 +24,6 @@ export default function MapBox(){
       onMove={(ev: ViewStateChangeEvent) => setViewState(ev.viewState)}
       style={{width: window.innerWidth, height: window.innerHeight}}
       mapStyle={"mapbox://styles/mapbox/outdoors-v12"}
-    
     >
 
     </Map>

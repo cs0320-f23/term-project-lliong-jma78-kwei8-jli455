@@ -18,3 +18,17 @@ a:visited{
     text-decoration: none;
     color: black;
 }
+
+.Cards{
+    display: grid;
+    grid-auto-rows: 10vh;
+    padding-left: 50px;
+    width: 100px;
+}
+
+.business-card{
+    border-radius: 8px;
+    border: solid;
+}
+
+

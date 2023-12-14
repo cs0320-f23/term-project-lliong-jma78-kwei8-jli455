@@ -1,4 +1,4 @@
-const business_dataset = [
+export const business_dataset = [
     {
         'name': 'Heng Thai & Rotisserie',
         'url': 'https://www.hengpvd.com/home',
