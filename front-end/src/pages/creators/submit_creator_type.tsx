@@ -10,6 +10,8 @@ import { TfiPencil, TfiRulerAlt } from "react-icons/tfi";
 import { HiMiniWrenchScrewdriver, HiStar } from "react-icons/hi2";
 
 export function CreatorTypes() {
+
+  
   return (
     <div className="submit-creator-type">
       <button className="creator-filter-button">

@@ -59,3 +59,101 @@ export function DescriptionInputBar({
     </div>
   );
 }
+
+// optional
+
+// facebook: string | undefined;
+// spotify: string | undefined;
+
+// id: string;
+
+export function WebsiteInput({
+  value,
+  setValue,
+  ariaLabel,
+}: CreatorInputProps) {
+  return (
+    <div>
+      <input
+        type="text"
+        className="creator-additional-input"
+        value={value}
+        placeholder="Enter website here"
+        onChange={(ev) => setValue(ev.target.value)}
+        aria-label={ariaLabel}
+      ></input>
+    </div>
+  );
+}
+
+export function PriceInput({ value, setValue, ariaLabel }: CreatorInputProps) {
+  return (
+    <div>
+      <input
+        type="text"
+        className="creator-additional-input"
+        value={value}
+        placeholder="Enter price range here"
+        onChange={(ev) => setValue(ev.target.value)}
+        aria-label={ariaLabel}
+      ></input>
+    </div>
+  );
+}
+
+export function InstagramInput({
+  value,
+  setValue,
+  ariaLabel,
+}: CreatorInputProps) {
+  return (
+    <div>
+      <input
+        type="text"
+        className="creator-additional-input"
+        value={value}
+        placeholder="Enter link to Instagram page here"
+        onChange={(ev) => setValue(ev.target.value)}
+        aria-label={ariaLabel}
+      ></input>
+    </div>
+  );
+}
+
+export function FacebookInput({
+  value,
+  setValue,
+  ariaLabel,
+}: CreatorInputProps) {
+  return (
+    <div>
+      <input
+        type="text"
+        className="creator-additional-input"
+        value={value}
+        placeholder="Enter link to Facebook page here"
+        onChange={(ev) => setValue(ev.target.value)}
+        aria-label={ariaLabel}
+      ></input>
+    </div>
+  );
+}
+
+export function SpotifyInput({
+  value,
+  setValue,
+  ariaLabel,
+}: CreatorInputProps) {
+  return (
+    <div>
+      <input
+        type="text"
+        className="creator-additional-input"
+        value={value}
+        placeholder="Enter link to Spotify page here"
+        onChange={(ev) => setValue(ev.target.value)}
+        aria-label={ariaLabel}
+      ></input>
+    </div>
+  );
+}

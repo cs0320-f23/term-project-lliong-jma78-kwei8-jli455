@@ -239,7 +239,7 @@ label {
   font-family: "Tenor Sans";
   font-size: 20px;
   color: #ffffff;
-  margin-bottom: 65px;
+  margin-bottom: 50px;
 }
 
 .submit-artist-page {
@@ -254,11 +254,37 @@ label {
   justify-content: space-around;
   margin: auto;
   width: 1200px;
-  margin-bottom: 65px;
+  margin-bottom: 50px;
 }
 
 .terms-and-conditions-checkbox {
   font-family: "Tenor Sans";
   color: #4f100a;
   font-size: 18px;
+}
+
+.additional-info-input {
+  display: flex;
+  column-gap: 20px;
+  justify-content: space-around;
+}
+
+.creator-additional-input {
+  background-color: #8b1a10;
+  border: none;
+  border-radius: 10px;
+  padding: 8px;
+  width: 370px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  outline: none;
+  margin-bottom: 30px;
+  font-family: "Tenor Sans";
+  font-size: 15px;
+  color: white;
+}
+
+.creator-additional-input::placeholder {
+  font-family: "Tenor Sans";
+  font-size: 15px;
+  color: white;
 }

@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import {
   DescriptionInputBar,
+  FacebookInput,
+  InstagramInput,
   NameInputBar,
+  PriceInput,
+  SpotifyInput,
+  WebsiteInput,
 } from "./creators/submit_creator_input";
 import { CreatorTypes } from "./creators/submit_creator_type";
 
@@ -12,6 +17,12 @@ export default function SubmitArtist() {
   const [nameString, setNameString] = useState<string>("");
 
   const [descriptionString, setDescriptionString] = useState<string>("");
+  const [websiteString, setWebsiteString] = useState<string>("");
+  const [priceString, setPriceString] = useState<string>("");
+  const [instaString, setInstaString] = useState<string>("");
+  const [facebookString, setFacebookString] = useState<string>("");
+  const [spotifyString, setSpotifyString] = useState<string>("");
+
   const [message, setMessage] = useState<string>("");
 
   const [checkedTerms, setCheckedTerms] = useState<boolean>(false);
@@ -42,6 +53,52 @@ export default function SubmitArtist() {
           ariaLabel={"description input bar"}
         />
       </div>
+      <div>
+        <h1>Additional Information and Links</h1>
+        <div className="additional-info-input">
+          <h2>Price: </h2>
+
+          <PriceInput
+            value={priceString}
+            setValue={setPriceString}
+            ariaLabel={"price input bar"}
+          />
+        </div>
+        <div className="additional-info-input">
+          <h2>Website: </h2>
+          <WebsiteInput
+            value={websiteString}
+            setValue={setWebsiteString}
+            ariaLabel={"website input bar"}
+          />
+        </div>
+        <div className="additional-info-input">
+          <h2>Instagram: </h2>
+          <InstagramInput
+            value={instaString}
+            setValue={setInstaString}
+            ariaLabel={"instagram input bar"}
+          />
+        </div>
+        <div className="additional-info-input">
+          <h2>Facebook: </h2>
+          <FacebookInput
+            value={facebookString}
+            setValue={setFacebookString}
+            ariaLabel={"facebook input bar"}
+          />
+        </div>
+        <div className="additional-info-input">
+          <h2>Spotify: </h2>
+          <SpotifyInput
+            value={spotifyString}
+            setValue={setSpotifyString}
+            ariaLabel={"spotify input bar"}
+          />
+        </div>
+      </div>
+      <br></br>
+      <br></br>
       <div className="terms-and-conditions-checkbox">
         <Checkbox
           label="By checking this box, you agree to the Terms and Conditions listed within our Privacy Policy."
@@ -79,3 +136,15 @@ const Checkbox = ({ label, value, onChange }) => {
 
 // would probably be good to have a feedback form as well - like "let us know what
 // you wanna see!"
+
+// name: string;
+// type: string;
+// description: string;
+
+// optional
+// website: string | undefined;
+// instagram: string | undefined;
+// facebook: string | undefined;
+// spotify: string | undefined;
+// price: string | undefined;
+// id: string;
