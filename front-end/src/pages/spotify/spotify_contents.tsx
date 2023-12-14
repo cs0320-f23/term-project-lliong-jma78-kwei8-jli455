@@ -37,7 +37,7 @@ interface jsonSpotifyResponse {
 
   data: Array<Map<string, object>>;
   invalid: string[] | undefined;
-  genres: string[];
+  validgenres: string[];
 }
 
 // check valid and invalid?
@@ -66,8 +66,10 @@ async function getSongs() {
         console.log("not a valid response");
       } else {
         const data = json.data;
-        const genres = json.genres;
-        console.log("genres" + genres);
+        const genres = Array.from(json.validgenres);
+        genres.forEach((val) => allGenres.push(val));
+
+        console.log("genres" + allGenres);
 
         for (let i = 0; i < data.length; i++) {
           const songMap = data[i];

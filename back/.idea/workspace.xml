@@ -5,7 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0642f82e-cf99-4681-924e-82a13a34ce4f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../front-end/private/key.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front-end/src/images/remaining-background.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front-end/src/images/similar-background.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front-end/src/styles/explore-business.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/SubmittedData.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/SubmittedData.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/brown/cs/student/main/Server/Handlers/SpotifyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/brown/cs/student/main/Server/Handlers/SpotifyHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/src/components/DropDown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/components/DropDown.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/src/components/MapBox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/components/MapBox.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/src/components/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/components/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/src/pages/creators/creator_contents.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/pages/creators/creator_contents.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/src/pages/creators/creator_filter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/pages/creators/creator_filter.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/src/pages/explore_businesses.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/pages/explore_businesses.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/src/pages/home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/pages/home.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../front-end/src/pages/spotify/spotify_contents.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/pages/spotify/spotify_contents.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/src/styles/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/styles/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/src/styles/DropDown.css" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/styles/DropDown.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/src/styles/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/styles/home.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,21 +41,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;artists-fetch&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/joyceli/Desktop/cs320/term-project-lliong-jma78-kwei8-jli455/back/pom.xml&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "Merging artists-fetch",
+    "last_opened_file_path": "/Users/joyceli/Desktop/cs320/term-project-lliong-jma78-kwei8-jli455/back/pom.xml",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

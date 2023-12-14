@@ -1,9 +1,16 @@
 import React from "react";
+import '../styles/explore-business.css';
+import MapBox from "../components/MapBox";
 
 export default function Businesses(){
     return(
-        <div>
-            <h1>Businesses say hi</h1>
+        <div className="business-container">
+            <div style={{width:"500px"}}>
+            </div>
+            <div className="business-map" style={{width: "500px"}}>
+                <MapBox></MapBox>
+            </div>
+            
         </div>
     );
 }

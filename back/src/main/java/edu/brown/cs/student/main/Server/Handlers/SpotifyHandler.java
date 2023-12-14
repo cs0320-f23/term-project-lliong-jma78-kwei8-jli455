@@ -66,7 +66,7 @@ public class SpotifyHandler implements Route {
           spotify.getRecommendations_Sync(10, Arrays.asList(defaultGenres));
       responseMap.put("data", retrievedSongs);
       Server.setCurrSongs(retrievedSongs);
-      responseMap.put("valid genres", Arrays.asList(defaultGenres));
+      responseMap.put("validgenres", Arrays.asList(defaultGenres));
     } else if (reqGenres == null) { // Num provided
       String[] defaultGenres = {"indian", "k-pop", "mandopop"};
       try {
@@ -74,7 +74,7 @@ public class SpotifyHandler implements Route {
             spotify.getRecommendations_Sync(Integer.valueOf(reqNum), Arrays.asList(defaultGenres));
         responseMap.put("data", retrievedSongs);
         Server.setCurrSongs(retrievedSongs);
-        responseMap.put("genres", Arrays.asList(defaultGenres));
+        responseMap.put("validgenres", Arrays.asList(defaultGenres));
       } catch (NumberFormatException e) {
         responseMap.put("result", "error");
         responseMap.put("details", "Number of songs must be an integer value");
@@ -87,8 +87,8 @@ public class SpotifyHandler implements Route {
       Map<String, List<String>> checkedGens = genreChecker.checkAvailableGenres(reqGenList);
       List<String> validGens = checkedGens.get("valid");
       List<String> invalidGens = checkedGens.get("invalid");
-      responseMap.put("invalid genres", invalidGens);
-      responseMap.put("valid genres", validGens);
+      responseMap.put("invalidgenres", invalidGens);
+      responseMap.put("validgenres", validGens);
 
       if (validGens.size() == 0) {
         responseMap.put("result", "error");

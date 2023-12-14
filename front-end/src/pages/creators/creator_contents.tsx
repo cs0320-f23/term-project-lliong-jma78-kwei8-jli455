@@ -85,6 +85,7 @@ function getCreators(props: CreatorPageProps) {
 
           allCreators.push(creator);
         }
+        console.log("all creators");
         console.log(allCreators);
         return allCreators;
       }
@@ -139,10 +140,15 @@ export function Creators(props: CreatorPageProps) {
   //   props.setCreators(getMockCreators(props)), [];
   // });
 
-  getCreators(props).then((response) => {
-    if (response != undefined) {
-      props.setCreators(response);
-    }
+  useEffect(() => {
+    if (mockCreatorsRef.current) return;
+    mockCreatorsRef.current = true;
+    getCreators(props).then((response) => {
+      console.log("setting");
+      if (response != undefined) {
+        props.setCreators(response);
+      }
+    });
   });
 
   return (

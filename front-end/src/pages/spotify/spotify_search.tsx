@@ -44,7 +44,6 @@ export function Search(props: SearchProps) {
 
     // is this too many if statements rippppp
 
-    // if you are entering number of songs more than there are that exist, should there be a cap? i don't think so...
     if (numCommandString) {
       const num = parseInt(numCommandString);
 

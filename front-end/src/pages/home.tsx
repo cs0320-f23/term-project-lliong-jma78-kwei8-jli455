@@ -5,7 +5,9 @@ import "../styles/home.css";
 import { useNavigate } from "react-router";
 
 export default function Home() {
-  return <div></div>;
+  return <div>
+    <p>hello</p>
+  </div>;
 }
 
 // export default function HomePage() {

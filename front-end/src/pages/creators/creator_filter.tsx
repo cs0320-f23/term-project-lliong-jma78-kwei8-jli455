@@ -22,16 +22,19 @@ interface FilterProps {
   setCreators: React.Dispatch<React.SetStateAction<CreatorProps[]>>;
 }
 
+// FIX! why are there so many showing up
 // do on clicks for buttons
 export function CreatorFilterButtons(props: FilterProps) {
   // wait do we want to be able to filter for multiple ? or just one at a time?
 
   // would i have to end up calling this every time that the button is clicked?
+
   function filterVisualArts() {
+    console.log("visual arts creators");
     console.log(allCreators);
     const visualArtCreators: CreatorProps[] = [];
     for (let i = 0; i < allCreators.length; i++) {
-      if (allCreators[i].type == "Visual Arts") {
+      if (allCreators[i].type == "visual arts") {
         visualArtCreators.push(allCreators[i]);
       }
     }
@@ -41,7 +44,7 @@ export function CreatorFilterButtons(props: FilterProps) {
   function filterPerformingArts() {
     const performingArtCreators: CreatorProps[] = [];
     for (let i = 0; i < allCreators.length; i++) {
-      if (allCreators[i].type == "Performing Arts") {
+      if (allCreators[i].type == "performing arts") {
         performingArtCreators.push(allCreators[i]);
       }
     }
@@ -51,7 +54,7 @@ export function CreatorFilterButtons(props: FilterProps) {
   function filterLiteraryArts() {
     const literaryArtCreators: CreatorProps[] = [];
     for (let i = 0; i < allCreators.length; i++) {
-      if (allCreators[i].type == "Literary Arts") {
+      if (allCreators[i].type == "literary arts") {
         literaryArtCreators.push(allCreators[i]);
       }
     }
@@ -61,7 +64,7 @@ export function CreatorFilterButtons(props: FilterProps) {
   function filterArtisans() {
     const artisanCreators: CreatorProps[] = [];
     for (let i = 0; i < allCreators.length; i++) {
-      if (allCreators[i].type == "Artisans") {
+      if (allCreators[i].type == "artisans") {
         artisanCreators.push(allCreators[i]);
       }
     }
@@ -71,7 +74,7 @@ export function CreatorFilterButtons(props: FilterProps) {
   function filterOthers() {
     const otherCreators: CreatorProps[] = [];
     for (let i = 0; i < allCreators.length; i++) {
-      if (allCreators[i].type == "Other") {
+      if (allCreators[i].type == "other") {
         otherCreators.push(allCreators[i]);
       }
     }
