@@ -44,7 +44,6 @@ public class Server {
     } catch (SpotifyWebApiException e) {
       System.err.println("SpotifyWebApiException in spotify API setup: " + e);
     }
-
     Spark.get("sortspotify", new SpotifySortHandler());
 
     // Wait for initialisation

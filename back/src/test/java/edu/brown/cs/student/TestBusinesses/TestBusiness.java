@@ -1,13 +1,11 @@
-package edu.brown.cs.student;
+package edu.brown.cs.student.TestBusinesses;
 
 import edu.brown.cs.student.main.Business.BusinessRanker;
 import edu.brown.cs.student.main.Business.SearchBusiness;
 import edu.brown.cs.student.main.Business.WebScraper.Category;
 import edu.brown.cs.student.main.Business.WebScraper.YelpApiResponse;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.testng.Assert;
 

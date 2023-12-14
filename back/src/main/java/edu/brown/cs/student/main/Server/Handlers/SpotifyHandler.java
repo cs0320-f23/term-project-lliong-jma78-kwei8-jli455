@@ -64,14 +64,14 @@ public class SpotifyHandler implements Route {
     String reqNum = request.queryParams("numsongs");
 
     if ((reqGenres == null) && (reqNum == null)) {
-      String[] defaultGenres = {"indian", "k-pop", "mandopop"};
+      String[] defaultGenres = {"indian", "j-pop", "mandopop"};
       List<Map<String, Object>> retrievedSongs =
           spotify.getRecommendations_Sync(10, Arrays.asList(defaultGenres));
       responseMap.put("data", retrievedSongs);
       Server.setCurrSongs(retrievedSongs);
       responseMap.put("validgenres", Arrays.asList(defaultGenres));
     } else if (reqGenres == null) { // Num provided
-      String[] defaultGenres = {"indian", "k-pop", "mandopop"};
+      String[] defaultGenres = {"indian", "j-pop", "mandopop"};
       try {
         List<Map<String, Object>> retrievedSongs =
             spotify.getRecommendations_Sync(Integer.valueOf(reqNum), Arrays.asList(defaultGenres));

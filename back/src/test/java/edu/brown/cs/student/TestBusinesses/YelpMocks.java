@@ -1,4 +1,4 @@
-package edu.brown.cs.student;
+package edu.brown.cs.student.TestBusinesses;
 
 import edu.brown.cs.student.main.Business.WebScraper.Business;
 import edu.brown.cs.student.main.Business.WebScraper.Category;
