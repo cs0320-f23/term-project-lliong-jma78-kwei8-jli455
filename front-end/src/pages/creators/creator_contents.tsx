@@ -140,6 +140,7 @@ export function Creators(props: CreatorPageProps) {
   //   props.setCreators(getMockCreators(props)), [];
   // });
 
+  // do i need a [] or something for it to change depending on
   useEffect(() => {
     if (mockCreatorsRef.current) return;
     mockCreatorsRef.current = true;

@@ -19,8 +19,10 @@ import Resources from "./pages/resources";
 import { SpotifyPage } from "./pages/spotify/spotify-page";
 import { CreatorPage } from "./pages/creators/creator_page";
 import { Creator } from "./pages/creators/single_creator";
+import { NameInputBar } from "./pages/creators/submit_creator_input";
 
 //<SpotifyPage />
+//<CreatorPage />
 
 export default function App() {
   return (
@@ -39,7 +41,7 @@ export default function App() {
 
         </Router> */}
 
-      <CreatorPage />
+      <SubmitArtist />
     </div>
   );
 }

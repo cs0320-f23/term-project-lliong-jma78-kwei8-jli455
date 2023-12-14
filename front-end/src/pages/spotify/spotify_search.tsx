@@ -23,6 +23,7 @@ export function Search(props: SearchProps) {
   function handleSubmit() {
     const songsToDisplay: SongProps[] = [];
 
+    // check when there are multiple genres
     const commandStringArray: string[] = commandString.split(",");
 
     if (commandString) {
