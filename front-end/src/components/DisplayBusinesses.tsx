@@ -4,27 +4,56 @@ import Switch from 'react-switch';
 
 export default function DisplayBusiness(){
     const[showMocked, setShowMocked] = useState<boolean>(false);
-
-    const [filters, setFilters] = useState(Array(8).fill(false));
     
     let filteredMock = [...business_dataset]
 
-    const toggleFilter = (index) => {
-        const filtersCopy = [...filters]
-        filtersCopy[index] = !filtersCopy[index]
-        setFilters(filtersCopy)
-    }
+    const [filters, setFilters] = useState(Array(3).fill(false)); 
 
-    if(filters[0]){
+    // function filterRestaurants(){
+    //     filteredMock = [...business_dataset]
+    //     if(showMocked){
+    //         console.log("yah")
+    //         filteredMock = filteredMock.filter((item) => item['business'] === 'restaurants')
+    //     }
+    //     console.log(filteredMock)
+    // }
+
+    // function filterGroceries(){
+    //     filteredMock = [...business_dataset]
+    //     if(showMocked){
+    //         console.log("woo")
+    //         filteredMock = filteredMock.filter((item) => item['business'] === 'groceries')
+    //     }
+    // }
+
+    // function filterServices(){
+    //     filteredMock = [...business_dataset]
+    //     if(showMocked){
+    //         console.log("may")
+    //         filteredMock = filteredMock.filter((item) => item['business'] === 'services')
+    //     }
+    //     console.log(filteredMock)
+    // }
+
+    const toggleFilter = (index) => {
+        const filtersCopy = [...filters]  // copy the state array
+        filtersCopy[index] = !filtersCopy[index] // toggle it
+        setFilters(filtersCopy)
+        console.log(filters)
+      }
+
+    if(filters[0] && !filters[1] && !filters[2]){
         filteredMock = filteredMock.filter((item) => item['business'] == 'restaurants')
     }
-
-    if(filters[1]){
+    else if(filters[1] && !filters[0] && !filters[2]){
         filteredMock = filteredMock.filter((item) => item['business'] == 'groceries')
     }
-
-    if(filters[2]){
+    else if(filters[2] && !filters[0] && !filters[1]){
+        console.log("hit")
         filteredMock = filteredMock.filter((item) => item['business'] == 'services')
+    }
+    else{
+        filteredMock = [...business_dataset]
     }
 
     function toggleMocked(){
@@ -39,6 +68,11 @@ export default function DisplayBusiness(){
             <button onClick={() => toggleFilter(1)}>Groceries</button>
             <p></p>
             <button onClick={() => toggleFilter(2)}>Services</button>
+            {/* <button onClick={filterRestaurants}>Restaurants/Eateries</button>
+            <p></p>
+            <button onClick={filterGroceries}>Groceries</button>
+            <p></p>
+            <button onClick={filterServices}>Services</button> */}
             <hr style={{borderTop:"1px solid red"}}></hr>
             {/* <button onClick={toggleMocked}>Show Mocked</button> */}
             <Switch onChange={toggleMocked} checked={showMocked}></Switch>
