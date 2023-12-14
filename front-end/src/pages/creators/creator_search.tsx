@@ -16,7 +16,7 @@ interface SearchProps {
 interface jsonCreatorResponse {
   result: string;
   // is this the right type?
-  data: Array<Map<string, object>>;
+  data: Array<Map<string, string>>;
 }
 
 function isCreatorResponse(rjson: any): rjson is jsonCreatorResponse {
@@ -158,6 +158,7 @@ export function Search(props: SearchProps) {
         <CreatorFilterButtons
           creators={props.creators}
           setCreators={props.setCreators}
+          setMessage={setMessage}
         />
       </div>
     </div>
