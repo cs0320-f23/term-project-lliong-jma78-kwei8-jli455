@@ -1,4 +1,4 @@
-package edu.brown.cs.student.main.Creators.Spotify;
+package edu.brown.cs.student.main.Creators.Spotify.VerifyGenres;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.requests.data.browse.miscellaneous.GetAvailableGenreSeedsRequest;
 
-public class SpotifyValidGenres {
+public class SpotifyValidGenres implements SpotifyGenre {
   private SpotifyApi sharedSpotifyApi;
   private List<String> availableGenres;
 

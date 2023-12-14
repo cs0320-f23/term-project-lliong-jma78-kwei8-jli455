@@ -3,17 +3,24 @@ package edu.brown.cs.student.main.Server.Handlers;
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 import com.squareup.moshi.Types;
+import edu.brown.cs.student.main.Creators.Spotify.Recommendations.SpotifyData;
+import edu.brown.cs.student.main.Creators.Spotify.Recommendations.SpotifyMock;
 import edu.brown.cs.student.main.Creators.Spotify.SpotifyAccess;
-import edu.brown.cs.student.main.Creators.Spotify.SpotifyCreators;
-import edu.brown.cs.student.main.Creators.Spotify.SpotifyValidGenres;
+import edu.brown.cs.student.main.Creators.Spotify.Recommendations.SpotifyCreators;
+import edu.brown.cs.student.main.Creators.Spotify.VerifyGenres.SpotifyGenre;
+import edu.brown.cs.student.main.Creators.Spotify.VerifyGenres.SpotifyGenreMock;
+import edu.brown.cs.student.main.Creators.Spotify.VerifyGenres.SpotifyValidGenres;
 import edu.brown.cs.student.main.Server.Server;
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
+import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.SpotifyApi;
+import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import spark.Request;
 import spark.Response;
 import spark.Route;
@@ -21,41 +28,37 @@ import spark.Route;
 public class SpotifyHandler implements Route {
 
   private String[] reqGenres;
-  private static SpotifyApi internalApi;
+  private SpotifyGenre spotifyGenreCheck;
+  private SpotifyData spotify;
+
+  public SpotifyHandler() throws IOException, ParseException, SpotifyWebApiException {
+    SpotifyApi internalApi = new SpotifyAccess().getSpotifyApi();
+    this.spotify = new SpotifyCreators(internalApi);
+    this.spotifyGenreCheck = new SpotifyValidGenres(internalApi);
+  }
+
+  public SpotifyHandler(Boolean mock) throws IOException, ParseException, SpotifyWebApiException {
+    if (mock) {
+      this.spotify = new SpotifyMock();
+      this.spotifyGenreCheck = new SpotifyGenreMock();
+    } else {
+      SpotifyApi internalApi = new SpotifyAccess().getSpotifyApi();
+      this.spotify = new SpotifyCreators(internalApi);
+      this.spotifyGenreCheck = new SpotifyValidGenres(internalApi);
+    }
+  }
 
   // Regex for comma-splitting of a string
   // Credit goes to the CS32 Staff Team!
   static final Pattern regexSplitCSVRow =
       Pattern.compile(",(?=([^\\\"]*\\\"[^\\\"]*\\\")*(?![^\\\"]*\\\"))");
 
-  /**
-   * Elimiate a single instance of leading or trailing double-quote, and replace pairs of double
-   * quotes with singles.
-   *
-   * @param arg the string to process
-   * @return the postprocessed string
-   */
-  public static String postprocess(String arg) {
-    return arg
-        // Remove extra spaces at beginning and end of the line
-        .trim()
-        // Remove a beginning quote, if present
-        .replaceAll("^\"", "")
-        // Remove an ending quote, if present
-        .replaceAll("\"$", "")
-        // Replace double-double-quotes with double-quotes
-        .replaceAll("\"\"", "\"");
-  }
-
   @Override
-  public Object handle(Request request, Response response) throws Exception {
-    this.internalApi = new SpotifyAccess().getSpotifyApi();
-
+  public Object handle(Request request, Response response) {
     Moshi moshi = new Moshi.Builder().build();
     Type mapObject = Types.newParameterizedType(Map.class, String.class, Object.class);
     JsonAdapter<Map<String, Object>> adapter = moshi.adapter(mapObject);
     Map<String, Object> responseMap = new HashMap<>();
-    SpotifyCreators spotify = new SpotifyCreators(this.internalApi);
 
     String reqGenres = request.queryParams("genres");
     String reqNum = request.queryParams("numsongs");
@@ -83,8 +86,7 @@ public class SpotifyHandler implements Route {
     } else {
       this.reqGenres = regexSplitCSVRow.split(request.queryParams("genres"));
       List<String> reqGenList = Arrays.asList(this.reqGenres);
-      SpotifyValidGenres genreChecker = new SpotifyValidGenres(this.internalApi);
-      Map<String, List<String>> checkedGens = genreChecker.checkAvailableGenres(reqGenList);
+      Map<String, List<String>> checkedGens = this.spotifyGenreCheck.checkAvailableGenres(reqGenList);
       List<String> validGens = checkedGens.get("valid");
       List<String> invalidGens = checkedGens.get("invalid");
       responseMap.put("invalidgenres", invalidGens);

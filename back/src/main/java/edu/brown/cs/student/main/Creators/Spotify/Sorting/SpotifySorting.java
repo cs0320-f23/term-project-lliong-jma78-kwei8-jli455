@@ -1,4 +1,4 @@
-package edu.brown.cs.student.main.Creators.Spotify;
+package edu.brown.cs.student.main.Creators.Spotify.Sorting;
 
 import java.util.ArrayList;
 import java.util.Comparator;

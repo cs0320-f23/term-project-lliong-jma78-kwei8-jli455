@@ -1,6 +1,5 @@
-package edu.brown.cs.student.main.Creators.Spotify;
+package edu.brown.cs.student.main.Creators.Spotify.Recommendations;
 
-import edu.brown.cs.student.main.Creators.Spotify.SpotifyAccess;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,7 +15,7 @@ import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.requests.data.browse.GetRecommendationsRequest;
 
 
-public class SpotifyCreators {
+public class SpotifyCreators implements SpotifyData {
   private static SpotifyApi spotifyApi;
 
   public SpotifyCreators(SpotifyApi internalApi) {
