@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, BrowserRouter, useNavigate } from "react-router-dom"; 
-import NavBarElements from "./components/NavBarElements";
 import DropDownNav from "./components/DropDown";
 
 import Home from "./pages/home";
@@ -13,22 +12,20 @@ import Resources from "./pages/resources";
 
 export default function App() {
   return (
-    <>
-      <Router>
+      <div className="App">
+        <BrowserRouter>
+          <DropDownNav/>
           <Routes>
-            <Route element={<DropDownNav/>}>
-              <Route path="/" index element={<Home/>}></Route>
               <Route path="/home" element={<Home/>}/>
+              <Route path="/" element={<Home/>}/>
               <Route path="/about" element={<AboutPage/>}/>
               <Route path="/explore_artists" element={<Artists/>}/>
               <Route path="/explore_businesses" element={<Businesses/>}/>
               <Route path="/submit_artists" element={<SubmitArtist/>}/>
               <Route path="/submit_businesses" element={<SubmitBusinesses/>}/>
               <Route path="/resources" element={<Resources/>}/>
-            </Route>
           </Routes>
-      </Router>
-      <Home></Home>
-    </>
+        </BrowserRouter>
+      </div>
   );
 }

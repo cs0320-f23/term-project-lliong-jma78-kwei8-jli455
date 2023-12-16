@@ -1,0 +1,20 @@
+
+.business-container{
+    display: flex;
+    overflow: scroll;
+    background-image: url('../images/similar-background.png');
+}
+
+.business-map{
+    width: 50vw;
+}
+
+a:link{
+    text-decoration: none;
+    color: black;
+}
+
+a:visited{
+    text-decoration: none;
+    color: black;
+}
