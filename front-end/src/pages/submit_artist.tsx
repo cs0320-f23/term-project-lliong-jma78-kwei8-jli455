@@ -61,25 +61,37 @@ export default function SubmitArtist() {
         descriptionString == "" ||
         creatorTypeString == ""
       ) {
-        setMessage("please make sure required fields are filled in");
+        setMessage(
+          "please make sure required fields are filled in (name, category, description)"
+        );
       } else {
-        const url =
+        let url =
           "http://localhost:323/creators?action=add&&name=" +
           nameString +
           "&&description=" +
           descriptionString +
-          "&&price=" +
-          priceString +
-          "&&website=" +
-          websiteString +
-          "&&instagram=" +
-          instaString +
-          "&&facebook=" +
-          facebookString +
-          "&&spotify=" +
-          spotifyString +
           "&&type=" +
           creatorTypeString;
+
+        if (priceString != "") {
+          url = url + "&&price=" + priceString;
+        }
+
+        if (websiteString != "") {
+          url = url + "&&website=" + websiteString;
+        }
+
+        if (instaString != "") {
+          url = url + "&&instagram=" + instaString;
+        }
+
+        if (facebookString != "") {
+          url = url + "&&facebook=" + facebookString;
+        }
+
+        if (spotifyString != "") {
+          url = url + "&&spotify=" + spotifyString;
+        }
 
         console.log(url);
         fetch(url);
@@ -99,6 +111,8 @@ export default function SubmitArtist() {
         setLiteraryArtsStyle("creator-filter-button");
         setArtisansStyle("creator-filter-button");
         setOtherStyle("creator-filter-button");
+
+        setCreatorTypeString("");
       }
     }
   }

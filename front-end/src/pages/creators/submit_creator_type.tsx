@@ -28,9 +28,9 @@ interface CreatorTypeProps {
 }
 
 export function CreatorTypes(props: CreatorTypeProps) {
-
   // but why is this called every time i do something on the screen, is it rerendering...
   console.log(props.creatorType);
+  console.log("ahhh");
   // is there a better way to do this......
 
   // maybe these should return a string
@@ -99,7 +99,10 @@ export function CreatorTypes(props: CreatorTypeProps) {
           <BsPersonArmsUp />
         </div>
       </button>
-      <button className={props.literaryArtsStyle} onClick={() => setLiteraryArts()}>
+      <button
+        className={props.literaryArtsStyle}
+        onClick={() => setLiteraryArts()}
+      >
         Literary Arts <br></br>
         <div className="icons">
           <TfiPencil />

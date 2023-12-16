@@ -46,6 +46,7 @@ export function DescriptionInputBar({
   setValue,
   ariaLabel,
 }: CreatorInputProps) {
+  console.log("description bar");
   return (
     <div>
       <input
