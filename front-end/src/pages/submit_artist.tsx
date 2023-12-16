@@ -25,6 +25,20 @@ export default function SubmitArtist() {
   const [facebookString, setFacebookString] = useState<string>("");
   const [spotifyString, setSpotifyString] = useState<string>("");
 
+  const [visualArtsStyle, setVisualArtsStyle] = useState<string>(
+    "creator-filter-button"
+  );
+  const [performingArtsStyle, setPerformingArtsStyle] = useState<string>(
+    "creator-filter-button"
+  );
+  const [literaryArtsStyle, setLiteraryArtsStyle] = useState<string>(
+    "creator-filter-button"
+  );
+  const [artisansStyle, setArtisansStyle] = useState<string>(
+    "creator-filter-button"
+  );
+  const [otherStyle, setOtherStyle] = useState<string>("creator-filter-button");
+
   const [message, setMessage] = useState<string>("");
 
   const [checkedTerms, setCheckedTerms] = useState<boolean>(false);
@@ -34,6 +48,7 @@ export default function SubmitArtist() {
 
   function handleSubmit() {
     // need to add type
+    // only send parameters that are filled in, check if each entry is an empty string or not
 
     if (!checkedTerms) {
       // make sure to set message to empty string otherwise
@@ -41,7 +56,11 @@ export default function SubmitArtist() {
         "make sure the required fields are filled in and that you have agreed to the terms and conditions"
       );
     } else {
-      if (nameString == "" || descriptionString == "") {
+      if (
+        nameString == "" ||
+        descriptionString == "" ||
+        creatorTypeString == ""
+      ) {
         setMessage("please make sure required fields are filled in");
       } else {
         const url =
@@ -74,6 +93,12 @@ export default function SubmitArtist() {
         setSpotifyString("");
         setMessage("thanks for submitting! :)");
         setCheckedTerms(false);
+
+        setVisualArtsStyle("creator-filter-button");
+        setPerformingArtsStyle("creator-filter-button");
+        setLiteraryArtsStyle("creator-filter-button");
+        setArtisansStyle("creator-filter-button");
+        setOtherStyle("creator-filter-button");
       }
     }
   }
@@ -93,6 +118,16 @@ export default function SubmitArtist() {
         <CreatorTypes
           creatorType={creatorTypeString}
           setCreatorType={setCreatorTypeString}
+          visualArtsStyle={visualArtsStyle}
+          setVisualArtsStyle={setVisualArtsStyle}
+          performingArtsStyle={performingArtsStyle}
+          setPerformingArtsStyle={setPerformingArtsStyle}
+          literaryArtsStyle={literaryArtsStyle}
+          setLiteraryArtsStyle={setLiteraryArtsStyle}
+          artisansStyle={artisansStyle}
+          setArtisansStyle={setArtisansStyle}
+          otherStyle={otherStyle}
+          setOtherStyle={setOtherStyle}
         />
       </div>
       <div>
