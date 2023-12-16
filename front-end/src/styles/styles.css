@@ -242,7 +242,7 @@ label {
   margin-bottom: 50px;
 }
 
-.submit-artist-page {
+.submit-creator-page {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -300,4 +300,15 @@ label {
   font-family: "Tenor Sans";
   font-size: 17px;
   color: #b9271a;
+}
+
+.delete-creator-page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.delete-creator-description {
+  width: 650px;
 }

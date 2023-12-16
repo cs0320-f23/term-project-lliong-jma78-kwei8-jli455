@@ -7,13 +7,13 @@ import {
   PriceInput,
   SpotifyInput,
   WebsiteInput,
-} from "./creators/submit_creator_input";
-import { CreatorTypes } from "./creators/submit_creator_type";
+} from "./submit_creator_input";
+import { CreatorTypes } from "./submit_creator_type";
 
 // after sbumitting do we want to give a thank you message? probably, and then say
 // feel free to submit another?????
 
-export default function SubmitArtist() {
+export default function SubmitCreator() {
   const [nameString, setNameString] = useState<string>("");
 
   const [creatorTypeString, setCreatorTypeString] = useState<string>("");
@@ -117,8 +117,14 @@ export default function SubmitArtist() {
     }
   }
 
+    const keyDownHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
+      if (event.code === "Enter") {
+        handleSubmit();
+      }
+    };
+
   return (
-    <div className="submit-artist-page">
+    <div className="submit-creator-page" onKeyDown={keyDownHandler}>
       <div>
         <h1>Creator Name</h1>
         <NameInputBar

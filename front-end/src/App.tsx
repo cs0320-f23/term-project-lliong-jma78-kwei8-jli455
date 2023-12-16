@@ -12,7 +12,7 @@ import DropDownNav from "./components/DropDown";
 import Home from "./pages/home";
 import AboutPage from "./pages/about";
 import Businesses from "./pages/explore_businesses";
-import SubmitArtist from "./pages/submit_artist";
+import SubmitArtist from "./pages/creators/submit_creator";
 import SubmitBusinesses from "./pages/submit_business";
 import Resources from "./pages/resources";
 
@@ -20,9 +20,13 @@ import { SpotifyPage } from "./pages/spotify/spotify-page";
 import { CreatorPage } from "./pages/creators/creator_page";
 import { Creator } from "./pages/creators/single_creator";
 import { NameInputBar } from "./pages/creators/submit_creator_input";
+import { DeleteCreator } from "./pages/creators/delete_creator";
 
-//<SpotifyPage />
-//<CreatorPage />
+// Pages To Add
+//<SpotifyPage /> from spotify_page
+//<CreatorPage /> from creator_page
+//<SubmitCreator /> from submit_creator (renamed submit artist)
+//<DeleteCreator /> from delete_creator
 
 export default function App() {
   return (
@@ -41,7 +45,7 @@ export default function App() {
 
         </Router> */}
 
-      <SubmitArtist />
+      <DeleteCreator />
     </div>
   );
 }

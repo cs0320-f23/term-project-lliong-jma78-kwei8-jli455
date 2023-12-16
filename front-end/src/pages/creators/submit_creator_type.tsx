@@ -30,7 +30,7 @@ interface CreatorTypeProps {
 export function CreatorTypes(props: CreatorTypeProps) {
   // but why is this called every time i do something on the screen, is it rerendering...
   console.log(props.creatorType);
-  console.log("ahhh");
+  // need to set creatory type to empty string after each time?
   // is there a better way to do this......
 
   // maybe these should return a string
