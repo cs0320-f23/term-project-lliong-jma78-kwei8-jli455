@@ -11,7 +11,6 @@ import SubmitBusinesses from "./pages/submit_business";
 import Resources from "./pages/resources";
 
 export default function App() {
-
   return (
       <div className="App">
         <BrowserRouter>
