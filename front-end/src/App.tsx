@@ -6,7 +6,6 @@ import {
   BrowserRouter,
   useNavigate,
 } from "react-router-dom";
-//import NavBarElements from "./components/NavBarElements";
 import DropDownNav from "./components/DropDown";
 
 import Home from "./pages/home";
@@ -30,8 +29,9 @@ import { DeleteCreator } from "./pages/creators/delete_creator";
 
 export default function App() {
   return (
-    <div>
-      {/* <Router>
+    <div className="App">
+        <BrowserRouter>
+          <DropDownNav/>
           <Routes>
               <Route path="/home" element={<Home/>}/>
               <Route path="/" element={<Home/>}/>
@@ -42,12 +42,7 @@ export default function App() {
               <Route path="/submit_businesses" element={<SubmitBusinesses/>}/>
               <Route path="/resources" element={<Resources/>}/>
           </Routes>
-
-        </Router> */}
-
-      <CreatorPage />
+        </BrowserRouter>
     </div>
   );
 }
-
-// should we make page contents shrink as the page shrinks?
