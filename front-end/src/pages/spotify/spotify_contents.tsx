@@ -1,36 +1,19 @@
 import React from "react";
 import { useEffect, useRef } from "react";
-
 import { SongProps, Song } from "./single_song";
-
 import { small_song_dataset } from "../../mocks/mock_songs";
 
-// maybe need file for each artist and use this file as main component to hold them?
-// should this act like REPLHistory and I need another file for REPLInput? / another place to get songs?
-
-// props.setSongs([
-//   ...props.songs,
-//   json.name,
-//   json.duration,
-//   json.artists,
-//   json.album,
-//   json.popularity,
-//   json.genre,
-// ]);
-
-// fetch here in this class!
-// okay if you can justify
-
-// is the difference between rjson["result"] and rjson.result?
-
-// post request - sending post request from front end to back end when adding artist
-
+/**
+ * props for the spotify page
+ */
 interface SpotifyPageProps {
-  // should i make this an array of songs instead? how?
   songs: SongProps[];
   setSongs: React.Dispatch<React.SetStateAction<SongProps[]>>;
 }
 
+/**
+ * interface with fields that a proper response from the backend handling the spotify api should have
+ */
 interface jsonSpotifyResponse {
   result: string;
   // is this the right type?
@@ -42,7 +25,11 @@ interface jsonSpotifyResponse {
 
 // check valid and invalid?
 // is this right/complete?
-// type preedicate to check if successful spotify repsonse
+/**
+ * type predicate to check if spotify json response was successful
+ * @param rjson
+ * @returns
+ */
 function isSpotifyResponse(rjson: any): rjson is jsonSpotifyResponse {
   if (!("result" in rjson)) return false;
   if (!("data" in rjson)) return false;
@@ -52,7 +39,9 @@ function isSpotifyResponse(rjson: any): rjson is jsonSpotifyResponse {
   return true;
 }
 
+// array for all default songs
 export const allSongs: SongProps[] = [];
+// array for all genres
 export const allGenres: string[] = [];
 
 async function getSongs() {
