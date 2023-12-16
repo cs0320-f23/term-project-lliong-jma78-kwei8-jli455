@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0642f82e-cf99-4681-924e-82a13a34ce4f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../front-end/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/src/pages/creators/submit_creator_input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/pages/creators/submit_creator_input.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/src/pages/creators/submit_creator_type.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/pages/creators/submit_creator_type.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/src/pages/submit_artist.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/src/styles/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/styles/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/src/pages/creators/single_creator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/pages/creators/single_creator.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

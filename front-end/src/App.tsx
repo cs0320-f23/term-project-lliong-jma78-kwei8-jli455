@@ -45,7 +45,7 @@ export default function App() {
 
         </Router> */}
 
-      <DeleteCreator />
+      <CreatorPage />
     </div>
   );
 }
