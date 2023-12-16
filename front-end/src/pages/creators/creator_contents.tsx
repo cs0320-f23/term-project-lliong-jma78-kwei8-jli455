@@ -149,7 +149,8 @@ export function Creators(props: CreatorPageProps) {
       if (response != undefined) {
         props.setCreators(response);
       }
-    });
+    }),
+      [];
   });
 
   return (

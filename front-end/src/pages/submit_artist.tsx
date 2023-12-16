@@ -16,6 +16,8 @@ import { CreatorTypes } from "./creators/submit_creator_type";
 export default function SubmitArtist() {
   const [nameString, setNameString] = useState<string>("");
 
+  const [creatorTypeString, setCreatorTypeString] = useState<string>("");
+
   const [descriptionString, setDescriptionString] = useState<string>("");
   const [websiteString, setWebsiteString] = useState<string>("");
   const [priceString, setPriceString] = useState<string>("");
@@ -30,7 +32,52 @@ export default function SubmitArtist() {
     setCheckedTerms(!checkedTerms);
   };
 
-  function handleSubmit() {}
+  function handleSubmit() {
+    // need to add type
+
+    if (!checkedTerms) {
+      // make sure to set message to empty string otherwise
+      setMessage(
+        "make sure the required fields are filled in and that you have agreed to the terms and conditions"
+      );
+    } else {
+      if (nameString == "" || descriptionString == "") {
+        setMessage("please make sure required fields are filled in");
+      } else {
+        const url =
+          "http://localhost:323/creators?action=add&&name=" +
+          nameString +
+          "&&description=" +
+          descriptionString +
+          "&&price=" +
+          priceString +
+          "&&website=" +
+          websiteString +
+          "&&instagram=" +
+          instaString +
+          "&&facebook=" +
+          facebookString +
+          "&&spotify=" +
+          spotifyString +
+          "&&type=" +
+          creatorTypeString;
+
+        console.log(url);
+        fetch(url);
+
+        setNameString("");
+        setDescriptionString("");
+        setPriceString("");
+        setWebsiteString("");
+        setInstaString("");
+        setFacebookString("");
+        setSpotifyString("");
+        setMessage("thanks for submitting! :)");
+        setCheckedTerms(false);
+      }
+    }
+  }
+
   return (
     <div className="submit-artist-page">
       <div>
@@ -43,7 +90,10 @@ export default function SubmitArtist() {
       </div>
       <div>
         <h1>Category</h1>
-        <CreatorTypes />
+        <CreatorTypes
+          creatorType={creatorTypeString}
+          setCreatorType={setCreatorTypeString}
+        />
       </div>
       <div>
         <h1>Creator Description/Bio</h1>
@@ -106,6 +156,8 @@ export default function SubmitArtist() {
           onChange={handleCheckedTerms}
         />
       </div>
+      <br></br>
+      {message}
       <br></br>
       <button
         className="submit-button"

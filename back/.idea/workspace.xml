@@ -5,13 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0642f82e-cf99-4681-924e-82a13a34ce4f" name="Changes" comment="">
-<<<<<<< HEAD
-      <change beforePath="$PROJECT_DIR$/../front-end/src/pages/creators/creator_filter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/pages/creators/creator_filter.tsx" afterDir="false" />
-=======
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/SubmittedData.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/SubmittedData.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/brown/cs/student/main/Creators/Submitted/SubmittedFiltering.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/brown/cs/student/main/Creators/Submitted/SubmittedFiltering.java" afterDir="false" />
->>>>>>> main
+      <change beforePath="$PROJECT_DIR$/../front-end/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/src/pages/submit_artist.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/pages/submit_artist.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +20,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -37,13 +37,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-<<<<<<< HEAD
     "git-widget-placeholder": "artists-fetch",
-    "last_opened_file_path": "/Users/joyceli/Desktop/cs320/term-project-lliong-jma78-kwei8-jli455/back/pom.xml",
-=======
-    "git-widget-placeholder": "spotify-fetch",
     "last_opened_file_path": "/Users/karisma/Desktop/cs0320/term-project-lliong-jma78-kwei8-jli455/back/pom.xml",
->>>>>>> main
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",

@@ -267,6 +267,7 @@ label {
   display: flex;
   column-gap: 20px;
   justify-content: space-around;
+  align-items: center;
 }
 
 .creator-additional-input {
@@ -287,4 +288,16 @@ label {
   font-family: "Tenor Sans";
   font-size: 15px;
   color: white;
+}
+
+.creator-filter-button-clicked {
+  background-color: #ffd4d4;
+  border-radius: 10px;
+  border: 2px solid #b9271a;
+  padding: 7px;
+  width: 180px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  font-family: "Tenor Sans";
+  font-size: 17px;
+  color: #b9271a;
 }
