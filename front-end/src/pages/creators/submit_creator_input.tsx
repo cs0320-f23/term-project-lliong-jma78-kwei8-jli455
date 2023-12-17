@@ -16,7 +16,7 @@ interface CreatorInputProps {
 }
 
 /**
- * Component to wrap input box
+ * Component for input box where name is entered
  * @param param0 Props, as above
  * @returns HTML for command box
  */
@@ -41,6 +41,12 @@ export function NameInputBar({
 }
 
 // i think it would be nice if the box changed size if the text wrapped
+
+/**
+ * Component for input box where description is entered
+ * @param param0 Props, as above
+ * @returns HTML for command box
+ */
 export function DescriptionInputBar({
   value,
   setValue,
@@ -60,13 +66,11 @@ export function DescriptionInputBar({
   );
 }
 
-// optional
-
-// facebook: string | undefined;
-// spotify: string | undefined;
-
-// id: string;
-
+/**
+ * Component for input box where website is entered
+ * @param param0 Props, as above
+ * @returns HTML for command box
+ */
 export function WebsiteInput({
   value,
   setValue,
@@ -86,6 +90,11 @@ export function WebsiteInput({
   );
 }
 
+/**
+ * Component for input box where price is entered
+ * @param param0 Props, as above
+ * @returns HTML for command box
+ */
 export function PriceInput({ value, setValue, ariaLabel }: CreatorInputProps) {
   return (
     <div>
@@ -101,6 +110,11 @@ export function PriceInput({ value, setValue, ariaLabel }: CreatorInputProps) {
   );
 }
 
+/**
+ * Component for input box where instagram link is entered
+ * @param param0 Props, as above
+ * @returns HTML for command box
+ */
 export function InstagramInput({
   value,
   setValue,
@@ -120,6 +134,11 @@ export function InstagramInput({
   );
 }
 
+/**
+ * Component for input box where facebook link is entered
+ * @param param0 Props, as above
+ * @returns HTML for command box
+ */
 export function FacebookInput({
   value,
   setValue,
@@ -139,6 +158,11 @@ export function FacebookInput({
   );
 }
 
+/**
+ * Component for input box where spotify link is entered
+ * @param param0 Props, as above
+ * @returns HTML for command box
+ */
 export function SpotifyInput({
   value,
   setValue,

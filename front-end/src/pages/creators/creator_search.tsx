@@ -8,17 +8,24 @@ import { CreatorProps } from "./single_creator";
 
 // it is fine to have the props passed to the search right?
 
+// interface of props for search bar
 interface SearchProps {
   creators: CreatorProps[];
   setCreators: React.Dispatch<React.SetStateAction<CreatorProps[]>>;
 }
 
+// interface with fields expected from creator json response
 interface jsonCreatorResponse {
   result: string;
   // is this the right type?
   data: Array<Map<string, string>>;
 }
 
+/**
+ * checks that creator response from backend is successful
+ * @param rjson 
+ * @returns 
+ */
 function isCreatorResponse(rjson: any): rjson is jsonCreatorResponse {
   if (!("result" in rjson)) return false;
   if (!("data" in rjson)) return false;
@@ -28,6 +35,11 @@ function isCreatorResponse(rjson: any): rjson is jsonCreatorResponse {
   return true;
 }
 
+/**
+ * component containing search bar and search button
+ * @param props 
+ * @returns 
+ */
 export function Search(props: SearchProps) {
   const [commandString, setCommandString] = useState<string>("");
   const [message, setMessage] = useState<string>("");
@@ -38,7 +50,12 @@ export function Search(props: SearchProps) {
     }
   };
 
-  // type predicate for making sure that it's a successful result?
+  /**
+   * function that handles searching by calling the backend;
+   * retrieves songs and adds them to array of songs to be displayed
+   * @param commandString 
+   * @returns 
+   */
   function handleSubmit(commandString: string) {
     const url =
       "http://localhost:323/creators?action=search&&searchterm=" +
@@ -98,6 +115,7 @@ export function Search(props: SearchProps) {
   // ^ this function for getting songs and maybe another for handling submit to resolve
   // do i need a useEffect for when creators are added/deleted - in order to update?
 
+  // mock function for searching
   function handleSubmitMock(commandString: string) {
     console.log("handle submit clicked");
 

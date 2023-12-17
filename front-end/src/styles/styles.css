@@ -17,6 +17,12 @@ h2 {
   font-size: 20px;
 }
 
+h3 {
+  font-family: "Tenor Sans";
+  color: #3c0d09;
+  font-size: 15px;
+}
+
 .spotify-grid {
   display: inline-grid;
   grid-template-columns: repeat(3, auto);
@@ -91,7 +97,7 @@ input::placeholder {
   font-size: 25px;
   border-radius: 25px;
   width: 250px;
-  height: 550px;
+  height: 600px;
   border: 2px solid #8b1a10;
   background-color: #ffd4d4;
 }

@@ -15,20 +15,25 @@ import { allCreators } from "./creator_contents";
 // because i don't there are enough icons to display the wide range
 // open url in new tab? is this automatic?
 
-// perhaps a "see all" button
-
+// props for filter buttons
 interface FilterProps {
   creators: CreatorProps[];
   setCreators: React.Dispatch<React.SetStateAction<CreatorProps[]>>;
   setMessage: React.Dispatch<React.SetStateAction<string>>;
 }
 
+// interface with fields expected of creator json response
 interface jsonCreatorResponse {
   result: string;
   // is this the right type?
   data: Array<Map<string, string>>;
 }
 
+/**
+ * checks if response from backend is successful
+ * @param rjson 
+ * @returns 
+ */
 function isCreatorResponse(rjson: any): rjson is jsonCreatorResponse {
   if (!("result" in rjson)) return false;
   if (!("data" in rjson)) return false;
@@ -38,11 +43,13 @@ function isCreatorResponse(rjson: any): rjson is jsonCreatorResponse {
   return true;
 }
 
-// FIX! why are there so many showing up
-// do on clicks for buttons
+/**
+ * component that displays the bar of buttons at the top, each with a category;
+ * can filter creators by clicking on buttons
+ * @param props 
+ * @returns 
+ */
 export function CreatorFilterButtons(props: FilterProps) {
-  // wait do we want to be able to filter for multiple ? or just one at a time?
-
   // would i have to end up calling this every time that the button is clicked?
 
   function filterMockVisualArts() {
@@ -57,6 +64,10 @@ export function CreatorFilterButtons(props: FilterProps) {
     props.setCreators(visualArtCreators);
   }
 
+  /**
+   * function that retrieves visual arts creators and sets them to be displayed
+   * @returns
+   */
   function filterVisualArts() {
     console.log("visual arts creators");
 
@@ -117,6 +128,10 @@ export function CreatorFilterButtons(props: FilterProps) {
     props.setCreators(performingArtCreators);
   }
 
+  /**
+   * function that retrieves performing arts creators and sets them to be displayed
+   * @returns
+   */
   function filterPerformingArts() {
     const url =
       "http://localhost:323/creators?action=filtertype&&type=performing arts";
@@ -175,6 +190,10 @@ export function CreatorFilterButtons(props: FilterProps) {
     props.setCreators(literaryArtCreators);
   }
 
+  /**
+   * function that retrieves literary arts creators and sets them to be displayed
+   * @returns
+   */
   function filterLiteraryArts() {
     const url =
       "http://localhost:323/creators?action=filtertype&&type=literary arts";
@@ -233,6 +252,10 @@ export function CreatorFilterButtons(props: FilterProps) {
     props.setCreators(artisanCreators);
   }
 
+  /**
+   * function that retrieves artisan creators and sets them to be displayed
+   * @returns
+   */
   function filterArtisans() {
     const url =
       "http://localhost:323/creators?action=filtertype&&type=artisans";
@@ -291,6 +314,10 @@ export function CreatorFilterButtons(props: FilterProps) {
     props.setCreators(otherCreators);
   }
 
+  /**
+   * function that retrieves other creators and sets them to be displayed
+   * @returns
+   */
   function filterOthers() {
     const url = "http://localhost:323/creators?action=filtertype&&type=other";
     return fetch(url)
@@ -338,6 +365,9 @@ export function CreatorFilterButtons(props: FilterProps) {
       });
   }
 
+  /**
+   * function for displaying all creators
+   */
   function seeAllCreators() {
     props.setCreators(allCreators);
     props.setMessage("");

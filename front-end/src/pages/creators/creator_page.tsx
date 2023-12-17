@@ -3,6 +3,11 @@ import { Creators } from "./creator_contents";
 import { Search } from "./creator_search";
 import { CreatorProps } from "./single_creator";
 
+/**
+ * main component for the creator page, holds other components like 
+ * set of creators, filter buttons, and search bar
+ * @returns 
+ */
 export function CreatorPage() {
   const [creators, setCreators] = useState<CreatorProps[]>([]);
 

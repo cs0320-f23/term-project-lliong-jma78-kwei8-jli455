@@ -1,6 +1,3 @@
-// searching both name and description
-// filter by price range
-// buttons for different kinds of creators
 import React, { useEffect, useRef } from "react";
 import { Creator, CreatorProps } from "./single_creator";
 import { small_creators_dataset } from "../../mocks/mock_creators";
@@ -8,24 +5,14 @@ import { small_creators_dataset } from "../../mocks/mock_creators";
 // how to stop components shifting around when screen width changes? though I guess this
 // is a problem for both spotify and creators
 
-// drop down box for selecting types
 
-// visual art, performing art, literary art, artisans, other
-
-// should i be using an enum??
-// export enum typeOfCreator {
-//   visual_art = "visual art",
-//   performing_art = "performing art",
-//   literary_art = "literary art",
-//   artisans = "artisans",
-//   other = "other",
-// }
-
+// interface for this file
 interface CreatorPageProps {
   creators: CreatorProps[];
   setCreators: React.Dispatch<React.SetStateAction<CreatorProps[]>>;
 }
 
+// interface with fields expected from creator json response
 interface jsonCreatorResponse {
   result: string;
   // is this the right type? do i need to change to a dict
@@ -34,7 +21,7 @@ interface jsonCreatorResponse {
 
 // check valid and invalid?
 // is this right/complete?
-// type preedicate to check if successful spotify repsonse
+// type predicate to check if successful creator repsonse
 function isCreatorResponse(rjson: any): rjson is jsonCreatorResponse {
   if (!("result" in rjson)) return false;
   if (!("data" in rjson)) return false;
@@ -44,8 +31,17 @@ function isCreatorResponse(rjson: any): rjson is jsonCreatorResponse {
   return true;
 }
 
+// need to check if this updates after pages are connected
+
+// array for storing all current creators
 export const allCreators: CreatorProps[] = [];
 
+/**
+ * function that fetches the existing set of creators from backend and adds each to the
+ * allCreators array
+ * @param props 
+ * @returns 
+ */
 function getCreators(props: CreatorPageProps) {
   const url = "http://localhost:323/creators";
 
@@ -93,6 +89,7 @@ function getCreators(props: CreatorPageProps) {
     .catch((error) => console.log("error"));
 }
 
+// function for mock creators
 function getMockCreators(props: CreatorPageProps) {
   for (let i = 0; i < small_creators_dataset.length; i++) {
     const creatorName: string = small_creators_dataset[i].get("name");
@@ -131,6 +128,12 @@ function getMockCreators(props: CreatorPageProps) {
 }
 
 // perhaps add mock images
+
+/**
+ * component that displays all of the creators on the page
+ * @param props 
+ * @returns 
+ */
 export function Creators(props: CreatorPageProps) {
   const mockCreatorsRef = useRef(false);
 

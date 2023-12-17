@@ -15,7 +15,10 @@ interface IDInputProps {
   ariaLabel: string;
 }
 
-// i think it would be nice if the box changed size if the text wrapped
+
+/**
+ * component for input box where ID is entered
+ */
 export function IDInputBar({ value, setValue, ariaLabel }: IDInputProps) {
   return (
     <div>

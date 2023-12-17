@@ -19,6 +19,8 @@ export function FilterBox() {
   const [checkedLToSDuration, setCheckedLToSDuration] =
     useState<boolean>(false);
 
+  const [message, setMessage] = useState<string>("");
+
   const handleLToMPopular = () => {
     setCheckedLToMPopular(!checkedLToMPopular);
   };
@@ -34,6 +36,66 @@ export function FilterBox() {
   const handleLToSDuration = () => {
     setCheckedLToSDuration(!checkedLToSDuration);
   };
+
+  // need to mock filtering?
+  // clicking submit and nothing is selected, should do nothing? or send message
+
+  // songs must be loaded before ranking? this means you have to search for songs
+  // before ranking, not ranking the existing ones? check with backend
+
+  function handleSubmit() {
+    let url = "http://localhost:323/sortspotify?";
+
+    if (checkedLToMPopular && checkedMToLPopular) {
+      console.log("cannot do both");
+      setMessage("Please check only one box in each category");
+    } else {
+      if (checkedLToSDuration && checkedSToLDuration) {
+        setMessage("Please check only one box in each category");
+      } else {
+        setMessage("");
+        if (checkedLToMPopular) {
+          url = url + "popularity=ascending";
+
+          if (checkedLToSDuration && !checkedSToLDuration) {
+            url = url + "&&duration=descending";
+          }
+
+          if (!checkedLToSDuration && checkedSToLDuration) {
+            url = url + "&&duration=ascending";
+          }
+        } else {
+          if (checkedMToLPopular) {
+            url = url + "popularity=descending";
+
+            if (checkedLToSDuration && !checkedSToLDuration) {
+              url = url + "&&duration=descending";
+            }
+
+            if (!checkedLToSDuration && checkedSToLDuration) {
+              url = url + "&&duration=ascending";
+            }
+          } else {
+            if (checkedLToSDuration) {
+              url = url + "duration=descending";
+            }
+
+            if (checkedSToLDuration) {
+              url = url + "duration=ascending";
+            }
+          }
+        }
+      }
+    }
+
+    //fetch(url)
+    // if you don't select any filters, nothing should change right if you click
+    // submit button?
+    console.log(url);
+
+    // do a catch block for the url to say "please select filters to sort songs"
+  }
+
 
   return (
     <div className="filter-box">
@@ -74,7 +136,11 @@ export function FilterBox() {
         </div>
       </div>
       <br></br>
-      <button className="sort-submit-button">Submit</button>
+      <h3>{message}</h3>
+      <br></br>
+      <button className="sort-submit-button" onClick={() => handleSubmit()}>
+        Submit
+      </button>
     </div>
   );
 }

@@ -12,6 +12,7 @@ import { HiMiniWrenchScrewdriver, HiStar } from "react-icons/hi2";
 // should i be using enums.........
 // i feel like this isn't very extensible??
 
+// interface with props for the creator type buttons
 interface CreatorTypeProps {
   creatorType: string;
   setCreatorType: React.Dispatch<React.SetStateAction<string>>;
@@ -27,13 +28,20 @@ interface CreatorTypeProps {
   setOtherStyle: React.Dispatch<React.SetStateAction<string>>;
 }
 
+/**
+ * component for buttons that can be selected in order to set creator type
+ * @param props 
+ * @returns 
+ */
 export function CreatorTypes(props: CreatorTypeProps) {
   // but why is this called every time i do something on the screen, is it rerendering...
   console.log(props.creatorType);
-  // need to set creatory type to empty string after each time?
+
   // is there a better way to do this......
 
-  // maybe these should return a string
+  /**
+   * sets creator type to "visual arts" and highlights that button while unhighlighting other buttons
+   */
   function setVisualArts() {
     props.setCreatorType("visual arts");
     props.setVisualArtsStyle("creator-filter-button-clicked");
@@ -43,6 +51,9 @@ export function CreatorTypes(props: CreatorTypeProps) {
     props.setOtherStyle("creator-filter-button");
   }
 
+  /**
+   * sets creator type to "performing arts" and highlights that button while unhighlighting other buttons
+   */
   function setPerformingArts() {
     props.setCreatorType("performing arts");
     props.setPerformingArtsStyle("creator-filter-button-clicked");
@@ -52,6 +63,9 @@ export function CreatorTypes(props: CreatorTypeProps) {
     props.setOtherStyle("creator-filter-button");
   }
 
+  /**
+   * sets creator type to "literary arts" and highlights that button while unhighlighting other buttons
+   */
   function setLiteraryArts() {
     props.setCreatorType("literary arts");
     props.setLiteraryArtsStyle("creator-filter-button-clicked");
@@ -61,6 +75,9 @@ export function CreatorTypes(props: CreatorTypeProps) {
     props.setOtherStyle("creator-filter-button");
   }
 
+  /**
+   * sets creator type to "artisans" and highlights that button while unhighlighting other buttons
+   */
   function setArtisans() {
     props.setCreatorType("artisans");
     props.setArtisansStyle("creator-filter-button-clicked");
@@ -70,6 +87,9 @@ export function CreatorTypes(props: CreatorTypeProps) {
     props.setOtherStyle("creator-filter-button");
   }
 
+  /**
+   * sets creator type to "other" and highlights that button while unhighlighting other buttons
+   */
   function setOther() {
     props.setCreatorType("other");
     props.setOtherStyle("creator-filter-button-clicked");

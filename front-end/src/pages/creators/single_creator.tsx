@@ -33,7 +33,12 @@ export interface CreatorProps {
  * @returns
  */
 export function Creator(props: CreatorProps) {
+
   // or should it be checking if it's an empty string?
+  /**
+   * function that adds the text "Price Range: " if creator has a price
+   * @returns 
+   */
   function getPrice() {
     if (props.price != undefined) {
       return "Price Range: " + props.price;

@@ -13,6 +13,10 @@ import { CreatorTypes } from "./submit_creator_type";
 // after sbumitting do we want to give a thank you message? probably, and then say
 // feel free to submit another?????
 
+/**
+ * main component for submit creators page, holds all of the input fields and submit button
+ * @returns 
+ */
 export default function SubmitCreator() {
   const [nameString, setNameString] = useState<string>("");
 
@@ -25,6 +29,7 @@ export default function SubmitCreator() {
   const [facebookString, setFacebookString] = useState<string>("");
   const [spotifyString, setSpotifyString] = useState<string>("");
 
+  // these are for highlighting buttons and setting their style
   const [visualArtsStyle, setVisualArtsStyle] = useState<string>(
     "creator-filter-button"
   );
@@ -46,9 +51,10 @@ export default function SubmitCreator() {
     setCheckedTerms(!checkedTerms);
   };
 
+  /**
+   * function for calling the backend and adding a creator
+   */
   function handleSubmit() {
-    // need to add type
-    // only send parameters that are filled in, check if each entry is an empty string or not
 
     if (!checkedTerms) {
       // make sure to set message to empty string otherwise
@@ -234,24 +240,9 @@ const Checkbox = ({ label, value, onChange }) => {
   );
 };
 
-// set of buttons to choose type - probably give a small highlight to it to? and
-// then change if person deselects??
-// check box to agree - how to make mandatory
-// submit button that actually calls the fetch
 
-// can probably just check if the button is checked or not
+
+// can probably just check if the button is checked or not?
 
 // would probably be good to have a feedback form as well - like "let us know what
 // you wanna see!"
-
-// name: string;
-// type: string;
-// description: string;
-
-// optional
-// website: string | undefined;
-// instagram: string | undefined;
-// facebook: string | undefined;
-// spotify: string | undefined;
-// price: string | undefined;
-// id: string;
