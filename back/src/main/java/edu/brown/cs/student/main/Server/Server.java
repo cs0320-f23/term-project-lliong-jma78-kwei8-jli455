@@ -34,7 +34,7 @@ public class Server {
 
     //    Spark.get("creators", new CreatorHandler(
     //        "data/SubmittedData.csv"));
-    Spark.get("creators", new CreatorHandler("data/MockData.csv"));
+    Spark.get("creators", new CreatorHandler("data/SubmittedData.csv"));
     Spark.get("business", new BusinessHandler());
     try {
       Spark.get("spotify", new SpotifyHandler());
