@@ -3,29 +3,56 @@ package edu.brown.cs.student.main.Server.Handlers;
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 import com.squareup.moshi.Types;
-import edu.brown.cs.student.main.Creators.Spotify.SpotifySorting;
-import edu.brown.cs.student.main.Server.Server;
+import edu.brown.cs.student.main.Creators.Spotify.Sorting.MockData;
+import edu.brown.cs.student.main.Creators.Spotify.Sorting.ServerData;
+import edu.brown.cs.student.main.Creators.Spotify.Sorting.SortingData;
+import edu.brown.cs.student.main.Creators.Spotify.Sorting.SpotifySorting;
+import java.io.IOException;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.PriorityQueue;
 import spark.Request;
 import spark.Response;
 import spark.Route;
 
 public class SpotifySortHandler implements Route {
+  private SortingData dataStore;
   private List<Map<String, Object>> toSort = null;
 
+  /** Standard constructor */
+  public SpotifySortHandler() {
+    this.dataStore = new ServerData();
+  }
+
+  /**
+   * Constructor for sorting mocks
+   *
+   * @param mock
+   */
+  public SpotifySortHandler(Boolean mock) {
+    if (mock) {
+      this.dataStore = new MockData();
+    } else {
+      this.dataStore = new ServerData();
+    }
+  }
+
+  /**
+   * Dispatch various endpoint requests
+   *
+   * @param request user request
+   * @param response response parameter
+   * @return json object containing requested data
+   * @throws IOException issue parsing request
+   */
   @Override
   public Object handle(Request request, Response response) {
     Moshi moshi = new Moshi.Builder().build();
     Type mapObject = Types.newParameterizedType(Map.class, String.class, Object.class);
     JsonAdapter<Map<String, Object>> adapter = moshi.adapter(mapObject);
     Map<String, Object> responseMap = new HashMap<>();
-    this.toSort = Server.getCurrSongs();
+    this.toSort = this.dataStore.getCurrData();
     if (this.toSort == null) {
       responseMap.put("result", "error");
       responseMap.put("details", "no songs searched – please search before sorting");
@@ -51,5 +78,4 @@ public class SpotifySortHandler implements Route {
     responseMap.put("result", "success");
     return adapter.toJson(responseMap);
   }
-
 }

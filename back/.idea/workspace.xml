@@ -5,14 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0642f82e-cf99-4681-924e-82a13a34ce4f" name="Changes" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/../front-end/src/pages/spotify/spotify_contents.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/pages/spotify/spotify_contents.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../front-end/src/pages/spotify/spotify_filter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/pages/spotify/spotify_filter.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../front-end/src/pages/spotify/spotify_search.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/pages/spotify/spotify_search.tsx" afterDir="false" />
+=======
+>>>>>>> main
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -31,21 +42,99 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "artists-fetch",
-    "last_opened_file_path": "/Users/karisma/Desktop/cs0320/term-project-lliong-jma78-kwei8-jli455/back/pom.xml",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
   }
-}]]></component>
+}</component>
+  <component name="RunManager" selected="JUnit.TestCreator.testDelNoCreator">
+    <configuration name="TestCreator.testAddDelCreator" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="s0" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.brown.cs.student.TestCreators.Creators.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.brown.cs.student.TestCreators.Creators" />
+      <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.TestCreators.Creators.TestCreator" />
+      <option name="METHOD_NAME" value="testAddDelCreator" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestCreator.testDelNoCreator" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="s0" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.brown.cs.student.TestCreators.Creators.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.brown.cs.student.TestCreators.Creators" />
+      <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.TestCreators.Creators.TestCreator" />
+      <option name="METHOD_NAME" value="testDelNoCreator" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestCreator.testGetBasicCreator" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="s0" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.brown.cs.student.TestCreators.Creators.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.brown.cs.student.TestCreators.Creators" />
+      <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.TestCreators.Creators.TestCreator" />
+      <option name="METHOD_NAME" value="testGetBasicCreator" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestCreator.testGetCreator" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="s0" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.brown.cs.student.TestCreators.Creators.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.brown.cs.student.TestCreators.Creators" />
+      <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.TestCreators.Creators.TestCreator" />
+      <option name="METHOD_NAME" value="testGetCreator" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestCreator.testSearchCreator" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="s0" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.brown.cs.student.TestCreators.Creators.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.brown.cs.student.TestCreators.Creators" />
+      <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.TestCreators.Creators.TestCreator" />
+      <option name="METHOD_NAME" value="testSearchCreator" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.TestCreator.testDelNoCreator" />
+        <item itemvalue="JUnit.TestCreator.testSearchCreator" />
+        <item itemvalue="JUnit.TestCreator.testAddDelCreator" />
+        <item itemvalue="JUnit.TestCreator.testGetCreator" />
+        <item itemvalue="JUnit.TestCreator.testGetBasicCreator" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -57,7 +146,7 @@
       <workItem from="1701700122956" duration="15000" />
       <workItem from="1701700156775" duration="414000" />
       <workItem from="1701700588082" duration="2808000" />
-      <workItem from="1702501053917" duration="2486000" />
+      <workItem from="1702501053917" duration="21569000" />
     </task>
     <servers />
   </component>

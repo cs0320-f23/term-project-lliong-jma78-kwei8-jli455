@@ -16,7 +16,7 @@ import spark.Route;
 
 public class BusinessHandler implements Route {
 
-  private HashMap<String,YelpApiResponse> scrapedData;
+  private HashMap<String, YelpApiResponse> scrapedData;
 
   @Override
   public Object handle(Request request, Response response) throws Exception {
@@ -32,7 +32,8 @@ public class BusinessHandler implements Route {
         Type listYelp = Types.newParameterizedType(List.class, YelpApiResponse.class);
         JsonAdapter<List<YelpApiResponse>> adapter1 = moshi.adapter(listYelp);
         SearchBusiness searcher = new SearchBusiness();
-        List<YelpApiResponse> filtered = searcher.search(request.queryParams("searchTerm"), this.scrapedData);
+        List<YelpApiResponse> filtered =
+            searcher.search(request.queryParams("searchTerm"), this.scrapedData);
         return adapter1.toJson(filtered);
       }
       return adapter.toJson(this.scrapedData);
