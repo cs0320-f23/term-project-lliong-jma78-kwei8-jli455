@@ -5,6 +5,10 @@
     padding: 10px;
 }
 
+h1{
+    text-align: center;
+}
+/* 
 #header-row{
     display: flex;
 }
@@ -30,4 +34,4 @@
     margin-right: 75%;
     width: 25%;
 }
-
+ */
