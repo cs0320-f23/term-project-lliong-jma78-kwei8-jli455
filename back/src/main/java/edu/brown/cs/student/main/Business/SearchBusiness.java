@@ -8,14 +8,13 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
-
 public class SearchBusiness {
 
   private HashSet<String> cuisines;
   private HashSet<String> groceries;
   private HashSet<String> services;
 
-  private HashMap<String,List<YelpApiResponse>> cache;
+  private HashMap<String, List<YelpApiResponse>> cache;
 
   private List<YelpApiResponse> filteredBus;
 
@@ -25,8 +24,6 @@ public class SearchBusiness {
     this.services.add("photography");
     this.services.add("photo");
     this.services.add("venues");
-
-
 
     this.cuisines = new HashSet<>();
     this.cuisines.add("chinese");
@@ -47,10 +44,9 @@ public class SearchBusiness {
     this.groceries.add("groceries");
     this.groceries.add("international grocery");
     this.groceries.add("supermarket");
-
   }
 
-  public List<YelpApiResponse> search (String term, HashMap<String, YelpApiResponse> map) {
+  public List<YelpApiResponse> search(String term, HashMap<String, YelpApiResponse> map) {
     try {
       term = term.toLowerCase();
       this.filteredBus = new ArrayList<>();
@@ -81,18 +77,16 @@ public class SearchBusiness {
     }
 
     return this.filteredBus;
-
   }
 
-
-  private void generalSearch(HashMap<String,YelpApiResponse> map ,String term) {
-    for (YelpApiResponse response: map.values()) {
+  private void generalSearch(HashMap<String, YelpApiResponse> map, String term) {
+    for (YelpApiResponse response : map.values()) {
       if (response.businesses().size() != 0) {
-        if (response.businesses().get(0).name().toLowerCase().contains(term) || response.businesses().get(0).location().city().toLowerCase().contains(term)) {
+        if (response.businesses().get(0).name().toLowerCase().contains(term)
+            || response.businesses().get(0).location().city().toLowerCase().contains(term)) {
           System.out.println("24524");
           this.filteredBus.add(response);
-        }
-        else {
+        } else {
           for (Category category : response.businesses().get(0).categories()) {
             if (term.contains(category.title().toLowerCase())) {
               System.out.println("23r2t");
@@ -100,20 +94,17 @@ public class SearchBusiness {
             }
           }
         }
-
       }
-
     }
-
   }
 
-  private void getRestos(HashMap<String,YelpApiResponse> map) {
-    for (YelpApiResponse response: map.values()) {
-      if (response.businesses().size()!=0) {
+  private void getRestos(HashMap<String, YelpApiResponse> map) {
+    for (YelpApiResponse response : map.values()) {
+      if (response.businesses().size() != 0) {
         String[] splitName = response.businesses().get(0).name().split(" ");
-        for (String string:splitName) {
+        for (String string : splitName) {
           if (this.cuisines.contains(string.toLowerCase())) {
-            if(!this.filteredBus.contains(response)) {
+            if (!this.filteredBus.contains(response)) {
               this.filteredBus.add(response);
             }
           }
@@ -127,66 +118,56 @@ public class SearchBusiness {
                   this.filteredBus.add(response);
                 }
               }
-
             }
-
           }
-
         }
-
       }
     }
   }
 
-  private void getServices(HashMap<String,YelpApiResponse> map) {
-    for (YelpApiResponse response: map.values()) {
-      if (response.businesses().size()!=0) {
+  private void getServices(HashMap<String, YelpApiResponse> map) {
+    for (YelpApiResponse response : map.values()) {
+      if (response.businesses().size() != 0) {
         String[] splitName = response.businesses().get(0).name().split(" ");
-        for (String string:splitName) {
-          if ((this.services.contains(string.toLowerCase())&& (!this.filteredBus.contains(response)))) {
+        for (String string : splitName) {
+          if ((this.services.contains(string.toLowerCase())
+              && (!this.filteredBus.contains(response)))) {
             this.filteredBus.add(response);
           }
         }
         for (Category category : response.businesses().get(0).categories()) {
           String[] splitCategory = category.title().split(" ");
           for (String string : splitCategory) {
-            if ((this.services.contains(string.toLowerCase()) && (!this.filteredBus.contains(response)) )) {
+            if ((this.services.contains(string.toLowerCase())
+                && (!this.filteredBus.contains(response)))) {
               this.filteredBus.add(response);
             }
-
           }
-
         }
       }
     }
-
   }
 
-  private void getGroceries(HashMap<String,YelpApiResponse> map) {
-    for (YelpApiResponse response: map.values()) {
-      if (response.businesses().size()!=0) {
+  private void getGroceries(HashMap<String, YelpApiResponse> map) {
+    for (YelpApiResponse response : map.values()) {
+      if (response.businesses().size() != 0) {
         String[] splitName = response.businesses().get(0).name().split(" ");
-        for (String string:splitName) {
-          if (this.groceries.contains(string.toLowerCase()) && (!this.filteredBus.contains(response))) {
+        for (String string : splitName) {
+          if (this.groceries.contains(string.toLowerCase())
+              && (!this.filteredBus.contains(response))) {
             this.filteredBus.add(response);
           }
         }
         for (Category category : response.businesses().get(0).categories()) {
           String[] splitCategory = category.title().split(" ");
           for (String string : splitCategory) {
-            if (this.groceries.contains(string.toLowerCase()) && (!this.filteredBus.contains(response))) {
+            if (this.groceries.contains(string.toLowerCase())
+                && (!this.filteredBus.contains(response))) {
               this.filteredBus.add(response);
             }
-
           }
-
         }
       }
     }
-
   }
-
-
-
-
 }
