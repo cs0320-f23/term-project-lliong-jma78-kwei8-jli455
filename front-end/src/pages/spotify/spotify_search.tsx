@@ -152,7 +152,7 @@ export function Search(props: SearchProps) {
   // why does it show and then go back to default songs
 
   function handleSubmitMock() {
-    console.log("hand submit mock");
+    console.log("handle submit mock");
     const songsToDisplay: SongProps[] = [];
 
     // check when there are multiple genres
@@ -243,7 +243,7 @@ export function Search(props: SearchProps) {
       <button
         className="submit-button"
         aria-label="submit button"
-        onClick={() => handleSubmitMock()}
+        onClick={() => handleSubmit()}
       >
         Submit
       </button>

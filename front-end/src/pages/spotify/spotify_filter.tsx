@@ -77,7 +77,7 @@ export function FilterBox(props: FilterProps) {
   function handleSubmit() {
     let url = "http://localhost:323/sortspotify?";
 
-    // if result is error - please search for setof songs before sorting
+    // if result is error - please search for set of songs before sorting
     // result and details field
 
     // otherwise it is result and data with songs
@@ -173,8 +173,12 @@ export function FilterBox(props: FilterProps) {
     // if you don't select any filters, nothing should change right if you click
     // submit button?
     console.log(url);
-
+      // saying to load songs before search even though it should say cannot select two in one category
     // do a catch block for the url to say "please select filters to sort songs"
+
+    // once you have searched songs, you can keep filtering on those
+    // will tell you to load songs the first time you try to filter without selecting
+    // anything! make sure this is the case
   }
 
   return (

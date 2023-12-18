@@ -45,6 +45,7 @@ export const allSongs: SongProps[] = [];
 // will this be necessary if it actually can get all genres from spotify?
 export const allGenres: string[] = all_genres;
 
+// i think it only does default songs
 async function getSongs() {
   const url = "http://localhost:323/spotify";
 
