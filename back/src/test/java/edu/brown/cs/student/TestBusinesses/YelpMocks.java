@@ -12,14 +12,17 @@ import java.util.List;
 
 public class YelpMocks {
 
-  public YelpApiResponse createSampleYelpApiResponse(String name, String review_count, String rating, List<Category> categories) {
-    List<Business> businesses = Arrays.asList(createSampleBusiness(name, review_count, rating, categories));
+  public YelpApiResponse createSampleYelpApiResponse(
+      String name, String review_count, String rating, List<Category> categories) {
+    List<Business> businesses =
+        Arrays.asList(createSampleBusiness(name, review_count, rating, categories));
     int total = 1;
     Region region = createSampleRegion();
     return new YelpApiResponse(businesses, total, region);
   }
 
-  public static Business createSampleBusiness(String name, String review_count, String rating, List<Category> categories) {
+  public static Business createSampleBusiness(
+      String name, String review_count, String rating, List<Category> categories) {
     return new Business(
         "sampleId",
         "sampleAlias",
@@ -36,8 +39,7 @@ public class YelpMocks {
         createSampleLocation(),
         "123-456-7890",
         "123-456-7890",
-        "1.23 miles"
-    );
+        "1.23 miles");
   }
 
   public static Category createSampleCategory() {
@@ -57,8 +59,7 @@ public class YelpMocks {
         "94105",
         "USA",
         "CA",
-        Arrays.asList("123 Main St", "Suite 456", "San Francisco, CA 94105")
-    );
+        Arrays.asList("123 Main St", "Suite 456", "San Francisco, CA 94105"));
   }
 
   public static Region createSampleRegion() {
@@ -68,5 +69,4 @@ public class YelpMocks {
   public static Center createSampleCenter() {
     return new Center(-122.4194, 37.7749);
   }
-
 }

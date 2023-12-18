@@ -4,8 +4,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/** Mock data for current spotify songs */
 public class MockData implements SortingData {
 
+  // Javadocs as per interface
   @Override
   public List<Map<String, Object>> getCurrData() {
     Map<String, Object> song1 = new HashMap<>();

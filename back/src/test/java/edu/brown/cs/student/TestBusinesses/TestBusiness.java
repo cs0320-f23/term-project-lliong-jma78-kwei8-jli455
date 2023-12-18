@@ -11,41 +11,44 @@ import org.testng.Assert;
 
 public class TestBusiness {
 
-
-
   @Test
   public void testSearch() {
-    HashMap<String,YelpApiResponse> map = new HashMap<>();
+    HashMap<String, YelpApiResponse> map = new HashMap<>();
     YelpMocks yelpMocks = new YelpMocks();
 
-    map.put("Hydroflask", yelpMocks.createSampleYelpApiResponse("Hydroflask", "400", "4.0",
-        Arrays.asList(new Category("thai", "thai"))));
-    map.put("Hannah", yelpMocks.createSampleYelpApiResponse("Hannah", "511", "5.0", Arrays.asList(new Category("korean", "korean"))));
+    map.put(
+        "Hydroflask",
+        yelpMocks.createSampleYelpApiResponse(
+            "Hydroflask", "400", "4.0", Arrays.asList(new Category("thai", "thai"))));
+    map.put(
+        "Hannah",
+        yelpMocks.createSampleYelpApiResponse(
+            "Hannah", "511", "5.0", Arrays.asList(new Category("korean", "korean"))));
 
     SearchBusiness searcher = new SearchBusiness();
 
     Assert.assertEquals(1, searcher.search("thai", map).size());
     Assert.assertEquals(0, searcher.search("japanese", map).size());
     Assert.assertEquals(2, searcher.search("restaurants", map).size());
-
   }
 
   @Test
   public void testRank() {
-    HashMap<String,YelpApiResponse> map = new HashMap<>();
+    HashMap<String, YelpApiResponse> map = new HashMap<>();
     YelpMocks yelpMocks = new YelpMocks();
 
-    map.put("Hydroflask", yelpMocks.createSampleYelpApiResponse("Hydroflask", "400", "4.0",
-        Arrays.asList(new Category("thai", "thai"))));
-    map.put("Hannah", yelpMocks.createSampleYelpApiResponse("Hannah", "511", "5.0", Arrays.asList(new Category("korean", "korean"))));
+    map.put(
+        "Hydroflask",
+        yelpMocks.createSampleYelpApiResponse(
+            "Hydroflask", "400", "4.0", Arrays.asList(new Category("thai", "thai"))));
+    map.put(
+        "Hannah",
+        yelpMocks.createSampleYelpApiResponse(
+            "Hannah", "511", "5.0", Arrays.asList(new Category("korean", "korean"))));
 
     BusinessRanker ranker = new BusinessRanker();
 
     Assert.assertEquals(ranker.computeWeightedRank(map.get("Hannah")), 207.9);
     Assert.assertEquals(ranker.computeWeightedRank(map.get("Hydroflask")), 163.0);
-
-
-
   }
-
 }

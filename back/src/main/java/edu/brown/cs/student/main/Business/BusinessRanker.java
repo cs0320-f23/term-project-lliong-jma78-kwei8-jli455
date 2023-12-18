@@ -2,7 +2,6 @@ package edu.brown.cs.student.main.Business;
 
 import edu.brown.cs.student.main.Business.WebScraper.YelpApiResponse;
 import java.util.Comparator;
-import java.util.List;
 
 public class BusinessRanker implements Comparator<YelpApiResponse> {
 
@@ -23,8 +22,6 @@ public class BusinessRanker implements Comparator<YelpApiResponse> {
       System.out.println(e.getMessage());
       return 0.0;
     }
-
-
   }
 
   @Override

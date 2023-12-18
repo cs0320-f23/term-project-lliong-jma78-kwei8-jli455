@@ -3,10 +3,10 @@ package edu.brown.cs.student.main.Server.Handlers;
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 import com.squareup.moshi.Types;
+import edu.brown.cs.student.main.Creators.Spotify.Recommendations.SpotifyCreators;
 import edu.brown.cs.student.main.Creators.Spotify.Recommendations.SpotifyData;
 import edu.brown.cs.student.main.Creators.Spotify.Recommendations.SpotifyMock;
 import edu.brown.cs.student.main.Creators.Spotify.SpotifyAccess;
-import edu.brown.cs.student.main.Creators.Spotify.Recommendations.SpotifyCreators;
 import edu.brown.cs.student.main.Creators.Spotify.VerifyGenres.SpotifyGenre;
 import edu.brown.cs.student.main.Creators.Spotify.VerifyGenres.SpotifyGenreMock;
 import edu.brown.cs.student.main.Creators.Spotify.VerifyGenres.SpotifyValidGenres;
@@ -25,18 +25,33 @@ import spark.Request;
 import spark.Response;
 import spark.Route;
 
+/** Class to handle standard spotify data requests */
 public class SpotifyHandler implements Route {
 
   private String[] reqGenres;
   private SpotifyGenre spotifyGenreCheck;
   private SpotifyData spotify;
 
+  /**
+   * Standard constructor
+   *
+   * @throws IOException Issue with request
+   * @throws ParseException Issue with parsing request
+   * @throws SpotifyWebApiException Backend issue with wrapped object
+   */
   public SpotifyHandler() throws IOException, ParseException, SpotifyWebApiException {
     SpotifyApi internalApi = new SpotifyAccess().getSpotifyApi();
     this.spotify = new SpotifyCreators(internalApi);
     this.spotifyGenreCheck = new SpotifyValidGenres(internalApi);
   }
 
+  /**
+   * Constructor that enables acceptance of mocks
+   *
+   * @throws IOException Issue with request
+   * @throws ParseException Issue with parsing request
+   * @throws SpotifyWebApiException Backend issue with wrapped object
+   */
   public SpotifyHandler(Boolean mock) throws IOException, ParseException, SpotifyWebApiException {
     if (mock) {
       this.spotify = new SpotifyMock();
@@ -53,6 +68,14 @@ public class SpotifyHandler implements Route {
   static final Pattern regexSplitCSVRow =
       Pattern.compile(",(?=([^\\\"]*\\\"[^\\\"]*\\\")*(?![^\\\"]*\\\"))");
 
+  /**
+   * Dispatch various endpoint requests
+   *
+   * @param request user request
+   * @param response response parameter
+   * @return json object containing requested data
+   * @throws IOException issue parsing request
+   */
   @Override
   public Object handle(Request request, Response response) {
     Moshi moshi = new Moshi.Builder().build();
@@ -86,7 +109,8 @@ public class SpotifyHandler implements Route {
     } else {
       this.reqGenres = regexSplitCSVRow.split(request.queryParams("genres"));
       List<String> reqGenList = Arrays.asList(this.reqGenres);
-      Map<String, List<String>> checkedGens = this.spotifyGenreCheck.checkAvailableGenres(reqGenList);
+      Map<String, List<String>> checkedGens =
+          this.spotifyGenreCheck.checkAvailableGenres(reqGenList);
       List<String> validGens = checkedGens.get("valid");
       List<String> invalidGens = checkedGens.get("invalid");
       responseMap.put("invalidgenres", invalidGens);
@@ -97,8 +121,7 @@ public class SpotifyHandler implements Route {
         responseMap.put("details", "no valid genres requested");
         return adapter.toJson(responseMap);
       } else if (reqNum == null) {
-        List<Map<String, Object>> retrievedSongs =
-            spotify.getRecommendations_Sync(10, validGens);
+        List<Map<String, Object>> retrievedSongs = spotify.getRecommendations_Sync(10, validGens);
         responseMap.put("data", retrievedSongs);
         Server.setCurrSongs(retrievedSongs);
       } else {

@@ -1,4 +1,4 @@
-package edu.brown.cs.student.TestCreators.Mocks;
+package edu.brown.cs.student.TestCreators.Spotify;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -27,9 +27,7 @@ import spark.Spark;
 public class TestSpotify {
   private static JsonAdapter<Map<String, Object>> adapter;
 
-  /**
-   * Creates a port and Moshi.
-   */
+  /** Creates a port and Moshi. */
   @BeforeAll
   public static void setupOnce() {
     Spark.port(100);
@@ -38,9 +36,7 @@ public class TestSpotify {
     adapter = moshi.adapter(mapStringObject);
   }
 
-  /**
-   * Sets up mock handlers
-   */
+  /** Sets up mock handlers */
   @BeforeEach
   public void setup() throws IOException, ParseException, SpotifyWebApiException {
     Spark.get("spotify", new SpotifyHandler(true));
@@ -49,9 +45,7 @@ public class TestSpotify {
     Spark.awaitInitialization();
   }
 
-  /**
-   * Gracefully tears down the port.
-   */
+  /** Gracefully tears down the port. */
   @AfterEach
   public void teardown() {
     // Gracefully stop Spark listening on both endpoints
@@ -62,7 +56,7 @@ public class TestSpotify {
 
   /**
    * Shuts down thread.
-
+   *
    * @throws InterruptedException if interrupted
    */
   @AfterAll
@@ -73,7 +67,7 @@ public class TestSpotify {
 
   /**
    * Helper to start a connection to a specific API endpoint/params
-
+   *
    * @param apiCall the call string, including endpoint (NOTE: this would be better if it had more
    *     structure!)
    * @return the connection for the given URL, just after connecting
@@ -95,15 +89,14 @@ public class TestSpotify {
    */
   @Test
   public void testBasicResponse() throws IOException {
-    HttpURLConnection clientConnection =
-        tryRequest("spotify");
+    HttpURLConnection clientConnection = tryRequest("spotify");
     assertEquals(200, clientConnection.getResponseCode());
 
     Map<String, Object> body =
         adapter.fromJson(new Buffer().readFrom(clientConnection.getInputStream()));
 
     assertEquals("success", body.get("result"));
-    assertEquals(List.of("indian", "k-pop", "mandopop"), body.get("validgenres"));
+    assertEquals(List.of("indian", "j-pop", "mandopop"), body.get("validgenres"));
     assertTrue(body.get("data").toString().contains("2:06"));
     assertTrue(body.get("data").toString().contains("Kuch Kuch Hota Hai"));
     assertTrue(body.get("data").toString().contains("215280.0"));
@@ -111,15 +104,13 @@ public class TestSpotify {
   }
 
   /**
-   * Tests that the numsongs criteria will return a well-formatted error
-   * if request isn't a number
+   * Tests that the numsongs criteria will return a well-formatted error if request isn't a number
    *
    * @throws IOException Issue connecting to server or processing results
    */
   @Test
   public void testNumResponseError() throws IOException {
-    HttpURLConnection clientConnection =
-        tryRequest("spotify?numsongs=hi");
+    HttpURLConnection clientConnection = tryRequest("spotify?numsongs=hi");
     assertEquals(200, clientConnection.getResponseCode());
 
     Map<String, Object> body =
@@ -137,15 +128,14 @@ public class TestSpotify {
    */
   @Test
   public void testNumResponse() throws IOException {
-    HttpURLConnection clientConnection =
-        tryRequest("spotify?numsongs=3");
+    HttpURLConnection clientConnection = tryRequest("spotify?numsongs=3");
     assertEquals(200, clientConnection.getResponseCode());
 
     Map<String, Object> body =
         adapter.fromJson(new Buffer().readFrom(clientConnection.getInputStream()));
 
     assertEquals("success", body.get("result"));
-    assertEquals(List.of("indian", "k-pop", "mandopop"), body.get("validgenres"));
+    assertEquals(List.of("indian", "j-pop", "mandopop"), body.get("validgenres"));
     assertTrue(body.get("data").toString().contains("2:06"));
     assertTrue(body.get("data").toString().contains("Kuch Kuch Hota Hai"));
     assertTrue(body.get("data").toString().contains("215280.0"));
@@ -159,8 +149,7 @@ public class TestSpotify {
    */
   @Test
   public void testGenreResponse() throws IOException {
-    HttpURLConnection clientConnection =
-        tryRequest("spotify?genres=nope,k-pop");
+    HttpURLConnection clientConnection = tryRequest("spotify?genres=nope,k-pop");
     assertEquals(200, clientConnection.getResponseCode());
 
     Map<String, Object> body =
@@ -182,8 +171,7 @@ public class TestSpotify {
    */
   @Test
   public void testGenreNumResponse() throws IOException {
-    HttpURLConnection clientConnection =
-        tryRequest("spotify?genres=nope,k-pop&&numsongs=3");
+    HttpURLConnection clientConnection = tryRequest("spotify?genres=nope,k-pop&&numsongs=3");
     assertEquals(200, clientConnection.getResponseCode());
 
     Map<String, Object> body =
@@ -205,8 +193,7 @@ public class TestSpotify {
    */
   @Test
   public void testSortAscendingPop() throws IOException {
-    HttpURLConnection clientConnection =
-        tryRequest("sortspotify?popularity=ascending");
+    HttpURLConnection clientConnection = tryRequest("sortspotify?popularity=ascending");
     assertEquals(200, clientConnection.getResponseCode());
 
     Map<String, Object> body =
@@ -227,8 +214,7 @@ public class TestSpotify {
    */
   @Test
   public void testSortDescendingPop() throws IOException {
-    HttpURLConnection clientConnection =
-        tryRequest("sortspotify?popularity=descending");
+    HttpURLConnection clientConnection = tryRequest("sortspotify?popularity=descending");
     assertEquals(200, clientConnection.getResponseCode());
 
     Map<String, Object> body =
@@ -249,8 +235,7 @@ public class TestSpotify {
    */
   @Test
   public void testSortAscendingDur() throws IOException {
-    HttpURLConnection clientConnection =
-        tryRequest("sortspotify?duration=ascending");
+    HttpURLConnection clientConnection = tryRequest("sortspotify?duration=ascending");
     assertEquals(200, clientConnection.getResponseCode());
 
     Map<String, Object> body =
@@ -271,8 +256,7 @@ public class TestSpotify {
    */
   @Test
   public void testSortDescendingDur() throws IOException {
-    HttpURLConnection clientConnection =
-        tryRequest("sortspotify?duration=descending");
+    HttpURLConnection clientConnection = tryRequest("sortspotify?duration=descending");
     assertEquals(200, clientConnection.getResponseCode());
 
     Map<String, Object> body =
@@ -287,9 +271,9 @@ public class TestSpotify {
   }
 
   /**
-   * Tests that both criteria can be filtered on at once, with weights as set by
-   * the developer. This is a meaningful test because neither duration nor popularity
-   * take precedence – we weight between the two.
+   * Tests that both criteria can be filtered on at once, with weights as set by the developer. This
+   * is a meaningful test because neither duration nor popularity take precedence – we weight
+   * between the two.
    *
    * @throws IOException Issue connecting to server or processing results
    */
@@ -309,5 +293,4 @@ public class TestSpotify {
     assertTrue(dataStr.indexOf("紅糖水") < dataStr.indexOf("The Boys"));
     clientConnection.disconnect();
   }
-
 }

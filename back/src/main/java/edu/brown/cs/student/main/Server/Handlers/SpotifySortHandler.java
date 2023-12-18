@@ -7,7 +7,7 @@ import edu.brown.cs.student.main.Creators.Spotify.Sorting.MockData;
 import edu.brown.cs.student.main.Creators.Spotify.Sorting.ServerData;
 import edu.brown.cs.student.main.Creators.Spotify.Sorting.SortingData;
 import edu.brown.cs.student.main.Creators.Spotify.Sorting.SpotifySorting;
-import edu.brown.cs.student.main.Server.Server;
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.List;
@@ -20,11 +20,16 @@ public class SpotifySortHandler implements Route {
   private SortingData dataStore;
   private List<Map<String, Object>> toSort = null;
 
+  /** Standard constructor */
   public SpotifySortHandler() {
     this.dataStore = new ServerData();
   }
 
-
+  /**
+   * Constructor for sorting mocks
+   *
+   * @param mock
+   */
   public SpotifySortHandler(Boolean mock) {
     if (mock) {
       this.dataStore = new MockData();
@@ -33,6 +38,14 @@ public class SpotifySortHandler implements Route {
     }
   }
 
+  /**
+   * Dispatch various endpoint requests
+   *
+   * @param request user request
+   * @param response response parameter
+   * @return json object containing requested data
+   * @throws IOException issue parsing request
+   */
   @Override
   public Object handle(Request request, Response response) {
     Moshi moshi = new Moshi.Builder().build();
@@ -65,5 +78,4 @@ public class SpotifySortHandler implements Route {
     responseMap.put("result", "success");
     return adapter.toJson(responseMap);
   }
-
 }

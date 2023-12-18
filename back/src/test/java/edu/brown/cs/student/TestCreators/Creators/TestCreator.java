@@ -1,42 +1,31 @@
-package edu.brown.cs.student.TestCreators.Real;
+package edu.brown.cs.student.TestCreators.Creators;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 import com.squareup.moshi.Types;
-import edu.brown.cs.student.main.Server.Handlers.SpotifyHandler;
-import edu.brown.cs.student.main.Server.Handlers.SpotifySortHandler;
+import edu.brown.cs.student.main.Server.Handlers.CreatorHandler;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.List;
 import java.util.Map;
 import okio.Buffer;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.hc.core5.http.ParseException;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import spark.Spark;
 
-/**
- * Testing class for Spotify API Calls
- * Note that these tests are necessarily minimal –
- * the Spotify API is *very* rate-limited
- */
-public class TestSpotifyData {
+public class TestCreator {
+
   private static JsonAdapter<Map<String, Object>> adapter;
 
-  /**
-   * Creates a port and Moshi.
-   */
+  /** Creates a port and Moshi. */
   @BeforeAll
   public static void setupOnce() {
     Spark.port(100);
@@ -45,31 +34,25 @@ public class TestSpotifyData {
     adapter = moshi.adapter(mapStringObject);
   }
 
-  /**
-   * Sets up mock handlers
-   */
+  /** Sets up mock handlers */
   @BeforeEach
-  public void setup() throws IOException, ParseException, SpotifyWebApiException {
-    Spark.get("spotify", new SpotifyHandler());
-    Spark.get("sortspotify", new SpotifySortHandler());
+  public void setup() {
+    Spark.get("creators", new CreatorHandler("data/MockData.csv"));
     Spark.init();
     Spark.awaitInitialization();
   }
 
-  /**
-   * Gracefully tears down the port.
-   */
+  /** Gracefully tears down the port. */
   @AfterEach
   public void teardown() {
     // Gracefully stop Spark listening on both endpoints
-    Spark.unmap("spotify");
-    Spark.unmap("sortspotify");
+    Spark.unmap("creators");
     Spark.awaitStop(); // don't proceed until the server is stopped
   }
 
   /**
    * Shuts down thread.
-
+   *
    * @throws InterruptedException if interrupted
    */
   @AfterAll
@@ -80,7 +63,7 @@ public class TestSpotifyData {
 
   /**
    * Helper to start a connection to a specific API endpoint/params
-
+   *
    * @param apiCall the call string, including endpoint (NOTE: this would be better if it had more
    *     structure!)
    * @return the connection for the given URL, just after connecting
@@ -96,88 +79,107 @@ public class TestSpotifyData {
   }
 
   /**
-   * Tests that the basic endpoint will return data by default
+   * Tests that creators can be retrieved
    *
    * @throws IOException Issue connecting to server or processing results
    */
   @Test
-  public void testBasicResponse() throws IOException {
-    HttpURLConnection clientConnection =
-        tryRequest("spotify");
+  public void testGetCreator() throws IOException {
+    HttpURLConnection clientConnection = tryRequest("creators");
     assertEquals(200, clientConnection.getResponseCode());
 
     Map<String, Object> body =
         adapter.fromJson(new Buffer().readFrom(clientConnection.getInputStream()));
 
     assertEquals("success", body.get("result"));
-    assertEquals(List.of("indian", "j-pop", "mandopop"), body.get("validgenres"));
-    Integer appearances = StringUtils.countMatches(body.get("data").toString(), "duration");
-    assertEquals(30, appearances);
+    assertTrue(body.get("data").toString().contains("Chun Wai Chan"));
+    assertFalse(body.get("data").toString().contains("null"));
+
     clientConnection.disconnect();
   }
 
   /**
-   * Tests that the numsongs criteria can be customised
+   * Tests that creators can be added and deleted
    *
    * @throws IOException Issue connecting to server or processing results
    */
   @Test
-  public void testNumResponse() throws IOException {
+  public void testAddDelCreator() throws IOException {
     HttpURLConnection clientConnection =
-        tryRequest("spotify?numsongs=3");
+        tryRequest("creators?action=add&&name=Karis&&description=help%20me");
     assertEquals(200, clientConnection.getResponseCode());
 
     Map<String, Object> body =
         adapter.fromJson(new Buffer().readFrom(clientConnection.getInputStream()));
 
     assertEquals("success", body.get("result"));
-    assertEquals(List.of("indian", "j-pop", "mandopop"), body.get("validgenres"));
-    Integer appearances = StringUtils.countMatches(body.get("data").toString(), "duration");
-    assertEquals(9, appearances);
+    String foundID = body.get("ID").toString().substring(0, 3);
+
+    HttpURLConnection clientConnection1 = tryRequest("creators");
+    assertEquals(200, clientConnection1.getResponseCode());
+
+    Map<String, Object> body1 =
+        adapter.fromJson(new Buffer().readFrom(clientConnection1.getInputStream()));
+
+    assertEquals("success", body1.get("result"));
+    assertTrue(body1.get("data").toString().contains("Chun Wai Chan"));
+    assertFalse(body1.get("data").toString().contains("null"));
+    assertTrue(body1.get("data").toString().contains("Karis"));
+    assertTrue(body1.get("data").toString().contains("help me"));
+
+    HttpURLConnection clientConnection2 = tryRequest("creators?action=delete&&id=" + foundID);
+    assertEquals(200, clientConnection2.getResponseCode());
+
+    Map<String, Object> body2 =
+        adapter.fromJson(new Buffer().readFrom(clientConnection2.getInputStream()));
+
+    assertEquals("success", body2.get("result"));
+    assertEquals("successfully deleted " + foundID, body2.get("details"));
+
+    clientConnection.disconnect();
+    clientConnection1.disconnect();
+    clientConnection2.disconnect();
+  }
+
+  /**
+   * Tests that relevant error is reported upon delete of nonexistent creator
+   *
+   * @throws IOException Issue connecting to server or processing results
+   */
+  @Test
+  public void testDelNoCreator() throws IOException {
+    HttpURLConnection clientConnection = tryRequest("creators?action=delete&&id=0");
+    assertEquals(200, clientConnection.getResponseCode());
+
+    Map<String, Object> body =
+        adapter.fromJson(new Buffer().readFrom(clientConnection.getInputStream()));
+
+    assertEquals("error", body.get("result"));
+    assertEquals("id provided was not found", body.get("details"));
     clientConnection.disconnect();
   }
 
   /**
-   * Tests that the genre criteria can be customised
+   * Tests that creators can be searched in order
    *
    * @throws IOException Issue connecting to server or processing results
    */
   @Test
-  public void testGenreResponse() throws IOException {
-    HttpURLConnection clientConnection =
-        tryRequest("spotify?genres=nope,j-pop");
+  public void testSearchCreator() throws IOException {
+    HttpURLConnection clientConnection = tryRequest("creators?action=search&&searchterm=dancer");
     assertEquals(200, clientConnection.getResponseCode());
 
     Map<String, Object> body =
         adapter.fromJson(new Buffer().readFrom(clientConnection.getInputStream()));
 
     assertEquals("success", body.get("result"));
-    assertEquals(List.of("j-pop"), body.get("validgenres"));
-    assertEquals(List.of("nope"), body.get("invalidgenres"));
-    Integer appearances = StringUtils.countMatches(body.get("data").toString(), "duration");
-    assertEquals(10, appearances);
-    clientConnection.disconnect();
-  }
+    String dataStr = body.get("data").toString();
+    assertTrue(dataStr.indexOf("DanCer") < dataStr.indexOf("178"));
+    assertTrue(dataStr.indexOf("178") < dataStr.indexOf("902"));
+    assertTrue(dataStr.indexOf("902") < dataStr.indexOf("319"));
+    assertTrue(dataStr.indexOf("319") < dataStr.indexOf("848"));
+    assertFalse(body.get("data").toString().contains("Yayoi"));
 
-  /**
-   * Tests that the number and genre criteria can be combined
-   *
-   * @throws IOException Issue connecting to server or processing results
-   */
-  @Test
-  public void testGenreNumResponse() throws IOException {
-    HttpURLConnection clientConnection =
-        tryRequest("spotify?genres=nope,j-pop,country&&numsongs=3");
-    assertEquals(200, clientConnection.getResponseCode());
-
-    Map<String, Object> body =
-        adapter.fromJson(new Buffer().readFrom(clientConnection.getInputStream()));
-
-    assertEquals("success", body.get("result"));
-    assertEquals(List.of("j-pop", "country"), body.get("validgenres"));
-    assertEquals(List.of("nope"), body.get("invalidgenres"));
-    Integer appearances = StringUtils.countMatches(body.get("data").toString(), "duration");
-    assertEquals(6, appearances);
     clientConnection.disconnect();
   }
 }

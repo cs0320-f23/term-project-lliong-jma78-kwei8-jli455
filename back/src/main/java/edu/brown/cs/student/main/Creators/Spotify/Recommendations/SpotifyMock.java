@@ -4,11 +4,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/** Mock data for spotify song recommendations */
 public class SpotifyMock implements SpotifyData {
 
+  // Javadocs as in interface
   @Override
-  public List<Map<String, Object>> getRecommendations_Sync(Integer numSongs,
-      List<String> reqGenres) {
+  public List<Map<String, Object>> getRecommendations_Sync(
+      Integer numSongs, List<String> reqGenres) {
     Map<String, Object> song1 = new HashMap<>();
     song1.put("duration", "2:06");
     song1.put("artists", List.of("Alka Yagnik", "Shankar Mahadevan"));

@@ -5,8 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/** Mock response for genre checker */
 public class SpotifyGenreMock implements SpotifyGenre {
 
+  // Javadocs as per interface
   @Override
   public Map<String, List<String>> checkAvailableGenres(List<String> toCheck) {
     Map<String, List<String>> retMap = new HashMap<>();
@@ -15,7 +17,7 @@ public class SpotifyGenreMock implements SpotifyGenre {
     if (toCheck.size() < 2) {
       validList.add(toCheck.get(0));
     } else {
-      for (int i = 0; i < toCheck.size(); i ++) {
+      for (int i = 0; i < toCheck.size(); i++) {
         if (i == 0) {
           invalidList.add(toCheck.get(i));
         } else {
