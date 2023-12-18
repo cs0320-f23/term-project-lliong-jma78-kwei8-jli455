@@ -30,7 +30,7 @@ import { DeleteCreator } from "./pages/creators/delete_creator";
 export default function App() {
   return (
     <div className="App">
-        <BrowserRouter>
+      {/* <BrowserRouter>
           <DropDownNav/>
           <Routes>
               <Route path="/home" element={<Home/>}/>
