@@ -93,9 +93,6 @@ async function getSongs() {
     .catch((error) => console.log("error"));
 }
 
-//export const allSongs: SongProps[] = [];
-//export const allGenres: string[] = [];
-
 export function getMockSongs(props: SpotifyPageProps) {
   const songArray = small_song_dataset;
 
@@ -131,6 +128,9 @@ export function getMockSongs(props: SpotifyPageProps) {
   return allSongs;
 }
 
+//export const allSongs: SongProps[] = [];
+//export const allGenres: string[] = [];
+
 export function SpotifySongs(props: SpotifyPageProps) {
   const songsRef = useRef(false);
 
@@ -140,23 +140,24 @@ export function SpotifySongs(props: SpotifyPageProps) {
   //   }
   // });
 
-  // useEffect(() => {
-  //   if (songsRef.current) return;
-  //   songsRef.current = true;
-  //   getSongs().then((response) => {
-  //     if (response != undefined) {
-  //       props.setSongs(response);
-  //     }
-  //   }),
-  //     [];
-  // });
-
   useEffect(() => {
-    console.log("use effect");
+    console.log("use effect spotify contents");
     if (songsRef.current) return;
     songsRef.current = true;
-    props.setSongs(getMockSongs(props)), [];
+    getSongs().then((response) => {
+      if (response != undefined) {
+        props.setSongs(response);
+      }
+    }),
+      [];
   });
+
+  // useEffect(() => {
+  //   console.log("use effect");
+  //   if (songsRef.current) return;
+  //   songsRef.current = true;
+  //   props.setSongs(getMockSongs(props)), [];
+  // });
 
   // probably need to do checking to make sure it is correct type when actually fetching from api
 

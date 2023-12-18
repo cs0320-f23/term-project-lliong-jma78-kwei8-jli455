@@ -152,6 +152,7 @@ export function Search(props: SearchProps) {
   // why does it show and then go back to default songs
 
   function handleSubmitMock() {
+    console.log("hand submit mock");
     const songsToDisplay: SongProps[] = [];
 
     // check when there are multiple genres

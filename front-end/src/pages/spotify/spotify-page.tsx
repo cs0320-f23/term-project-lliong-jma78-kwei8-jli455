@@ -19,7 +19,7 @@ export function SpotifyPage() {
       <br></br>
       <br></br>
       <div className="spotify-content">
-        <FilterBox />
+        <FilterBox setSongs={setSongs} />
 
         <div className="right-component">
           <SpotifySongs songs={songs} setSongs={setSongs} />

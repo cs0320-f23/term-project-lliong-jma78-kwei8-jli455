@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { SongProps } from "./single_song";
 
 // options:
 // sort by most popular to least popular and vice versa
@@ -11,7 +12,37 @@ import React, { useState } from "react";
 // popularity and one duration
 
 // submit button for calling handlers?
-export function FilterBox() {
+
+interface FilterProps {
+  setSongs: React.Dispatch<React.SetStateAction<SongProps[]>>;
+}
+
+interface jsonSpotifyResponse {
+  result: string;
+}
+
+interface jsonSpotifyResponseWithData {
+  result: string;
+  data: Array<Map<string, object>>;
+}
+
+function isSpotifyResponse(rjson: any): rjson is jsonSpotifyResponse {
+  if (!("result" in rjson)) return false;
+  return true;
+}
+
+function isSpotifyResponseWithData(
+  rjson: any
+): rjson is jsonSpotifyResponseWithData {
+  if (!("result" in rjson)) return false;
+  if (!("data" in rjson)) return false;
+  if (!(rjson["result"] === "success")) {
+    return false;
+  }
+  return true;
+}
+
+export function FilterBox(props: FilterProps) {
   const [checkedLToMPopular, setCheckedLToMPopular] = useState<boolean>(false);
   const [checkedMToLPopular, setCheckedMToLPopular] = useState<boolean>(false);
   const [checkedSToLDuration, setCheckedSToLDuration] =
@@ -45,6 +76,11 @@ export function FilterBox() {
 
   function handleSubmit() {
     let url = "http://localhost:323/sortspotify?";
+
+    // if result is error - please search for setof songs before sorting
+    // result and details field
+
+    // otherwise it is result and data with songs
 
     if (checkedLToMPopular && checkedMToLPopular) {
       console.log("cannot do both");
@@ -88,14 +124,58 @@ export function FilterBox() {
       }
     }
 
-    //fetch(url)
+    fetch(url)
+      .then((response: Response) => response.json())
+      .then((json) => {
+        if (!isSpotifyResponse(json)) {
+          console.log("not a json spotify filter");
+        } else {
+          if (json.result == "error") {
+            setMessage("Please load songs before sorting. Do a new search!");
+          }
+          if (!isSpotifyResponseWithData(json)) {
+            console.log("not a json with data");
+          } else {
+            const songsToDisplay: SongProps[] = [];
+            const data = json.data;
+
+            for (let i = 0; i < data.length; i++) {
+              const songMap = data[i];
+
+              const songName: string = songMap["name"];
+              const songArtistsArray: string[] = songMap["artists"];
+              const songArtists: string = songArtistsArray.join();
+
+              const songAlbum: string = songMap["album"];
+              const songDuration: number = songMap["duration"];
+              const songPopularity: number = songMap["popularity"];
+              const songGenre: string = songMap["genre"];
+
+              const song: SongProps = {
+                name: songName,
+                artists: songArtists,
+                album: songAlbum,
+                duration: songDuration,
+                popularity: songPopularity,
+                genre: songGenre,
+              };
+
+              songsToDisplay.push(song);
+            }
+            props.setSongs(songsToDisplay);
+          }
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        setMessage("Only select one box in each category");
+      });
     // if you don't select any filters, nothing should change right if you click
     // submit button?
     console.log(url);
 
     // do a catch block for the url to say "please select filters to sort songs"
   }
-
 
   return (
     <div className="filter-box">
