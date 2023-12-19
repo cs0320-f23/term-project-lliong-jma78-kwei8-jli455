@@ -41,9 +41,6 @@ function isSpotifyResponse(rjson: any): rjson is jsonSpotifyResponse {
 
 // array for all default songs
 export const allSongs: SongProps[] = [];
-// array for all genres
-// will this be necessary if it actually can get all genres from spotify?
-export const allGenres: string[] = all_genres;
 
 // i think it only does default songs
 async function getSongs() {
@@ -57,38 +54,31 @@ async function getSongs() {
         console.log("not a valid response");
       } else {
         const data = json.data;
-        const genres = json.validgenres;
 
-        if (genres == undefined) {
-          console.log("no songs loaded");
-        } else {
-          genres.forEach((val) => allGenres.push(val));
+        for (let i = 0; i < data.length; i++) {
+          const songMap = data[i];
 
-          for (let i = 0; i < data.length; i++) {
-            const songMap = data[i];
+          const songName: string = songMap["name"];
+          const songArtistsArray: string[] = songMap["artists"];
+          const songArtists: string = songArtistsArray.join();
 
-            const songName: string = songMap["name"];
-            const songArtistsArray: string[] = songMap["artists"];
-            const songArtists: string = songArtistsArray.join();
+          const songAlbum: string = songMap["album"];
+          const songDuration: number = songMap["duration"];
+          const songPopularity: number = songMap["popularity"];
+          const songGenre: string = songMap["genre"];
 
-            const songAlbum: string = songMap["album"];
-            const songDuration: number = songMap["duration"];
-            const songPopularity: number = songMap["popularity"];
-            const songGenre: string = songMap["genre"];
+          const song: SongProps = {
+            name: songName,
+            artists: songArtists,
+            album: songAlbum,
+            duration: songDuration,
+            popularity: songPopularity,
+            genre: songGenre,
+          };
 
-            const song: SongProps = {
-              name: songName,
-              artists: songArtists,
-              album: songAlbum,
-              duration: songDuration,
-              popularity: songPopularity,
-              genre: songGenre,
-            };
-
-            allSongs.push(song);
-          }
-          return allSongs;
+          allSongs.push(song);
         }
+        return allSongs;
       }
     })
     .catch((error) => console.log("error"));

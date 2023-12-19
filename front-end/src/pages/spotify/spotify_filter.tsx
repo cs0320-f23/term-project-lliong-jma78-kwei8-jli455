@@ -121,59 +121,61 @@ export function FilterBox(props: FilterProps) {
             }
           }
         }
+
+        fetch(url)
+          .then((response: Response) => response.json())
+          .then((json) => {
+            if (!isSpotifyResponse(json)) {
+              console.log("not a json spotify filter");
+            } else {
+              if (json.result == "error") {
+                setMessage(
+                  "Please load songs before sorting. Do a new search!"
+                );
+              }
+              if (!isSpotifyResponseWithData(json)) {
+                console.log("not a json with data");
+              } else {
+                const songsToDisplay: SongProps[] = [];
+                const data = json.data;
+
+                for (let i = 0; i < data.length; i++) {
+                  const songMap = data[i];
+
+                  const songName: string = songMap["name"];
+                  const songArtistsArray: string[] = songMap["artists"];
+                  const songArtists: string = songArtistsArray.join();
+
+                  const songAlbum: string = songMap["album"];
+                  const songDuration: number = songMap["duration"];
+                  const songPopularity: number = songMap["popularity"];
+                  const songGenre: string = songMap["genre"];
+
+                  const song: SongProps = {
+                    name: songName,
+                    artists: songArtists,
+                    album: songAlbum,
+                    duration: songDuration,
+                    popularity: songPopularity,
+                    genre: songGenre,
+                  };
+
+                  songsToDisplay.push(song);
+                }
+                props.setSongs(songsToDisplay);
+              }
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+            setMessage("Only select one box in each category");
+          });
       }
     }
-
-    fetch(url)
-      .then((response: Response) => response.json())
-      .then((json) => {
-        if (!isSpotifyResponse(json)) {
-          console.log("not a json spotify filter");
-        } else {
-          if (json.result == "error") {
-            setMessage("Please load songs before sorting. Do a new search!");
-          }
-          if (!isSpotifyResponseWithData(json)) {
-            console.log("not a json with data");
-          } else {
-            const songsToDisplay: SongProps[] = [];
-            const data = json.data;
-
-            for (let i = 0; i < data.length; i++) {
-              const songMap = data[i];
-
-              const songName: string = songMap["name"];
-              const songArtistsArray: string[] = songMap["artists"];
-              const songArtists: string = songArtistsArray.join();
-
-              const songAlbum: string = songMap["album"];
-              const songDuration: number = songMap["duration"];
-              const songPopularity: number = songMap["popularity"];
-              const songGenre: string = songMap["genre"];
-
-              const song: SongProps = {
-                name: songName,
-                artists: songArtists,
-                album: songAlbum,
-                duration: songDuration,
-                popularity: songPopularity,
-                genre: songGenre,
-              };
-
-              songsToDisplay.push(song);
-            }
-            props.setSongs(songsToDisplay);
-          }
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        setMessage("Only select one box in each category");
-      });
     // if you don't select any filters, nothing should change right if you click
     // submit button?
     console.log(url);
-      // saying to load songs before search even though it should say cannot select two in one category
+    // saying to load songs before search even though it should say cannot select two in one category
     // do a catch block for the url to say "please select filters to sort songs"
 
     // once you have searched songs, you can keep filtering on those

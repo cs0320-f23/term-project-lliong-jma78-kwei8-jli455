@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Search } from "react-router-dom";
-import { allSongs, allGenres } from "./spotify_contents";
+import { allSongs } from "./spotify_contents";
 import { Searchbar, NumberInput } from "./spotify_search_bar";
 import { SongProps } from "./single_song";
 
@@ -43,7 +43,7 @@ interface jsonSpotifyResponseSuccessful {
   // is this the right type?
 
   data: Array<Map<string, object>>;
-  invalidgenres: string[];
+  invalidgenres: string[] | undefined;
   validgenres: string[];
 }
 
@@ -60,7 +60,6 @@ function isSpotifyResponseSuccessful(
   if (!("result" in rjson)) return false;
   if (!("data" in rjson)) return false;
   if (!("validgenres" in rjson)) return false;
-  if (!("invalidgenres" in rjson)) return false;
   if (!(rjson["result"] === "success")) {
     return false;
   }
@@ -81,6 +80,12 @@ export function Search(props: SearchProps) {
   // what to do if person enters genres incorrectly
   // put a message that says enter multiple genres with comma in between?
 
+  // what about genres that do not exist? this should search for all genres?
+
+  // seems that filter is not updated? like i can search and it will filter on the previous
+
+  // note somewhere that num songs returns number of songs per genre
+  // also make sure that you are adding commas in between multiple songs?
   function handleSubmit() {
     console.log("handling submit");
     const songsToDisplay: SongProps[] = [];
@@ -89,12 +94,14 @@ export function Search(props: SearchProps) {
 
     if (commandString) {
       url = url + "?genres=" + commandString;
+      if (numCommandString) {
+        url = url + "&&numsongs=" + numCommandString;
+      }
+    } else {
+      url = url + "?numsongs=" + numCommandString;
     }
-
-    // do case where there is a number but not command string
-    if (numCommandString) {
-      url = url + "&&numsongs=" + numCommandString;
-    }
+    // num songs seems to return one of each genre?
+    // backend seems to be a little buggy
 
     console.log(url);
 
@@ -105,14 +112,31 @@ export function Search(props: SearchProps) {
           console.log(json);
           console.log("not a json spotify search");
         } else {
+          // should be if genre does not exist or number of songs is not an integer
           if (json.result == "error") {
             setMessage(
               "Please check that the genre entered is valid and that the number of songs is an integer value!"
             );
+            setCommandString("");
+            setNumCommandString("");
             // do case where one of the genres is incorrect
+
+            if (
+              json.invalidgenres != undefined &&
+              json.invalidgenres.length > 0
+            ) {
+              setMessage(
+                "Please check that all genres entered are valid and in the proper format! Hint: Separate songs with a comma and no spaces, such as 'k-pop,indian,folk'. " +
+                  "'" +
+                  json.invalidgenres +
+                  "'" +
+                  " is not valid."
+              );
+            }
           } else {
             if (!isSpotifyResponseSuccessful(json)) {
               console.log("not a successful json spotify search");
+              console.log(json);
             } else {
               const songsToDisplay: SongProps[] = [];
               const data = json.data;
@@ -141,7 +165,22 @@ export function Search(props: SearchProps) {
                 songsToDisplay.push(song);
               }
               props.setSongs(songsToDisplay);
-              setMessage("");
+
+              if (
+                json.invalidgenres != undefined &&
+                json.invalidgenres.length > 0
+              ) {
+                console.log("success but invalid genre");
+                setMessage(
+                  "Please check that all genres entered are valid and in the proper format! Hint: Separate songs with a comma and no spaces, such as 'k-pop,indian,folk'. " +
+                    "'" +
+                    json.invalidgenres +
+                    "'" +
+                    " is not valid."
+                );
+              } else {
+                setMessage("");
+              }
             }
             setCommandString("");
             setNumCommandString("");
@@ -151,74 +190,9 @@ export function Search(props: SearchProps) {
   }
   // why does it show and then go back to default songs
 
-  function handleSubmitMock() {
-    console.log("handle submit mock");
-    const songsToDisplay: SongProps[] = [];
-
-    // check when there are multiple genres
-    const commandStringArray: string[] = commandString.split(",");
-
-    if (commandString) {
-      if (!allGenres.includes(commandString)) {
-        setMessage("Please enter a valid genre!");
-      } else {
-        setMessage("");
-        for (let i = 0; i < allSongs.length; i++) {
-          if (allSongs[i].genre == commandString) {
-            songsToDisplay.push(allSongs[i]);
-          }
-        }
-        props.setSongs(songsToDisplay);
-      }
-    }
-
-    // what about for multiple genres???
-    // for multple genres maybe say "----" is not valid
-
-    // is this too many if statements rippppp
-
-    if (numCommandString) {
-      const num = parseInt(numCommandString);
-
-      if (isNaN(num)) {
-        setMessage("Please enter a valid number!");
-        if (!allGenres.includes(commandString)) {
-          setMessage("Please enter a valid genre and a valid number!");
-        }
-      } else {
-        if (num < 0) {
-          setMessage("Please enter a number greater than or equal to zero");
-        } else {
-          setMessage("");
-          if (!commandString) {
-            const splicedSongs = allSongs.slice(0, num);
-            props.setSongs(splicedSongs);
-          } else {
-            if (!allGenres.includes(commandString)) {
-              setMessage("Please enter a valid genre!");
-              const splicedSongs = allSongs.slice(0, num);
-              props.setSongs(splicedSongs);
-              console.log("invalid genre but valid number");
-            } else {
-              setMessage("");
-              if (songsToDisplay) {
-                songsToDisplay.splice(num);
-                props.setSongs(songsToDisplay);
-                console.log("num songs display");
-              }
-            }
-          }
-        }
-      }
-    }
-
-    setCommandString("");
-    setNumCommandString("");
-  }
-
   const keyDownHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.code === "Enter") {
-      handleSubmitMock();
+      handleSubmit();
     }
   };
 
