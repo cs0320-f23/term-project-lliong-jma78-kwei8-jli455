@@ -72,21 +72,21 @@ public class CreatorHandler implements Route {
       String spotify = getAttr(request.queryParams("spotify"));
 
       String creatorStr =
-          name
+          "\"" + name + "\""
               + ","
-              + type
+              + "\"" + type + "\""
               + ","
-              + price
+              + "\"" + price + "\""
               + ","
-              + description
+              + "\"" + description + "\""
               + ","
-              + instagram
+              + "\"" + instagram + "\""
               + ","
-              + facebook
+              + "\"" + facebook + "\""
               + ","
-              + website
+              + "\"" + website + "\""
               + ","
-              + spotify;
+              + "\"" + spotify + "\"";
       Integer uniqueID = this.submittedCreators.addCreator(creatorStr);
       responseMap.put("result", "success");
       responseMap.put("ID", uniqueID);
