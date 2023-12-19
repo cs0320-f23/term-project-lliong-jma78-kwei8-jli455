@@ -115,6 +115,7 @@ input::placeholder {
 .spotify-page {
   text-align: center;
   margin-left: 80px;
+  margin-top: 100px;
 }
 
 .checkboxes {
@@ -253,6 +254,7 @@ label {
   align-items: center;
   flex-direction: column;
   text-align: center;
+  margin-top: 100px;
 }
 
 .submit-creator-type {
@@ -284,10 +286,10 @@ label {
   width: 370px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   outline: none;
-  margin-bottom: 30px;
   font-family: "Tenor Sans";
   font-size: 15px;
   color: white;
+  margin-top: 13px;
 }
 
 .creator-additional-input::placeholder {

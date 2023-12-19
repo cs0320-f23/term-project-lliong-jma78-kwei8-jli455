@@ -4,9 +4,9 @@ import { Search } from "./creator_search";
 import { CreatorProps } from "./single_creator";
 
 /**
- * main component for the creator page, holds other components like 
+ * main component for the creator page, holds other components like
  * set of creators, filter buttons, and search bar
- * @returns 
+ * @returns
  */
 export function CreatorPage() {
   const [creators, setCreators] = useState<CreatorProps[]>([]);
@@ -18,7 +18,7 @@ export function CreatorPage() {
       <br></br>
       <br></br>
       <div className="spotify-content">
-        <div className="right-component">
+        <div>
           <Creators creators={creators} setCreators={setCreators} />
         </div>
       </div>
