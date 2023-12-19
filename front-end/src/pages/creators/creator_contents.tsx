@@ -5,7 +5,6 @@ import { small_creators_dataset } from "../../mocks/mock_creators";
 // how to stop components shifting around when screen width changes? though I guess this
 // is a problem for both spotify and creators
 
-
 // interface for this file
 interface CreatorPageProps {
   creators: CreatorProps[];
@@ -34,13 +33,20 @@ function isCreatorResponse(rjson: any): rjson is jsonCreatorResponse {
 // need to check if this updates after pages are connected
 
 // array for storing all current creators
-export const allCreators: CreatorProps[] = [];
+export let allCreators: CreatorProps[] = [];
+
+// does not seem to automatically update when a new creator is submitted
+// also it reloads creators every time - can i just get it to get the new set of
+// creators each time?
+
+// if needed, could ultimately check if ids are not in the set but that seems like
+// a lot of looping...
 
 /**
  * function that fetches the existing set of creators from backend and adds each to the
  * allCreators array
- * @param props 
- * @returns 
+ * @param props
+ * @returns
  */
 function getCreators(props: CreatorPageProps) {
   const url = "http://localhost:323/creators";
@@ -52,6 +58,7 @@ function getCreators(props: CreatorPageProps) {
         // how/what to tell user?
         console.log("not a valid response");
       } else {
+        const currentCreators: CreatorProps[] = [];
         const data = json.data;
         console.log(data.length);
 
@@ -79,11 +86,12 @@ function getCreators(props: CreatorPageProps) {
             id: creatorID,
           };
 
-          allCreators.push(creator);
+          currentCreators.push(creator);
         }
         console.log("all creators");
-        console.log(allCreators);
-        return allCreators;
+        console.log(currentCreators);
+        allCreators = currentCreators;
+        return currentCreators;
       }
     })
     .catch((error) => console.log("error"));
@@ -131,8 +139,8 @@ function getMockCreators(props: CreatorPageProps) {
 
 /**
  * component that displays all of the creators on the page
- * @param props 
- * @returns 
+ * @param props
+ * @returns
  */
 export function Creators(props: CreatorPageProps) {
   const mockCreatorsRef = useRef(false);
@@ -145,6 +153,7 @@ export function Creators(props: CreatorPageProps) {
 
   // do i need a [] or something for it to change depending on
   useEffect(() => {
+    console.log("creator contents use effect");
     if (mockCreatorsRef.current) return;
     mockCreatorsRef.current = true;
     getCreators(props).then((response) => {
