@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0642f82e-cf99-4681-924e-82a13a34ce4f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/edu/brown/cs/student/TestCreators/Algorithms/TestAlgos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/MockData.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/MockData.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/brown/cs/student/main/Creators/Submitted/SubmittedCreators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/brown/cs/student/main/Creators/Submitted/SubmittedCreators.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/brown/cs/student/main/Server/Handlers/CreatorHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/brown/cs/student/main/Server/Handlers/CreatorHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/brown/cs/student/main/Server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/brown/cs/student/main/Server/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,7 +53,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.TestAlgos.testKeywordSearch">
+  <component name="RunManager">
     <configuration name="TestAlgos.testKeywordSearch" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="s0" />
       <extension name="coverage">
@@ -85,7 +86,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestCreator.testAddDelCreator" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestCreator" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="s0" />
       <extension name="coverage">
         <pattern>
@@ -95,8 +96,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="edu.brown.cs.student.TestCreators.Creators" />
       <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.TestCreators.Creators.TestCreator" />
-      <option name="METHOD_NAME" value="testAddDelCreator" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -135,11 +135,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestCreator" />
         <item itemvalue="JUnit.TestAlgos.testKeywordSearch" />
         <item itemvalue="JUnit.TestAlgos.testSpotifySortDur" />
         <item itemvalue="JUnit.TestCreator.testDelNoCreator" />
         <item itemvalue="JUnit.TestCreator.testSearchCreator" />
-        <item itemvalue="JUnit.TestCreator.testAddDelCreator" />
       </list>
     </recent_temporary>
   </component>
