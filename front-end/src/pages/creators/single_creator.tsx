@@ -51,7 +51,7 @@ export function Creator(props: CreatorProps) {
     if (props.website != undefined) {
       return (
         <a href={props.website} target="_blank" rel="noreferrer">
-          <IoLink />
+          <IoLink color="#8b1a10" />
         </a>
       );
     }
@@ -63,7 +63,7 @@ export function Creator(props: CreatorProps) {
       const link = "https://www.instagram.com/" + props.instagram.substring(1);
       return (
         <a href={link} target="_blank" rel="noreferrer">
-          <FaInstagramSquare />
+          <FaInstagramSquare color="#8b1a10" />
         </a>
       );
     }
@@ -73,7 +73,7 @@ export function Creator(props: CreatorProps) {
     if (props.facebook != undefined) {
       return (
         <a href={props.facebook} target="_blank" rel="noreferrer">
-          <FaFacebookSquare />
+          <FaFacebookSquare color="#8b1a10" />
         </a>
       );
     }
@@ -83,7 +83,7 @@ export function Creator(props: CreatorProps) {
     if (props.spotify != undefined) {
       return (
         <a href={props.spotify} target="_blank" rel="noreferrer">
-          <FaSpotify />
+          <FaSpotify color="#8b1a10" />
         </a>
       );
     }
@@ -98,7 +98,7 @@ export function Creator(props: CreatorProps) {
 
       <h2>{getPrice()}</h2>
       <div>
-        <h2 className="icons">
+        <h2 className="website-icons">
           {getWebsite()}
           {getInstagram()}
           {getFacebook()}

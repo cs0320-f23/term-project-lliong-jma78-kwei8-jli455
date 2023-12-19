@@ -160,7 +160,7 @@ label {
 .creator-single {
   border-radius: 30px;
   width: 300px;
-  height: 550px;
+  height: 700px;
   border: 2px solid #8b1a10;
   background-color: none;
   position: relative;
@@ -323,4 +323,13 @@ label {
 
 a {
   color: inherit;
+}
+
+.website-icons {
+  position: absolute;
+  width: 100%;
+  bottom: 45px;
+  display: flex;
+  justify-content: center;
+  column-gap: 8px;
 }

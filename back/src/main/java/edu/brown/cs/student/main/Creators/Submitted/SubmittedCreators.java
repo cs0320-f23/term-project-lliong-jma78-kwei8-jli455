@@ -38,11 +38,6 @@ public class SubmittedCreators {
     }
   }
 
-  // Regex for comma-splitting of a string
-  // Credit goes to the CS32 Staff Team!
-  static final Pattern regexSplitCSVRow =
-      Pattern.compile(",(?=([^\\\"]*\\\"[^\\\"]*\\\")*(?![^\\\"]*\\\"))");
-
   /**
    * Elimiate a single instance of leading or trailing double-quote, and replace pairs of double
    * quotes with singles.
@@ -70,7 +65,7 @@ public class SubmittedCreators {
    */
   private List<String> rowToList(String singleRow) {
     // Splits string on commas using provided regex
-    String[] splitRow = regexSplitCSVRow.split(singleRow);
+    String[] splitRow = singleRow.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
     // Converts String[] to List for ease of later use
     List<String> rowAsList = Arrays.asList(splitRow);
     List<String> retList = new ArrayList<>();

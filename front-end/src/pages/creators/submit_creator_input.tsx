@@ -126,7 +126,7 @@ export function InstagramInput({
         type="text"
         className="creator-additional-input"
         value={value}
-        placeholder="Enter link to Instagram page here"
+        placeholder="Enter instagram handle here (@...)"
         onChange={(ev) => setValue(ev.target.value)}
         aria-label={ariaLabel}
       ></input>

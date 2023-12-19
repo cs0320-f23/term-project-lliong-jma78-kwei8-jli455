@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0642f82e-cf99-4681-924e-82a13a34ce4f" name="Changes" comment="" />
+    <list default="true" id="0642f82e-cf99-4681-924e-82a13a34ce4f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/edu/brown/cs/student/TestCreators/Algorithms/TestAlgos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/MockData.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/MockData.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/SubmittedData.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/SubmittedData.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/brown/cs/student/main/Creators/Submitted/SubmittedCreators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/brown/cs/student/main/Creators/Submitted/SubmittedCreators.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/brown/cs/student/main/Server/Handlers/CreatorHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/brown/cs/student/main/Server/Handlers/CreatorHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/brown/cs/student/main/Server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/brown/cs/student/main/Server/Server.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,9 +33,6 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
-  </component>
   <component name="ProjectColorInfo">{
     &quot;associatedIndex&quot;: 4
     }</component>
@@ -40,20 +46,50 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "artists-fetch",
-    "last_opened_file_path": "/Users/joyceli/Desktop/cs320/term-project-lliong-jma78-kwei8-jli455/back/pom.xml",
+    "git-widget-placeholder": "Merging artists-fetch",
+    "last_opened_file_path": "/Users/karisma/Desktop/cs0320/term-project-lliong-jma78-kwei8-jli455/back/pom.xml",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
+    "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RunManager">
-    <configuration name="TestCreator.testAddDelCreator" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestAlgos.testKeywordSearch" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="s0" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.brown.cs.student.TestCreators.Algorithms.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.brown.cs.student.TestCreators.Algorithms" />
+      <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.TestCreators.Algorithms.TestAlgos" />
+      <option name="METHOD_NAME" value="testKeywordSearch" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestAlgos.testSpotifySortDur" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="s0" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.brown.cs.student.TestCreators.Algorithms.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.brown.cs.student.TestCreators.Algorithms" />
+      <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.TestCreators.Algorithms.TestAlgos" />
+      <option name="METHOD_NAME" value="testSpotifySortDur" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestCreator" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="s0" />
       <extension name="coverage">
         <pattern>
@@ -63,8 +99,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="edu.brown.cs.student.TestCreators.Creators" />
       <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.TestCreators.Creators.TestCreator" />
-      <option name="METHOD_NAME" value="testAddDelCreator" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -80,38 +115,6 @@
       <option name="PACKAGE_NAME" value="edu.brown.cs.student.TestCreators.Creators" />
       <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.TestCreators.Creators.TestCreator" />
       <option name="METHOD_NAME" value="testDelNoCreator" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestCreator.testGetBasicCreator" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="s0" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="edu.brown.cs.student.TestCreators.Creators.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="edu.brown.cs.student.TestCreators.Creators" />
-      <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.TestCreators.Creators.TestCreator" />
-      <option name="METHOD_NAME" value="testGetBasicCreator" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestCreator.testGetCreator" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="s0" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="edu.brown.cs.student.TestCreators.Creators.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="edu.brown.cs.student.TestCreators.Creators" />
-      <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.TestCreators.Creators.TestCreator" />
-      <option name="METHOD_NAME" value="testGetCreator" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -135,11 +138,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestAlgos.testKeywordSearch" />
+        <item itemvalue="JUnit.TestCreator" />
+        <item itemvalue="JUnit.TestAlgos.testSpotifySortDur" />
         <item itemvalue="JUnit.TestCreator.testDelNoCreator" />
         <item itemvalue="JUnit.TestCreator.testSearchCreator" />
-        <item itemvalue="JUnit.TestCreator.testAddDelCreator" />
-        <item itemvalue="JUnit.TestCreator.testGetCreator" />
-        <item itemvalue="JUnit.TestCreator.testGetBasicCreator" />
       </list>
     </recent_temporary>
   </component>
@@ -155,6 +158,7 @@
       <workItem from="1701700156775" duration="414000" />
       <workItem from="1701700588082" duration="2808000" />
       <workItem from="1702501053917" duration="21569000" />
+      <workItem from="1702930389905" duration="2448000" />
     </task>
     <servers />
   </component>
