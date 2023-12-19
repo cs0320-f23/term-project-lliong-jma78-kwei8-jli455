@@ -30,4 +30,4 @@ Github Repo: https://github.com/cs0320-f23/term-project-lliong-jma78-kwei8-jli45
 ## Credits
 - APIs used: Spotify, Yelp
 - Spotify API Wrapper: https://github.com/spotify-web-api-java/spotify-web-api-java
-- Regex: CS32 Staff and https://stackoverflow.com/questions/18893390/splitting-on-comma-outside-quotes
+- Regex: CS32 Staff and https://stackoverflow.com/questions/1757065/java-splitting-a-comma-separated-string-but-ignoring-commas-in-quotes
