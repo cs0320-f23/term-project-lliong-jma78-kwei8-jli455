@@ -175,12 +175,6 @@ export function FilterBox(props: FilterProps) {
     // if you don't select any filters, nothing should change right if you click
     // submit button?
     console.log(url);
-    // saying to load songs before search even though it should say cannot select two in one category
-    // do a catch block for the url to say "please select filters to sort songs"
-
-    // once you have searched songs, you can keep filtering on those
-    // will tell you to load songs the first time you try to filter without selecting
-    // anything! make sure this is the case
   }
 
   return (

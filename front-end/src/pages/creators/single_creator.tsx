@@ -46,6 +46,50 @@ export function Creator(props: CreatorProps) {
     }
   }
 
+  // could unit test these potentially?
+  function getWebsite() {
+    if (props.website != undefined) {
+      return (
+        <a href={props.website} target="_blank" rel="noreferrer">
+          <IoLink />
+        </a>
+      );
+    }
+  }
+
+  // do we want to change this to just a link?
+  function getInstagram() {
+    if (props.instagram != undefined) {
+      const link = "https://www.instagram.com/" + props.instagram.substring(1);
+      console.log(link);
+      return (
+        <a href={link} target="_blank" rel="noreferrer">
+          <FaInstagramSquare />
+        </a>
+      );
+    }
+  }
+
+  function getFacebook() {
+    if (props.facebook != undefined) {
+      return (
+        <a href={props.facebook} target="_blank" rel="noreferrer">
+          <FaFacebookSquare />
+        </a>
+      );
+    }
+  }
+
+  function getSpotify() {
+    if (props.spotify != undefined) {
+      return (
+        <a href={props.spotify} target="_blank" rel="noreferrer">
+          <FaSpotify />
+        </a>
+      );
+    }
+  }
+
   return (
     <div className="creator-single" data-testid="test:single-creator">
       <br></br>
@@ -56,10 +100,10 @@ export function Creator(props: CreatorProps) {
       <h2>{getPrice()}</h2>
       <div>
         <h2 className="icons">
-          {props.website && <IoLink />}
-          {props.instagram && <FaInstagramSquare />}
-          {props.facebook && <FaFacebookSquare />}
-          {props.spotify && <FaSpotify />}
+          {getWebsite()}
+          {getInstagram()}
+          {getFacebook()}
+          {getSpotify()}
         </h2>
       </div>
       <div className="creator-type">{props.type}</div>
