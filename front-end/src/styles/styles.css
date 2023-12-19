@@ -159,6 +159,7 @@ label {
 .creator-single {
   border-radius: 30px;
   width: 300px;
+  height: 550px;
   border: 2px solid #8b1a10;
   background-color: none;
   position: relative;
@@ -316,4 +317,8 @@ label {
 
 .delete-creator-description {
   width: 800px;
+}
+
+a {
+  color: inherit;
 }

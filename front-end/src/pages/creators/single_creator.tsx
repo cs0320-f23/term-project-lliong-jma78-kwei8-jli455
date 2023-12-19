@@ -61,7 +61,6 @@ export function Creator(props: CreatorProps) {
   function getInstagram() {
     if (props.instagram != undefined) {
       const link = "https://www.instagram.com/" + props.instagram.substring(1);
-      console.log(link);
       return (
         <a href={link} target="_blank" rel="noreferrer">
           <FaInstagramSquare />
