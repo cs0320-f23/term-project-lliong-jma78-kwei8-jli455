@@ -23,8 +23,8 @@ interface jsonCreatorResponse {
 
 /**
  * checks that creator response from backend is successful
- * @param rjson 
- * @returns 
+ * @param rjson
+ * @returns
  */
 function isCreatorResponse(rjson: any): rjson is jsonCreatorResponse {
   if (!("result" in rjson)) return false;
@@ -37,8 +37,8 @@ function isCreatorResponse(rjson: any): rjson is jsonCreatorResponse {
 
 /**
  * component containing search bar and search button
- * @param props 
- * @returns 
+ * @param props
+ * @returns
  */
 export function Search(props: SearchProps) {
   const [commandString, setCommandString] = useState<string>("");
@@ -53,8 +53,8 @@ export function Search(props: SearchProps) {
   /**
    * function that handles searching by calling the backend;
    * retrieves songs and adds them to array of songs to be displayed
-   * @param commandString 
-   * @returns 
+   * @param commandString
+   * @returns
    */
   function handleSubmit(commandString: string) {
     const url =
@@ -158,7 +158,7 @@ export function Search(props: SearchProps) {
           <Searchbar
             value={commandString}
             setValue={setCommandString}
-            ariaLabel={"creator name and description search bar"}
+            ariaLabel={"creator search bar"}
           />
           <br></br>
           {message}

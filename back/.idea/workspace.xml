@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0642f82e-cf99-4681-924e-82a13a34ce4f" name="Changes" comment="">
-<<<<<<< HEAD
-      <change beforePath="$PROJECT_DIR$/../front-end/src/pages/spotify/spotify_contents.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/pages/spotify/spotify_contents.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/src/pages/spotify/spotify_filter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/pages/spotify/spotify_filter.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/src/pages/spotify/spotify_search.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/pages/spotify/spotify_search.tsx" afterDir="false" />
-=======
->>>>>>> main
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/SubmittedData.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/SubmittedData.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/brown/cs/student/main/Server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/brown/cs/student/main/Server/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,16 +32,31 @@
     <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 4
-}</component>
+    &quot;associatedIndex&quot;: 4
+    }</component>
   <component name="ProjectId" id="2Z57WijWXbdoCOuOFwlKV00rAkW" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "artists-fetch",
+    "last_opened_file_path": "/Users/joyceli/Desktop/cs320/term-project-lliong-jma78-kwei8-jli455/back/pom.xml",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager" selected="JUnit.TestCreator.testDelNoCreator">
+}]]></component>
+  <component name="RunManager">
     <configuration name="TestCreator.testAddDelCreator" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="s0" />
       <extension name="coverage">
