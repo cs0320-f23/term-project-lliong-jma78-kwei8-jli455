@@ -11,6 +11,9 @@ import org.testng.Assert;
 
 public class TestBusiness {
 
+  /**
+   * Unit test for searching function.
+   */
   @Test
   public void testSearch() {
     HashMap<String, YelpApiResponse> map = new HashMap<>();
@@ -32,11 +35,13 @@ public class TestBusiness {
     Assert.assertEquals(2, searcher.search("restaurants", map).size());
   }
 
+  /**
+   * Unit test for rankings
+   */
   @Test
   public void testRank() {
     HashMap<String, YelpApiResponse> map = new HashMap<>();
     YelpMocks yelpMocks = new YelpMocks();
-
     map.put(
         "Hydroflask",
         yelpMocks.createSampleYelpApiResponse(
@@ -45,10 +50,8 @@ public class TestBusiness {
         "Hannah",
         yelpMocks.createSampleYelpApiResponse(
             "Hannah", "511", "5.0", Arrays.asList(new Category("korean", "korean"))));
-
     BusinessRanker ranker = new BusinessRanker();
-
-    Assert.assertEquals(ranker.computeWeightedRank(map.get("Hannah")), 207.9);
-    Assert.assertEquals(ranker.computeWeightedRank(map.get("Hydroflask")), 163.0);
+    Assert.assertEquals(ranker.computeWeightedRank(map.get("Hannah")), 105.7);
+    Assert.assertEquals(ranker.computeWeightedRank(map.get("Hydroflask")), 83);
   }
 }

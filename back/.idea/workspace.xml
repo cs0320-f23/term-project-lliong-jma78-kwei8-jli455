@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0642f82e-cf99-4681-924e-82a13a34ce4f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/edu/brown/cs/student/TestBusinesses/TestBusinessIntegration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/brown/cs/student/main/Business/BusinessRanker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/brown/cs/student/main/Business/BusinessRanker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/brown/cs/student/main/Business/SearchBusiness.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/brown/cs/student/main/Business/SearchBusiness.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/brown/cs/student/main/README" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,34 +50,62 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
     }
     }</component>
-  <component name="RunManager" selected="JUnit.TestAlgos.testKeywordSearch">
-    <configuration name="TestAlgos.testKeywordSearch" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.TestBusiness.testRank">
+    <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.main.Server.Server" />
       <module name="s0" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="edu.brown.cs.student.TestCreators.Algorithms.*" />
+          <option name="PATTERN" value="edu.brown.cs.student.main.Server.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="edu.brown.cs.student.TestCreators.Algorithms" />
-      <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.TestCreators.Algorithms.TestAlgos" />
-      <option name="METHOD_NAME" value="testKeywordSearch" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestBusiness" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="s0" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.brown.cs.student.TestBusinesses.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.brown.cs.student.TestBusinesses" />
+      <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.TestBusinesses.TestBusiness" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestBusinessIntegration.testGetCreator" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="s0" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.brown.cs.student.TestBusinesses.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.brown.cs.student.TestBusinesses" />
+      <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.TestBusinesses.TestBusinessIntegration" />
+      <option name="METHOD_NAME" value="testGetCreator" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestAlgos.testSpotifySortDur" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestBusiness.testRank" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="s0" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="edu.brown.cs.student.TestCreators.Algorithms.*" />
+          <option name="PATTERN" value="edu.brown.cs.student.TestBusinesses.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="edu.brown.cs.student.TestCreators.Algorithms" />
-      <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.TestCreators.Algorithms.TestAlgos" />
-      <option name="METHOD_NAME" value="testSpotifySortDur" />
+      <option name="PACKAGE_NAME" value="edu.brown.cs.student.TestBusinesses" />
+      <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.TestBusinesses.TestBusiness" />
+      <option name="METHOD_NAME" value="testRank" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -100,45 +126,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestCreator.testDelNoCreator" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="s0" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="edu.brown.cs.student.TestCreators.Creators.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="edu.brown.cs.student.TestCreators.Creators" />
-      <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.TestCreators.Creators.TestCreator" />
-      <option name="METHOD_NAME" value="testDelNoCreator" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestCreator.testSearchCreator" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="s0" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="edu.brown.cs.student.TestCreators.Creators.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="edu.brown.cs.student.TestCreators.Creators" />
-      <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.TestCreators.Creators.TestCreator" />
-      <option name="METHOD_NAME" value="testSearchCreator" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestBusiness.testRank" />
+        <item itemvalue="JUnit.TestBusiness" />
+        <item itemvalue="JUnit.TestBusinessIntegration.testGetCreator" />
+        <item itemvalue="Application.Server" />
         <item itemvalue="JUnit.TestCreator" />
-        <item itemvalue="JUnit.TestAlgos.testKeywordSearch" />
-        <item itemvalue="JUnit.TestAlgos.testSpotifySortDur" />
-        <item itemvalue="JUnit.TestCreator.testDelNoCreator" />
-        <item itemvalue="JUnit.TestCreator.testSearchCreator" />
       </list>
     </recent_temporary>
   </component>
@@ -155,7 +149,7 @@
       <workItem from="1701700588082" duration="2808000" />
       <workItem from="1702501053917" duration="21569000" />
       <workItem from="1702930389905" duration="2448000" />
-      <workItem from="1703029810299" duration="1282000" />
+      <workItem from="1703029810299" duration="2454000" />
     </task>
     <servers />
   </component>
