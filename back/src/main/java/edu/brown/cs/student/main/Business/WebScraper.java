@@ -21,6 +21,11 @@ public class WebScraper {
   private HashMap<String, YelpApiResponse> responseMap;
   private List<YelpApiResponse> responseList;
 
+  /**
+   * Scrapes a website for business phone numbers and converts to HTML
+   * @return a Map of business name to business information
+   * @throws Exception if there is an error
+   */
   public HashMap<String, YelpApiResponse> getBusinessInfo() throws Exception {
     this.key = "evtJ9UBqyUYofFNw5qmUmnAu8U6Dv5Xz";
     this.responseMap = new HashMap<>();
@@ -42,9 +47,16 @@ public class WebScraper {
     String html = response.toString();
     Document doc = Jsoup.parse(html);
     Elements names = doc.select("h3.wp-block-heading");
+    this.callAPI(names);
+    return this.responseMap;
+  }
 
+  /**
+   * Helper method that calls Yelp API to get business info
+   * @param names are HTML elements that contain business phone numbers
+   */
+  private void callAPI(Elements names) {
     for (Element name : names) {
-      String href = name.text(); // returns the restaurant names
       Element addressElement = name.nextElementSibling();
       if (addressElement != null) {
         Element addressEl = addressElement.selectFirst("em");
@@ -56,15 +68,11 @@ public class WebScraper {
             String phone = unfilteredPhone.replace("-", "");
             try {
               String apiUrl = "https://api.yelp.com/v3/businesses/search/phone?phone=%2B1" + phone;
-
               URL apiURl = new URL(apiUrl);
               HttpURLConnection connection = (HttpURLConnection) apiURl.openConnection();
-
               connection.setRequestMethod("GET");
-
               Keys keys = new Keys();
               connection.setRequestProperty("Authorization", "Bearer " + keys.getKey());
-
               int responseCode2 = connection.getResponseCode();
               System.out.println(responseCode2);
               if (responseCode2 == 200) {
@@ -75,7 +83,6 @@ public class WebScraper {
                 if (apiResponse != null) {
                   this.serialize(apiResponse);
                 }
-
                 connection.disconnect();
               }
 
@@ -86,9 +93,12 @@ public class WebScraper {
         }
       }
     }
-
-    return this.responseMap;
   }
+
+  /**
+   * Populates the Map of businesses to information
+   * @param business is the YelpAPIResponse for a business
+   */
 
   private void serialize(YelpApiResponse business) {
     String name = business.businesses.get(0).name;
