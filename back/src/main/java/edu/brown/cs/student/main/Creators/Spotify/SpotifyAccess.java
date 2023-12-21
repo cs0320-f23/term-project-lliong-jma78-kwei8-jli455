@@ -10,8 +10,8 @@ import se.michaelthelin.spotify.requests.authorization.client_credentials.Client
 /** Class to handle access to spotify (key authentication) */
 public class SpotifyAccess {
 
-  private static final String clientId = "095044fcfb3349a18f0b4b455c7e277d";
-  private static final String clientSecret = "088defdd7e4b472db5e7e9fda6e6dba3";
+  private static final String clientId = "5c353bcf2428490e8a883d8a9764f903";
+  private static final String clientSecret = "ade4f165c47641e8815d3eb57298538f";
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
       .setClientId(clientId)
       .setClientSecret(clientSecret)

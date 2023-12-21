@@ -31,7 +31,7 @@ import SubmitCreator from "./pages/creators/submit_creator";
 export default function App() {
   return (
     <div className="App">
-      {/* <BrowserRouter>
+      <BrowserRouter>
         <DropDownNav />
         <Routes>
           <Route path="/home" element={<Home />} />
@@ -43,8 +43,7 @@ export default function App() {
           <Route path="/submit_businesses" element={<SubmitBusinesses />} />
           <Route path="/resources" element={<Resources />} />
         </Routes>
-      </BrowserRouter> */}
-      <SpotifyPage />
+      </BrowserRouter>
     </div>
   );
 }

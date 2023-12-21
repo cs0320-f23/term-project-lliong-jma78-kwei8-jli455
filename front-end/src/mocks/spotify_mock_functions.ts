@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from "react";
 import { SongProps } from "../pages/spotify/single_song";
 import {
   dur_least_to_most,
@@ -8,6 +9,23 @@ import {
   pop_most_to_least,
   small_song_dataset,
 } from "./mock_songs";
+
+interface SpotifyPageProps {
+  allSongs: SongProps[];
+  setSongs: React.Dispatch<React.SetStateAction<SongProps[]>>;
+}
+
+interface SearchProps {
+  commandString: string;
+  setCommandString: Dispatch<SetStateAction<string>>;
+  numCommandString: string;
+  setNumCommandString: Dispatch<SetStateAction<string>>;
+  message: string;
+  setMessage: Dispatch<SetStateAction<string>>;
+  allSongs: SongProps[];
+  setSongs: React.Dispatch<React.SetStateAction<SongProps[]>>;
+  allGenres: string[];
+}
 
 interface FilterProps {
   checkedLToMPopular: boolean;
@@ -123,58 +141,57 @@ export function getMockSongs(props: SpotifyPageProps) {
       genre: songGenre,
     };
 
-    allSongs.push(song);
+    props.allSongs.push(song);
 
-    //props.setSongs([...props.songs]);
     console.log(props.songs);
   }
 
-  return allSongs;
+  return props.allSongs;
 }
 
-function handleSubmitMock() {
+function handleSubmitMock(props: SearchProps) {
   console.log("handle submit mock");
   const songsToDisplay: SongProps[] = [];
-  const commandStringArray: string[] = commandString.split(",");
+  const commandStringArray: string[] = props.commandString.split(",");
 
-  if (commandString) {
-    if (!allGenres.includes(commandString)) {
-      setMessage("Please enter a valid genre!");
+  if (props.commandString) {
+    if (!props.allGenres.includes(props.commandString)) {
+      props.setMessage("Please enter a valid genre!");
     } else {
-      setMessage("");
-      for (let i = 0; i < allSongs.length; i++) {
-        if (allSongs[i].genre == commandString) {
-          songsToDisplay.push(allSongs[i]);
+      props.setMessage("");
+      for (let i = 0; i < props.allSongs.length; i++) {
+        if (props.allSongs[i].genre == props.commandString) {
+          songsToDisplay.push(props.allSongs[i]);
         }
       }
       props.setSongs(songsToDisplay);
     }
   }
 
-  if (numCommandString) {
-    const num = parseInt(numCommandString);
+  if (props.numCommandString) {
+    const num = parseInt(props.numCommandString);
 
     if (isNaN(num)) {
-      setMessage("Please enter a valid number!");
-      if (!allGenres.includes(commandString)) {
-        setMessage("Please enter a valid genre and a valid number!");
+      props.setMessage("Please enter a valid number!");
+      if (!props.allGenres.includes(props.commandString)) {
+        props.setMessage("Please enter a valid genre and a valid number!");
       }
     } else {
       if (num < 0) {
-        setMessage("Please enter a number greater than or equal to zero");
+        props.setMessage("Please enter a number greater than or equal to zero");
       } else {
-        setMessage("");
-        if (!commandString) {
-          const splicedSongs = allSongs.slice(0, num);
+        props.setMessage("");
+        if (!props.commandString) {
+          const splicedSongs = props.allSongs.slice(0, num);
           props.setSongs(splicedSongs);
         } else {
-          if (!allGenres.includes(commandString)) {
-            setMessage("Please enter a valid genre!");
-            const splicedSongs = allSongs.slice(0, num);
+          if (!props.allGenres.includes(props.commandString)) {
+            props.setMessage("Please enter a valid genre!");
+            const splicedSongs = props.allSongs.slice(0, num);
             props.setSongs(splicedSongs);
             console.log("invalid genre but valid number");
           } else {
-            setMessage("");
+            props.setMessage("");
             if (songsToDisplay) {
               songsToDisplay.splice(num);
               props.setSongs(songsToDisplay);
@@ -186,6 +203,6 @@ function handleSubmitMock() {
     }
   }
 
-  setCommandString("");
-  setNumCommandString("");
+  props.setCommandString("");
+  props.setNumCommandString("");
 }
