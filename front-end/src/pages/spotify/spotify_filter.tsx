@@ -1,36 +1,38 @@
+import { Evented } from "mapbox-gl";
 import React, { useState } from "react";
 import { SongProps } from "./single_song";
 
-// options:
-// sort by most popular to least popular and vice versa
-// sort by duration - longest to shortest and vice versa
-//
-
-// potentially logos - like big clock to small clock maybeee
-
-// should not be able to select both popularity/duration options but you can do one
-// popularity and one duration
-
-// submit button for calling handlers?
-
+// props for filter box component
 interface FilterProps {
   setSongs: React.Dispatch<React.SetStateAction<SongProps[]>>;
 }
 
+// fields expected in the json response, regardless of if it was successul or not
 interface jsonSpotifyResponse {
   result: string;
 }
 
+// fields expected in a successful json response with data
 interface jsonSpotifyResponseWithData {
   result: string;
   data: Array<Map<string, object>>;
 }
 
+/**
+ * checks if fields in json are what was expected
+ * @param rjson
+ * @returns
+ */
 function isSpotifyResponse(rjson: any): rjson is jsonSpotifyResponse {
   if (!("result" in rjson)) return false;
   return true;
 }
 
+/**
+ * checks if fields in successful json are what was expected
+ * @param rjson
+ * @returns
+ */
 function isSpotifyResponseWithData(
   rjson: any
 ): rjson is jsonSpotifyResponseWithData {
@@ -42,6 +44,11 @@ function isSpotifyResponseWithData(
   return true;
 }
 
+/**
+ * component that has options for filtering songs
+ * @param props
+ * @returns
+ */
 export function FilterBox(props: FilterProps) {
   const [checkedLToMPopular, setCheckedLToMPopular] = useState<boolean>(false);
   const [checkedMToLPopular, setCheckedMToLPopular] = useState<boolean>(false);
@@ -68,19 +75,11 @@ export function FilterBox(props: FilterProps) {
     setCheckedLToSDuration(!checkedLToSDuration);
   };
 
-  // need to mock filtering?
-  // clicking submit and nothing is selected, should do nothing? or send message
-
-  // songs must be loaded before ranking? this means you have to search for songs
-  // before ranking, not ranking the existing ones? check with backend
-
+  /**
+   * function that calls to the backend to sort songs by popularity and/or duration
+   */
   function handleSubmit() {
     let url = "http://localhost:323/sortspotify?";
-
-    // if result is error - please search for set of songs before sorting
-    // result and details field
-
-    // otherwise it is result and data with songs
 
     if (checkedLToMPopular && checkedMToLPopular) {
       console.log("cannot do both");
@@ -172,13 +171,16 @@ export function FilterBox(props: FilterProps) {
           });
       }
     }
-    // if you don't select any filters, nothing should change right if you click
-    // submit button?
-    console.log(url);
   }
 
+  const keyDownHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.code === "Enter" && event.ctrlKey) {
+      handleSubmit();
+    }
+  };
+
   return (
-    <div className="filter-box">
+    <div className="filter-box" onKeyDown={keyDownHandler}>
       Sort Songs!
       <br></br>
       <br></br>
@@ -186,14 +188,14 @@ export function FilterBox(props: FilterProps) {
         <div>
           <h2>Popularity</h2>
           <Checkbox
-            label="most popular to least popular"
+            label="Most Popular to Least Popular"
             value={checkedMToLPopular}
             onChange={handleMToLPopular}
           />
           <br></br>
           <br></br>
           <Checkbox
-            label="least popular to most popular"
+            label="Least Popular to Most Popular"
             value={checkedLToMPopular}
             onChange={handleLToMPopular}
           />
@@ -202,14 +204,14 @@ export function FilterBox(props: FilterProps) {
           <br></br>
           <h2>Duration</h2>
           <Checkbox
-            label="shortest duration to longest duration"
+            label="Shortest Duration to Longest Duration"
             value={checkedSToLDuration}
             onChange={handleSToLDuration}
           />
           <br></br>
           <br></br>
           <Checkbox
-            label="longest duration to shortest duration"
+            label="Longest Duration to Shortest Duration"
             value={checkedLToSDuration}
             onChange={handleLToSDuration}
           />
@@ -225,7 +227,6 @@ export function FilterBox(props: FilterProps) {
   );
 }
 
-// cite site?
 const Checkbox = ({ label, value, onChange }) => {
   return (
     <label>

@@ -6,6 +6,7 @@ import {
   pop_dur_most_to_least,
   pop_least_to_most,
   pop_most_to_least,
+  small_song_dataset,
 } from "./mock_songs";
 
 interface FilterProps {
@@ -134,13 +135,9 @@ export function getMockSongs(props: SpotifyPageProps) {
 function handleSubmitMock() {
   console.log("handle submit mock");
   const songsToDisplay: SongProps[] = [];
-
-  // check when there are multiple genres
   const commandStringArray: string[] = commandString.split(",");
 
   if (commandString) {
-    // maybe checking if genres array is empty
-    // result is error and validgenres=[]
     if (!allGenres.includes(commandString)) {
       setMessage("Please enter a valid genre!");
     } else {
@@ -153,11 +150,6 @@ function handleSubmitMock() {
       props.setSongs(songsToDisplay);
     }
   }
-
-  // what about for multiple genres???
-  // for multple genres maybe say "----" is not valid
-
-  // is this too many if statements rippppp
 
   if (numCommandString) {
     const num = parseInt(numCommandString);
