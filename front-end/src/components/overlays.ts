@@ -2,7 +2,7 @@ import { FeatureCollection } from "geojson"
 import { CircleLayer, FillLayer, LineLayer } from "react-map-gl"
 
 function isFeatureCollection(json:any): json is FeatureCollection{
-    return json.type === "FeatureCollection";
+    return json.type == "FeatureCollection";
 }
 
 export function getJSON(): Promise<GeoJSON.FeatureCollection | undefined>{
@@ -16,52 +16,44 @@ export function getJSON(): Promise<GeoJSON.FeatureCollection | undefined>{
     return new Promise((resolve, reject) => {
         fetch(url)
         .then(response => response.json())
-        .then(json => JSON.parse(json))
-        .then(result => {console.log(result)
-        }
-            
-            )
-            // if(data.features.length < 1){
-            //     for(let i = 0; i < json.length; i++){
-                    
-            //         let businessName = json[i]
-            //         let businessDict = json[i][0]
-            //         let url = businessDict[3]
-            //         let businessLat = parseFloat(businessDict[7][0])
-            //         let businessLong = parseFloat(businessDict[7][1])
-            //         let businessAddress1 = businessDict[10][0]
-            //         let businessAddress2 = businessDict[10][1]
-            //         let businessCity = businessDict[10][2]
-            //         let businessState = businessDict[10][4]
-            //         let businessPhone = businessDict[11]
-
-            //         const newFeat: GeoJSON.Feature = {
-            //             "type": 'Feature',
-            //             "properties": {
-            //                 name: businessName,
-            //                 site: url,
-            //                 address1: businessAddress1,
-            //                 address2: businessAddress2,
-            //                 city: businessCity,
-            //                 state: businessState,
-            //                 phone: businessPhone
-            //             },
-            //             "geometry":{
-            //                 "coordinates": [businessLat, businessLong],
-            //                 "type": "Point"
-
-            //             }
-            //         }
-            //         data.features.push(newFeat)
-            //     }
-
-            // }
-        // }).then(final_json => isFeatureCollection(data) ? resolve(data) : resolve(undefined))
-        })    
+        .then(json => { 
+            Object.keys(json).forEach((key) => {
+                console.log(key)
+            })
+        // }).then(done => isFeatureCollection(done) ? resolve(done) : resolve(undefined))
+        })
 }
 
-export function overlayData(): Promise<GeoJSON.FeatureCollection | undefined>{
-    const business_data = getJSON()
-    console.log(business_data)
-    return business_data; 
-}
+// function addFeats(){
+//     (Object.keys(json)).forEach((key) => {
+//         let businessName = key
+//         let businessDict = json[key]["businesses"][0]
+//         let url = businessDict['url']
+//         let busLat = parseFloat(businessDict['coordinates']['latitude'])
+//         let busLong = parseFloat(businessDict['coordinates']['longitude'])
+//         let busAdd1 = businessDict['location']['address1']
+//         let busAdd2 = businessDict['location']['address2']
+//         let busCity = businessDict['location']['city']
+//         let busState = businessDict['location']['state']
+//         let busPhone = businessDict['phone']
+
+//         const newFeat: GeoJSON.Feature = {
+//             "type": 'Feature',
+//             "properties": {
+//                 name: businessName,
+//                 site: url,
+//                 address1: busAdd1,
+//                 address2: busAdd2,
+//                 city: busCity,
+//                 state: busState,
+//                 phone: busPhone
+//             },
+//             "geometry":{
+//                 "coordinates": [busLat, busLong],
+//                 "type": "Point"
+//             }
+//         }
+
+//         data.features.push(newFeat)
+//         })
+// }

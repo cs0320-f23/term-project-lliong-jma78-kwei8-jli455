@@ -46,22 +46,19 @@ export default function DisplayBusiness(){
     const[popupData, setPopup] = useState({longitude: 0.00, latitude: 0.00, name: ""});
     const[showPop, setShow] = useState<boolean>(false);
 
-    const backendInfo: GeoJSON.FeatureCollection = {
+    let backendInfo: GeoJSON.FeatureCollection = {
         type: 'FeatureCollection',
         features:[]
     }
 
-    // useEffect(() =>{
-    //     getGeoJSON().then(response => 
-    //         setOverlay(response)
-    //     )
-    // })
+    console.log(getJSON())
 
-    // console.log(overlay)
+    // setPoints(getJSON)
 
-    useEffect(() => {
-        console.log(overlayData());
-    })
+    if(points != undefined){
+        
+    }
+
 
     return(
         <div className="businesses-container" style={{paddingLeft:"10px"}}>
