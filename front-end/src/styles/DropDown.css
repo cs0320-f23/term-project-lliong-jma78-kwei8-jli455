@@ -2,6 +2,17 @@
     display: flex;
 }
 
+body{
+    font-family: "Tenor Sans";
+    color: #4f100a;
+}
+
+header{
+    font-family: "Tenor Sans";
+    color: #4f100a;
+
+}
+
 #nav-bar{
     background-image: url('../images/background.png');
     height: 20vh;

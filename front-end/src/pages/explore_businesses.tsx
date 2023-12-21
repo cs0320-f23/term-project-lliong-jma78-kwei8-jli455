@@ -8,10 +8,10 @@ export default function Businesses(){
 
     return(
         <div className="business-container">
-            <div style={{width:"500px"}}>
+            <div>
                 <DisplayBusiness></DisplayBusiness>
             </div>
-            <div className="business-map" style={{width: "500px"}}>
+            <div className="business-map">
                 <MapBox></MapBox>
             </div>
             

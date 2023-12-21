@@ -1,8 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { business_dataset } from "../mocks/business/mock_businesses";
 import Switch from 'react-switch';
+import BusinessCard from "./BusinessCard";
+import foodIcon from '../images/food_icon.png'
+import groceryIcon from '../images/grocery_icon.png'
+import service from '../images/service_icon.png'
+import { getJSON, overlayData } from "./overlays";
+
 
 export default function DisplayBusiness(){
+
+    //MOCKING DATA ----------------------------------------------------------------------------
     const[showMocked, setShowMocked] = useState<boolean>(false);
 
     let filteredMock = [...business_dataset]
@@ -31,22 +39,46 @@ export default function DisplayBusiness(){
         setShowMocked(!showMocked);
     }
 
+    //BACKEND -----------------------------------------------------------------------------------
+
+    const[overlay, setOverlay] = useState<GeoJSON.FeatureCollection | undefined>();
+    const[points, setPoints] = useState<GeoJSON.FeatureCollection | undefined>();
+    const[popupData, setPopup] = useState({longitude: 0.00, latitude: 0.00, name: ""});
+    const[showPop, setShow] = useState<boolean>(false);
+
+    const backendInfo: GeoJSON.FeatureCollection = {
+        type: 'FeatureCollection',
+        features:[]
+    }
+
+    // useEffect(() =>{
+    //     getGeoJSON().then(response => 
+    //         setOverlay(response)
+    //     )
+    // })
+
+    // console.log(overlay)
+
+    useEffect(() => {
+        console.log(overlayData());
+    })
+
     return(
         <div className="businesses-container" style={{paddingLeft:"10px"}}>
-            <h2>Filter By</h2>
-            <Switch onChange={toggleMocked} checked={showMocked}></Switch>
+            <h2>Filter By <Switch onChange={toggleMocked} checked={showMocked}></Switch></h2>
+            
+            <div style={{display:"flex", gap:"15px"}}>
+                <button onClick={() => toggleFilter(0)}><img src={foodIcon}></img><span>Restaurants/Eateries</span></button>
+                <button onClick={() => toggleFilter(1)}><img src={groceryIcon}></img><span>Groceries</span></button>
+                <button onClick={() => toggleFilter(2)}><img src={service}></img><span>Services</span></button>
+            </div>
             <p></p>
-            <button onClick={() => toggleFilter(0)}>Restaurants/Eateries</button>
-            {/* <button onClick={() => filterRestaurants}>Restaurants/Eateries</button> */}
-            <p></p>
-            <button onClick={() => toggleFilter(1)}>Groceries</button>
-            <p></p>
-            <button onClick={() => toggleFilter(2)}>Services</button>
-            <hr style={{borderTop:"1px solid red"}}></hr>
-            {/* <button onClick={toggleMocked}>Show Mocked</button> */}
+            <hr style={{borderTop:"2px solid #8b1a10"}}></hr>
             {showMocked ? <div>
                 {filteredMock.map((item, index) => (
-                    <h4>{item.name}</h4>
+                    <div>
+                        {BusinessCard(item)}
+                    </div>
                 ))}
             </div> : <div></div>}
         </div>
