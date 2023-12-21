@@ -16,7 +16,11 @@ export function getJSON(): Promise<GeoJSON.FeatureCollection | undefined>{
     return new Promise((resolve, reject) => {
         fetch(url)
         .then(response => response.json())
-        .then(json => console.log(json))
+        .then(json => JSON.parse(json))
+        .then(result => {console.log(result)
+        }
+            
+            )
             // if(data.features.length < 1){
             //     for(let i = 0; i < json.length; i++){
                     

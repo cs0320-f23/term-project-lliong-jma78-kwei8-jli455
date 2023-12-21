@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0642f82e-cf99-4681-924e-82a13a34ce4f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/src/components/DisplayBusinesses.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/components/DisplayBusinesses.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/src/components/DropDown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/components/DropDown.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/src/pages/explore_businesses.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/pages/explore_businesses.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/src/styles/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/styles/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/src/styles/DropDown.css" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/styles/DropDown.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/src/styles/explore-business.css" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/styles/explore-business.css" afterDir="false" />
-    </list>
+    <list default="true" id="0642f82e-cf99-4681-924e-82a13a34ce4f" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -67,7 +55,7 @@
       <workItem from="1701700122956" duration="15000" />
       <workItem from="1701700156775" duration="414000" />
       <workItem from="1701700588082" duration="2808000" />
-      <workItem from="1703124134169" duration="1910000" />
+      <workItem from="1703124134169" duration="2053000" />
     </task>
     <servers />
   </component>
