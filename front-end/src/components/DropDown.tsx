@@ -1,25 +1,27 @@
 import React, {useState} from "react";
-import logo from "../images/nugget-dino3.png";
-import accountLogo from "../images/account-icon.png"
+import accountLogo from "../images/nugget-dino3.png";
+import logo from "../images/ablaze_logo.png"
 import { Link, Outlet } from "react-router-dom";
 import "../styles/DropDown.css"
 
-export default function DropDownNav() {
-  const [showExplore, setShowExplore] = useState<boolean>(false);
-  const [showSubmit, setShowSubmit] = useState<boolean>(false);
+export default function DropDownNav(){
 
-  function handleHoverExplore() {
-    setShowExplore(true);
-  }
+    const [showExplore, setShowExplore] = useState<boolean>(false);
+    const [showSubmit, setShowSubmit] = useState<boolean>(false);
 
-  function handleHoverSubmit() {
-    setShowSubmit(true);
-  }
+    function handleHoverExplore(){
+        setShowExplore(true);
+    }
 
-  function handleMouseLeave() {
-    setShowSubmit(false);
-    setShowExplore(false);
-  }
+    function handleHoverSubmit(){
+        setShowSubmit(true);
+    }
+
+    function handleMouseLeave(){
+        setShowSubmit(false);
+        setShowExplore(false);
+    }
+
     return(
         <div id="nav-bar">
             <nav className="nav-container">
@@ -35,7 +37,7 @@ export default function DropDownNav() {
                         </Link>
                     </div>
                     <div className="nav-pages" onMouseEnter={handleHoverExplore} onMouseLeave={handleMouseLeave}>
-                        <h2>Explore</h2>
+                        <h2 style={{color: "#4f100a"}}>Explore</h2>
                         {showExplore ? 
                             <div>
                                 <div className="dropdown-menu">
@@ -51,13 +53,13 @@ export default function DropDownNav() {
                             </div> : null}
                     </div>
                     <div className="nav-pages" onMouseEnter={handleHoverSubmit} onMouseLeave={handleMouseLeave}>
-                        <h2>Submit</h2>
+                        <h2 style={{color: "#4f100a"}}>Submit</h2>
                         {showSubmit ? 
                             <div>
                                 <div className="dropdown-menu">
                                     <ul style={{padding: "unset", margin: "unset"}} className="drop-down">
                                         <h3 style={{color:"#4f100a"}}><Link to="/submit_artists" style={{color:"#4f100a"}}>Submit Artists</Link></h3>
-                                        <h3 style={{color:"#4f100a"}}><Link to="/submit_businesses" style={{color:"#4f100a"}}>Submit Businesses</Link></h3>
+                                        {/* <h3 style={{color:"#4f100a"}}><Link to="/submit_businesses" style={{color:"#4f100a"}}>Submit Businesses</Link></h3> */}
                                     </ul>
                                 </div>
                             </div>
