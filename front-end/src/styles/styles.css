@@ -118,6 +118,7 @@ input::placeholder {
   text-align: center;
   /* margin-left: 80px; */
   background-image: url('../images/similar-background.png');
+  height: 100vh;
 }
 
 .checkboxes {
@@ -343,4 +344,11 @@ textarea {
 
 textarea::placeholder {
   color: white;
+}
+
+.resources{
+  background-image: url('../images/similar-background.png');
+  width: 100vw;
+  height: 100vh;
+
 }
