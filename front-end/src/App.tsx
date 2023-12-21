@@ -33,6 +33,7 @@ export default function App() {
               <Route path="/about" element={<AboutPage/>}/>
               <Route path="/explore_artists" element={<CreatorPage/>}/>
               <Route path="/explore_businesses" element={<Businesses/>}/>
+              <Route path="/explore_musicians" element={<SpotifyPage/>}/>
               <Route path="/submit_artists" element={<SubmitArtist/>}/>
               <Route path="/submit_businesses" element={<SubmitBusinesses/>}/>
               <Route path="/resources" element={<Resources/>}/>

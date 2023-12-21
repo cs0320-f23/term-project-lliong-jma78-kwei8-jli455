@@ -46,6 +46,9 @@ export default function DropDownNav(){
                                             <Link to="/explore_artists" style={{color:"#4f100a"}}>Explore Artists</Link>
                                         </h3>
                                         <h3 style={{color:"#4f100a"}}>
+                                            <Link to="/explore_musicians" style={{color:"#4f100a"}}>Explore Musicians</Link>
+                                        </h3>
+                                        <h3 style={{color:"#4f100a"}}>
                                             <Link to="/explore_businesses" style={{color:"#4f100a"}}>Explore Businesses</Link>
                                         </h3>
                                     </ul>
