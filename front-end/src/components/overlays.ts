@@ -2,7 +2,7 @@ import { FeatureCollection } from "geojson"
 import { CircleLayer, FillLayer, LineLayer } from "react-map-gl"
 
 export function getJSON(term: string): GeoJSON.FeatureCollection | undefined{
-    let url = "http://localhost:323/business"
+    let url = ""
 
     if(term == 'restaurants'){
         url = "http://localhost:323/business?searchTerm=restaurants"
@@ -26,7 +26,7 @@ export function getJSON(term: string): GeoJSON.FeatureCollection | undefined{
         fetch(url)
         .then(response => response.json())
         .then(json => {
-            if(term == ""){
+            if(data.features.length < 1){
                 Object.keys(json).forEach((key) => {
                     let businessName = key
                     let businessDict = json[key]["businesses"][0]
@@ -58,21 +58,20 @@ export function getJSON(term: string): GeoJSON.FeatureCollection | undefined{
                     data.features.push(newFeat)
                 })
             }
-            if(term != ""){
-                data.features = []
-                Object.keys(json).forEach((key) => {
-                    let businessDict = json[key][0]
-                    let url = businessDict['url']
+            // if(term != ""){
+            //     data.features = []
+            //     Object.keys(json).forEach((key) => {
+            //         let businessDict = json[key][0]
+            //         let url = businessDict['url']
 
-                    console.log(url)
-                    let busAdd1 = businessDict['location']['address1']
-                    let busAdd2 = businessDict['location']['address2']
-                    let busCity = businessDict['location']['city']
-                    let busState = businessDict['location']['state']
-                    let busLat = parseFloat(businessDict['coordinates']['latitude'])
-                    let busLong = parseFloat(businessDict['coordinates']['longitude'])
-                    let busPhone = businessDict['phone']
-            })}
+            //         let busAdd1 = businessDict['location']['address1']
+            //         let busAdd2 = businessDict['location']['address2']
+            //         let busCity = businessDict['location']['city']
+            //         let busState = businessDict['location']['state']
+            //         let busLat = parseFloat(businessDict['coordinates']['latitude'])
+            //         let busLong = parseFloat(businessDict['coordinates']['longitude'])
+            //         let busPhone = businessDict['phone']
+            // })}
         }).then(finish => resolve(finish))
     })
     return data

@@ -29,8 +29,8 @@ export default function BusinessCard(props){
             <div style={{paddingLeft:"10px"}}>
                 {/* <img src={icon} style={{width:'3vw', height:'5vh', paddingInline:"10px", paddingTop:"8px"}}></img> */}
                 <h3>{props.name}</h3>
-                <h5>{props.address1}, {props.address2} 
-                {props.city}, {props.state}</h5>
+                <h5>{props.location['address1']}, {props.location['address2']} 
+                {props.location['city']}, {props.location['state']}</h5>
                 <h5>{props.phone}</h5>
                 <button onClick={() => openInNewTab(props.url)} style={{height:"5vh"}}>Learn More</button>
             </div>

@@ -14,20 +14,18 @@ import { APIKey } from "../../private/key";
 export default function DisplayBusiness(){
     const[mockedPoints, setMockedPoints] = useState<GeoJSON.FeatureCollection | undefined>();
     const[points, setPoints] = useState<GeoJSON.FeatureCollection | undefined>();
-    const[loaded, setLoaded] = useState(0);
-    const[display, setDisplay] = useState<GeoJSON.FeatureCollection | undefined>();
 
     useEffect(() => {
-        if(loaded == 0){
-            setMockedPoints(filteredGeo)
-            // setPoints(getJSON(""))
-            console.log(points)
-            setLoaded(1)
-        }
+        setPoints(getJSON(""))
+        setMockedPoints(filteredGeo)
+
     }, []);
+
+    console.log(points)
 
     //MOCKING DATA ----------------------------------------------------------------------------
     const[showMocked, setShowMocked] = useState<boolean>(false);
+    const[updateMock, setUpdate] = useState<boolean>(false); 
 
     let filteredMock = [...business_dataset]
 
@@ -43,81 +41,65 @@ export default function DisplayBusiness(){
         filtersCopy[index] = !filtersCopy[index]
         setFilters(filtersCopy)
         filteredMock = [...business_dataset]
-        
     }
 
     if(filters[0]){
         filteredMock = filteredMock.filter((item) => item['business'] == 'restaurants')
-        // if(!showMocked){
-        //     setPoints(getJSON('restaurants'))
-        // }
     }
     
     if(filters[1]){
         filteredMock = filteredMock.filter((item) => item['business'] == 'groceries')
-        // if(!showMocked){
-        //     setPoints(getJSON('groceries'))
-        // }
     }
     if(filters[2]){
         filteredMock = filteredMock.filter((item) => item['business'] == 'services')
-        // if(!showMocked){
-        //     setPoints(getJSON('services'))
-        // }
     }
 
-    function toggleMocked(){
-        setShowMocked(!showMocked);
-    }
-
-    // if(showMocked){
-    //     setDisplay(mockedPoints)
-    // }
-    // else{
-    //     setDisplay(points)
+    // function toggleMocked(){
+    //     setShowMocked(!showMocked);
     // }
 
-    filteredMock.forEach((item, index) => {
-        const feat: GeoJSON.Feature = {
-            "type": 'Feature', 
-            'properties':{
-              name: item.name,
-              site: item.url,
-              phone: item.phone,
-              address1: item.location['address1'],
-              address2: item.location['address2'],
-              city: item.location['city'],
-              state: item.location['state']
-            },
-            "geometry": {
-              "coordinates": [(item.latitude), (item.longitude)],
-              "type": "Point"
-            }
-          }
-          filteredGeo.features.push(feat)
-    })
+    // filteredMock.forEach((item, index) => {
+    //     const feat: GeoJSON.Feature = {
+    //         "type": 'Feature', 
+    //         'properties':{
+    //           name: item.name,
+    //           site: item.url,
+    //           phone: item.phone,
+    //           address1: item.location['address1'],
+    //           address2: item.location['address2'],
+    //           city: item.location['city'],
+    //           state: item.location['state']
+    //         },
+    //         "geometry": {
+    //           "coordinates": [(item.latitude), (item.longitude)],
+    //           "type": "Point"
+    //         }
+    //       }
+    //       filteredGeo.features.push(feat)
+    // })
     // BACKEND ----------------
 
-    let backendData = [{}]
-    let mockedData = [{}]
+    // let backendData = [{}]
+    // let mockedData = [{}]
 
-    mockedPoints?.features.forEach((item, index) => {
-        mockedData.push(item.properties)
-    })
+    // mockedPoints?.features.forEach((item, index) => {
+    //     mockedData.push(item.properties)
+    // })
 
-    mockedData.shift()
+    // mockedData.shift()
 
-    points?.features.forEach((item, index) => {
-        backendData.push(item.properties)
-    })
+    // points?.features.forEach((item, index) => {
+    //     backendData.push(item.properties)
+    // })
 
-    backendData.shift()
+    // backendData.shift()
 
     return(
         // <div style={{display: "flex"}}>
             <div className="businesses-container" style={{paddingLeft:"10px", display:"inline-grid"}}>
+                <h1 style={{alignContent:"center"}}>Explore Businesses</h1>
                 <div>
-                    <h2>Filter By <Switch onChange={toggleMocked} checked={showMocked}></Switch></h2>
+                    {/* <h2>Filter By <Switch onChange={toggleMocked} checked={showMocked}></Switch></h2> */}
                     
                     <div style={{display:"flex", gap:"15px"}}>
                         <button onClick={() => toggleFilter(0)}><img src={foodIcon}></img><span>Restaurants/Eateries</span></button>
@@ -128,28 +110,14 @@ export default function DisplayBusiness(){
                     <hr style={{borderTop:"2px solid #8b1a10", width:"100vw"}}></hr>
                 </div>
                 <div>
-                    {showMocked ? <div id="Cards">
-                        {mockedData.map((item, index) => (
+                    <div className="Cards">
+                        {filteredMock.map((item, index) => (
                             <div>
                                 {BusinessCard(item)}
                             </div>
                     ))}
-                    </div> : null}
-
+                    </div> 
                 </div>
-                {/* {showMocked ? <div style={{display: "inline-grid"}}>
-                    {mockedData.map((item, index) => (
-                        <div>
-                            {BusinessCard(item)}
-                        </div>
-                    ))}
-                </div> : <div>
-                    {backendData.map((item, index) => (
-                        <div>
-                            {BusinessCard(item)}
-                        </div>
-                    ))}
-                    </div>} */}
             </div>
 
     )
