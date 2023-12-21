@@ -10,130 +10,38 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Interface" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="ProjectColorInfo">{
-    &quot;associatedIndex&quot;: 4
-    }</component>
   <component name="ProjectId" id="2Z57WijWXbdoCOuOFwlKV00rAkW" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;artists-fetch&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/karisma/Desktop/cs0320/term-project-lliong-jma78-kwei8-jli455/back/pom.xml&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  }
-}</component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
   <component name="RunManager">
-    <configuration name="TestAlgos.testKeywordSearch" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.main.Server.Server" />
       <module name="s0" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="edu.brown.cs.student.TestCreators.Algorithms.*" />
+          <option name="PATTERN" value="edu.brown.cs.student.main.Server.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="edu.brown.cs.student.TestCreators.Algorithms" />
-      <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.TestCreators.Algorithms.TestAlgos" />
-      <option name="METHOD_NAME" value="testKeywordSearch" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestAlgos.testSpotifySortDur" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="s0" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="edu.brown.cs.student.TestCreators.Algorithms.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="edu.brown.cs.student.TestCreators.Algorithms" />
-      <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.TestCreators.Algorithms.TestAlgos" />
-      <option name="METHOD_NAME" value="testSpotifySortDur" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestCreator" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="s0" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="edu.brown.cs.student.TestCreators.Creators.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="edu.brown.cs.student.TestCreators.Creators" />
-      <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.TestCreators.Creators.TestCreator" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestCreator.testDelNoCreator" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="s0" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="edu.brown.cs.student.TestCreators.Creators.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="edu.brown.cs.student.TestCreators.Creators" />
-      <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.TestCreators.Creators.TestCreator" />
-      <option name="METHOD_NAME" value="testDelNoCreator" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestCreator.testSearchCreator" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="s0" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="edu.brown.cs.student.TestCreators.Creators.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="edu.brown.cs.student.TestCreators.Creators" />
-      <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.TestCreators.Creators.TestCreator" />
-      <option name="METHOD_NAME" value="testSearchCreator" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestAlgos.testKeywordSearch" />
-        <item itemvalue="JUnit.TestCreator" />
-        <item itemvalue="JUnit.TestAlgos.testSpotifySortDur" />
-        <item itemvalue="JUnit.TestCreator.testDelNoCreator" />
-        <item itemvalue="JUnit.TestCreator.testSearchCreator" />
+        <item itemvalue="Application.Server" />
       </list>
     </recent_temporary>
   </component>
@@ -148,8 +56,8 @@
       <workItem from="1701700122956" duration="15000" />
       <workItem from="1701700156775" duration="414000" />
       <workItem from="1701700588082" duration="2808000" />
-      <workItem from="1702501053917" duration="21569000" />
-      <workItem from="1702930389905" duration="2448000" />
+      <workItem from="1703124134169" duration="3356000" />
+      <workItem from="1703169399611" duration="4026000" />
     </task>
     <servers />
   </component>
@@ -166,5 +74,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

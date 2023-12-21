@@ -14,9 +14,20 @@ import spark.Request;
 import spark.Response;
 import spark.Route;
 
+/**
+ * Handles the business endpoint
+ */
 public class BusinessHandler implements Route {
 
   private HashMap<String, YelpApiResponse> scrapedData;
+
+  /**
+   * Handles the /business endpoint. Check for certain keywords and calls appropriate functions
+   * @param request is the request
+   * @param response is the response
+   * @return a json with the response information
+   * @throws Exception if error
+   */
 
   @Override
   public Object handle(Request request, Response response) throws Exception {

@@ -10,7 +10,19 @@ import edu.brown.cs.student.main.Business.WebScraper.YelpApiResponse;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Mock YelpAPIResponse class.
+ */
 public class YelpMocks {
+
+  /**
+   * Creates a mock YelpAPIResponse
+   * @param name is the mocked name
+   * @param review_count is the mocked review
+   * @param rating is the mocked rating
+   * @param categories is the mocked categories
+   * @return a mocked YelpAPIResponse
+   */
 
   public YelpApiResponse createSampleYelpApiResponse(
       String name, String review_count, String rating, List<Category> categories) {
