@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import okio.Buffer;
-import org.checkerframework.checker.units.qual.K;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -19,11 +18,15 @@ import org.jsoup.select.Elements;
 
 public class WebScraper {
   private String key;
-  private HashMap<String,YelpApiResponse> responseMap;
+  private HashMap<String, YelpApiResponse> responseMap;
   private List<YelpApiResponse> responseList;
 
-
-  public HashMap<String,YelpApiResponse> getBusinessInfo() throws Exception {
+  /**
+   * Scrapes a website for business phone numbers and converts to HTML
+   * @return a Map of business name to business information
+   * @throws Exception if there is an error
+   */
+  public HashMap<String, YelpApiResponse> getBusinessInfo() throws Exception {
     this.key = "evtJ9UBqyUYofFNw5qmUmnAu8U6Dv5Xz";
     this.responseMap = new HashMap<>();
     this.responseList = new ArrayList<>();
@@ -44,9 +47,16 @@ public class WebScraper {
     String html = response.toString();
     Document doc = Jsoup.parse(html);
     Elements names = doc.select("h3.wp-block-heading");
+    this.callAPI(names);
+    return this.responseMap;
+  }
 
+  /**
+   * Helper method that calls Yelp API to get business info
+   * @param names are HTML elements that contain business phone numbers
+   */
+  private void callAPI(Elements names) {
     for (Element name : names) {
-      String href = name.text(); // returns the restaurant names
       Element addressElement = name.nextElementSibling();
       if (addressElement != null) {
         Element addressEl = addressElement.selectFirst("em");
@@ -55,29 +65,24 @@ public class WebScraper {
           String[] splitAddress = unfiltAddress.split("; ");
           if (splitAddress.length != 1) {
             String unfilteredPhone = splitAddress[1];
-            String phone = unfilteredPhone.replace("-","");
+            String phone = unfilteredPhone.replace("-", "");
             try {
-              String apiUrl =
-                  "https://api.yelp.com/v3/businesses/search/phone?phone=%2B1" + phone;
-
+              String apiUrl = "https://api.yelp.com/v3/businesses/search/phone?phone=%2B1" + phone;
               URL apiURl = new URL(apiUrl);
               HttpURLConnection connection = (HttpURLConnection) apiURl.openConnection();
-
               connection.setRequestMethod("GET");
-
               Keys keys = new Keys();
               connection.setRequestProperty("Authorization", "Bearer " + keys.getKey());
-
               int responseCode2 = connection.getResponseCode();
               System.out.println(responseCode2);
-              if (responseCode2 ==200) {
+              if (responseCode2 == 200) {
                 Moshi moshi = new Moshi.Builder().build();
                 JsonAdapter<YelpApiResponse> adapter = moshi.adapter(YelpApiResponse.class);
-                YelpApiResponse apiResponse = adapter.fromJson(new Buffer().readFrom(connection.getInputStream()));
+                YelpApiResponse apiResponse =
+                    adapter.fromJson(new Buffer().readFrom(connection.getInputStream()));
                 if (apiResponse != null) {
                   this.serialize(apiResponse);
                 }
-
                 connection.disconnect();
               }
 
@@ -87,22 +92,20 @@ public class WebScraper {
           }
         }
       }
-          }
-
-    return this.responseMap;
+    }
   }
+
+  /**
+   * Populates the Map of businesses to information
+   * @param business is the YelpAPIResponse for a business
+   */
 
   private void serialize(YelpApiResponse business) {
     String name = business.businesses.get(0).name;
     this.responseMap.put(name, business);
-
   }
 
-
-  public record YelpApiResponse(List<Business> businesses,
-                                int total,
-                               Region region) {
-  }
+  public record YelpApiResponse(List<Business> businesses, int total, Region region) {}
 
   public record Business(
       String id,
@@ -120,32 +123,23 @@ public class WebScraper {
       Location location,
       String phone,
       String displayPhone,
-      String distance) {
-  }
+      String distance) {}
 
+  public record Category(String alias, String title) {}
 
-  public record Category(String alias, String title) {
+  public record Coordinates(double latitude, double longitude) {}
 
-  }
+  public record Location(
+      String address1,
+      String address2,
+      String address3,
+      String city,
+      String zipCode,
+      String country,
+      String state,
+      List<String> displayAddress) {}
 
+  public record Region(Center center) {}
 
-  public record Coordinates(double latitude, double longitude) {
-
-  }
-
-
-  public record Location(String address1, String address2, String address3, String city,
-                         String zipCode, String country, String state,
-                         List<String> displayAddress) {}
-
-
-  public record Region(Center center) {
-
-  }
-
-  public record Center(double longitude, double latitude) {
-
-  }
-
-
+  public record Center(double longitude, double latitude) {}
 }

@@ -1,0 +1,314 @@
+.song-single {
+  border-radius: 50px;
+  width: 300px;
+  border: 2px solid #8b1a10;
+  background-color: none;
+}
+
+h1 {
+  font-family: "Tenor Sans";
+  color: #8b1a10;
+  font-size: 30px;
+}
+
+h2 {
+  font-family: "Tenor Sans";
+  color: #8b1a10;
+  font-size: 20px;
+}
+
+.spotify-grid {
+  display: inline-grid;
+  grid-template-columns: repeat(3, auto);
+  column-gap: 30px;
+  row-gap: 30px;
+}
+
+.spotify-searchbar-container {
+  display: flex;
+  background-color: #ffffff;
+  border-radius: 10px;
+  align-items: center;
+  width: 650px;
+  margin: auto;
+  justify-content: space-between;
+}
+
+.creator-searchbar-container {
+  display: flex;
+  background-color: #ffffff;
+  border-radius: 10px;
+  align-items: flex-start;
+  width: 650px;
+  margin: auto;
+  justify-content: space-between;
+}
+
+.search-input {
+  background-color: #8b1a10;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  width: 460px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
+  outline: none;
+  font-family: "Tenor Sans";
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.submit-button {
+  background-color: #8b1a10;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  width: 120px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
+  font-family: "Tenor Sans";
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.submit-button:hover {
+  background-color: #b9271a;
+}
+
+.submit-button:active {
+  transform: scale(0.9);
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+}
+
+input::placeholder {
+  font-family: "Tenor Sans";
+  font-size: 20px;
+  color: white;
+}
+
+.filter-box {
+  font-family: "Tenor Sans";
+  color: #64130c;
+  font-weight: bold;
+  font-size: 25px;
+  border-radius: 25px;
+  width: 250px;
+  height: 550px;
+  border: 2px solid #8b1a10;
+  background-color: #ffd4d4;
+}
+
+.spotify-content {
+  display: grid;
+  column-gap: 20px;
+  justify-content: start;
+}
+
+.right-component {
+  grid-column: 2 / 3;
+}
+
+.spotify-page {
+  text-align: center;
+  margin-left: 80px;
+}
+
+.checkboxes {
+  display: flex;
+  flex-direction: column;
+  font-size: 17px;
+  text-align: left;
+  margin-left: 10px;
+}
+
+input[type="checkbox"] {
+  margin-right: 15px;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.sort-submit-button {
+  background-color: #8b1a10;
+  border: none;
+  border-radius: 10px;
+  padding: 7px;
+  width: 100px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  font-family: "Tenor Sans";
+  font-size: 17px;
+  color: #ffffff;
+}
+
+.sort-submit-button:hover {
+  background-color: #b9271a;
+}
+
+.sort-submit-button:active {
+  transform: scale(0.9);
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+}
+
+.creator-single {
+  border-radius: 30px;
+  width: 300px;
+  height: 350px;
+  border: 2px solid #8b1a10;
+  background-color: none;
+  position: relative;
+}
+
+.creator-id {
+  display: flex;
+  font-family: "Tenor Sans";
+  color: #4f100a;
+  font-size: 20px;
+  text-align: right;
+  margin-left: 230px;
+  font-weight: bold;
+  position: absolute;
+  bottom: 20px;
+}
+
+.creator-filters {
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+  width: 1200px;
+}
+
+.creator-filter-button {
+  background-color: none;
+  border-radius: 10px;
+  border: 2px solid #8b1a10;
+  padding: 7px;
+  width: 180px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  font-family: "Tenor Sans";
+  font-size: 17px;
+  color: #8b1a10;
+}
+
+.creator-filter-button:hover {
+  border: 2px solid #b9271a;
+  color: #b9271a;
+  background-color: #ffd4d4;
+}
+
+.creator-filter-button:active {
+  transform: scale(0.9);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.creator-grid {
+  display: inline-grid;
+  grid-template-columns: repeat(4, auto);
+  column-gap: 20px;
+  row-gap: 20px;
+}
+
+.icons {
+  display: flex;
+  justify-content: center;
+  column-gap: 8px;
+}
+
+.creator-type {
+  background-color: none;
+  border-radius: 10px;
+  border: 2px solid #4f100a;
+  padding: 5px;
+  width: 180px;
+  font-family: "Tenor Sans";
+  font-size: 15px;
+  color: #4f100a;
+  position: absolute;
+  bottom: 15px;
+  margin-left: 20px;
+}
+
+.creator-input {
+  background-color: #8b1a10;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  width: 500px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
+  outline: none;
+  font-family: "Tenor Sans";
+  font-size: 20px;
+  color: #ffffff;
+  margin-bottom: 50px;
+}
+
+.submit-creator-page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.submit-creator-type {
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+  width: 1200px;
+  margin-bottom: 50px;
+}
+
+.terms-and-conditions-checkbox {
+  font-family: "Tenor Sans";
+  color: #4f100a;
+  font-size: 18px;
+}
+
+.additional-info-input {
+  display: flex;
+  column-gap: 20px;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.creator-additional-input {
+  background-color: #8b1a10;
+  border: none;
+  border-radius: 10px;
+  padding: 8px;
+  width: 370px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  outline: none;
+  margin-bottom: 30px;
+  font-family: "Tenor Sans";
+  font-size: 15px;
+  color: white;
+}
+
+.creator-additional-input::placeholder {
+  font-family: "Tenor Sans";
+  font-size: 15px;
+  color: white;
+}
+
+.creator-filter-button-clicked {
+  background-color: #ffd4d4;
+  border-radius: 10px;
+  border: 2px solid #b9271a;
+  padding: 7px;
+  width: 180px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  font-family: "Tenor Sans";
+  font-size: 17px;
+  color: #b9271a;
+}
+
+.delete-creator-page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.delete-creator-description {
+  width: 800px;
+}

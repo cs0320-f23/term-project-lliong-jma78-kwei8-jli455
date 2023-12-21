@@ -14,9 +14,20 @@ import spark.Request;
 import spark.Response;
 import spark.Route;
 
+/**
+ * Handles the business endpoint
+ */
 public class BusinessHandler implements Route {
 
-  private HashMap<String,YelpApiResponse> scrapedData;
+  private HashMap<String, YelpApiResponse> scrapedData;
+
+  /**
+   * Handles the /business endpoint. Check for certain keywords and calls appropriate functions
+   * @param request is the request
+   * @param response is the response
+   * @return a json with the response information
+   * @throws Exception if error
+   */
 
   @Override
   public Object handle(Request request, Response response) throws Exception {
@@ -32,7 +43,8 @@ public class BusinessHandler implements Route {
         Type listYelp = Types.newParameterizedType(List.class, YelpApiResponse.class);
         JsonAdapter<List<YelpApiResponse>> adapter1 = moshi.adapter(listYelp);
         SearchBusiness searcher = new SearchBusiness();
-        List<YelpApiResponse> filtered = searcher.search(request.queryParams("searchTerm"), this.scrapedData);
+        List<YelpApiResponse> filtered =
+            searcher.search(request.queryParams("searchTerm"), this.scrapedData);
         return adapter1.toJson(filtered);
       }
       return adapter.toJson(this.scrapedData);

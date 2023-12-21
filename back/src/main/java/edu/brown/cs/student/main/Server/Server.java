@@ -2,13 +2,15 @@ package edu.brown.cs.student.main.Server;
 
 import static spark.Spark.after;
 
-import edu.brown.cs.student.main.Creators.Spotify.SpotifySorting;
 import edu.brown.cs.student.main.Server.Handlers.BusinessHandler;
 import edu.brown.cs.student.main.Server.Handlers.CreatorHandler;
 import edu.brown.cs.student.main.Server.Handlers.SpotifyHandler;
 import edu.brown.cs.student.main.Server.Handlers.SpotifySortHandler;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import org.apache.hc.core5.http.ParseException;
+import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import spark.Spark;
 
 /** Server class to accept user requests and pass them to the appropriate user */
@@ -33,7 +35,15 @@ public class Server {
     Spark.get("creators", new CreatorHandler(
         "data/SubmittedData.csv"));
     Spark.get("business", new BusinessHandler());
-    Spark.get("spotify", new SpotifyHandler());
+    try {
+      Spark.get("spotify", new SpotifyHandler());
+    } catch (IOException e) {
+      System.err.println("IOException in spotify API setup: " + e);
+    } catch (ParseException e) {
+      System.err.println("ParseException in spotify API setup: " + e);
+    } catch (SpotifyWebApiException e) {
+      System.err.println("SpotifyWebApiException in spotify API setup: " + e);
+    }
     Spark.get("sortspotify", new SpotifySortHandler());
 
     // Wait for initialisation

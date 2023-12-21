@@ -1,4 +1,4 @@
-package edu.brown.cs.student;
+package edu.brown.cs.student.TestBusinesses;
 
 import edu.brown.cs.student.main.Business.WebScraper.Business;
 import edu.brown.cs.student.main.Business.WebScraper.Category;
@@ -10,16 +10,31 @@ import edu.brown.cs.student.main.Business.WebScraper.YelpApiResponse;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Mock YelpAPIResponse class.
+ */
 public class YelpMocks {
 
-  public YelpApiResponse createSampleYelpApiResponse(String name, String review_count, String rating, List<Category> categories) {
-    List<Business> businesses = Arrays.asList(createSampleBusiness(name, review_count, rating, categories));
+  /**
+   * Creates a mock YelpAPIResponse
+   * @param name is the mocked name
+   * @param review_count is the mocked review
+   * @param rating is the mocked rating
+   * @param categories is the mocked categories
+   * @return a mocked YelpAPIResponse
+   */
+
+  public YelpApiResponse createSampleYelpApiResponse(
+      String name, String review_count, String rating, List<Category> categories) {
+    List<Business> businesses =
+        Arrays.asList(createSampleBusiness(name, review_count, rating, categories));
     int total = 1;
     Region region = createSampleRegion();
     return new YelpApiResponse(businesses, total, region);
   }
 
-  public static Business createSampleBusiness(String name, String review_count, String rating, List<Category> categories) {
+  public static Business createSampleBusiness(
+      String name, String review_count, String rating, List<Category> categories) {
     return new Business(
         "sampleId",
         "sampleAlias",
@@ -36,8 +51,7 @@ public class YelpMocks {
         createSampleLocation(),
         "123-456-7890",
         "123-456-7890",
-        "1.23 miles"
-    );
+        "1.23 miles");
   }
 
   public static Category createSampleCategory() {
@@ -57,8 +71,7 @@ public class YelpMocks {
         "94105",
         "USA",
         "CA",
-        Arrays.asList("123 Main St", "Suite 456", "San Francisco, CA 94105")
-    );
+        Arrays.asList("123 Main St", "Suite 456", "San Francisco, CA 94105"));
   }
 
   public static Region createSampleRegion() {
@@ -68,5 +81,4 @@ public class YelpMocks {
   public static Center createSampleCenter() {
     return new Center(-122.4194, 37.7749);
   }
-
 }

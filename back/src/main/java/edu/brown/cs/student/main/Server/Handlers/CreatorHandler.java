@@ -13,14 +13,25 @@ import spark.Request;
 import spark.Response;
 import spark.Route;
 
+/** Handler for submitted creators */
 public class CreatorHandler implements Route {
   private static SubmittedCreators submittedCreators;
 
+  /**
+   * Standard creator handler constructor
+   *
+   * @param filepath specify database
+   */
   public CreatorHandler(String filepath) {
-    this.submittedCreators =
-        new SubmittedCreators(filepath);
+    this.submittedCreators = new SubmittedCreators(filepath);
   }
 
+  /**
+   * Parse a particular attribute of a creator
+   *
+   * @param requestVal potential attribute
+   * @return String representing the attribute
+   */
   private String getAttr(String requestVal) {
     if (requestVal == null) {
       return "null";
@@ -28,7 +39,14 @@ public class CreatorHandler implements Route {
     return requestVal;
   }
 
-  // TODO: optimise by not making it fetch if no writes have happened
+  /**
+   * Dispatch various endpoint requests
+   *
+   * @param request user request
+   * @param response response parameter
+   * @return json object containing requested data
+   * @throws IOException issue parsing request
+   */
   @Override
   public Object handle(Request request, Response response) throws IOException {
     Moshi moshi = new Moshi.Builder().build();
@@ -53,8 +71,22 @@ public class CreatorHandler implements Route {
       String website = getAttr(request.queryParams("website"));
       String spotify = getAttr(request.queryParams("spotify"));
 
-      String creatorStr = name + "," + type + "," + price + "," + description + "," + instagram + "," +
-          facebook + "," + website + "," + spotify;
+      String creatorStr =
+          "\"" + name + "\""
+              + ","
+              + "\"" + type + "\""
+              + ","
+              + "\"" + price + "\""
+              + ","
+              + "\"" + description + "\""
+              + ","
+              + "\"" + instagram + "\""
+              + ","
+              + "\"" + facebook + "\""
+              + ","
+              + "\"" + website + "\""
+              + ","
+              + "\"" + spotify + "\"";
       Integer uniqueID = this.submittedCreators.addCreator(creatorStr);
       responseMap.put("result", "success");
       responseMap.put("ID", uniqueID);
@@ -103,7 +135,6 @@ public class CreatorHandler implements Route {
         return adapter.toJson(responseMap);
       }
     }
-
 
     responseMap.put("result", "error");
     responseMap.put("details", "used unspecified action");
