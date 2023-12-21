@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0642f82e-cf99-4681-924e-82a13a34ce4f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/src/mocks/spotify_mock_functions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/mocks/spotify_mock_functions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/src/pages/spotify/spotify_filter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/pages/spotify/spotify_filter.tsx" afterDir="false" />
-    </list>
+    <list default="true" id="0642f82e-cf99-4681-924e-82a13a34ce4f" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
