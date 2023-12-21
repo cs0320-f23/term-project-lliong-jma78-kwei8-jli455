@@ -92,7 +92,7 @@ export function Creator(props: CreatorProps) {
   return (
     <div className="creator-single" data-testid="test:single-creator">
       <br></br>
-      <h1>{props.name}</h1>
+      <h1 aria-label={"Name:" + props.name}>{props.name}</h1>
       <br></br>
       <h2>{props.description}</h2>
 
