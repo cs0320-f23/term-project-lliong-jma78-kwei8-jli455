@@ -88,4 +88,56 @@ public class TestAlgos {
     assertEquals(creator1, searchedList.get(2));
     assertFalse(searchedList.contains(creator4));
   }
+
+  /**
+   * unit test for filtering creators by type
+   */
+  @Test
+  public void testFilterType() {
+    List<Map<String, String>> toSearch = new ArrayList<>();
+
+    Map<String, String> creator1 = new HashMap<>();
+    creator1.put("name", "dancer");
+    creator1.put("type", "performing arts");
+
+    Map<String, String> creator2 = new HashMap<>();
+    creator2.put("name", "sculptor");
+    creator2.put("type", "visual arts");
+
+    Map<String, String> creator3 = new HashMap<>();
+    creator3.put("name", "photographer");
+    creator3.put("type", "visual arts");
+
+    Map<String, String> creator4 = new HashMap<>();
+    creator4.put("name", "author");
+    creator4.put("type", "literary arts");
+
+    toSearch.add(creator1);
+    toSearch.add(creator2);
+    toSearch.add(creator3);
+    toSearch.add(creator4);
+
+    Collections.shuffle(toSearch);
+
+    SubmittedFiltering filtering = new SubmittedFiltering();
+
+    // filtering for visual arts creators
+    List<Map<String, String>> visualArtsList = filtering.filterType(toSearch, "visual arts");
+    assertEquals(2, visualArtsList.size());
+    assertFalse(visualArtsList.contains(creator1));
+    assertFalse(visualArtsList.contains(creator4));
+
+    // filtering for performing arts creators
+    List<Map<String, String>> performingArtsList = filtering.filterType(toSearch, "performing arts");
+    assertEquals(1, performingArtsList.size());
+    assertTrue(performingArtsList.contains(creator1));
+
+    // filtering for literary arts creators
+    List<Map<String, String>> literaryArtsList = filtering.filterType(toSearch, "literary arts");
+    assertEquals(1, literaryArtsList.size());
+    assertTrue(literaryArtsList.contains(creator4));
+  }
+
 }
+
+
