@@ -20,6 +20,7 @@ import { CreatorPage } from "./pages/creators/creator_page";
 import { Creator } from "./pages/creators/single_creator";
 import { NameInputBar } from "./pages/creators/submit_creator_input";
 import { DeleteCreator } from "./pages/creators/delete_creator";
+import SubmitCreator from "./pages/creators/submit_creator";
 
 // Pages To Add
 //<SpotifyPage /> from spotify_page
@@ -30,19 +31,20 @@ import { DeleteCreator } from "./pages/creators/delete_creator";
 export default function App() {
   return (
     <div className="App">
-        <BrowserRouter>
-          <DropDownNav/>
-          <Routes>
-              <Route path="/home" element={<Home/>}/>
-              <Route path="/" element={<Home/>}/>
-              <Route path="/about" element={<AboutPage/>}/>
-              <Route path="/explore_artists" element={<CreatorPage/>}/>
-              <Route path="/explore_businesses" element={<Businesses/>}/>
-              <Route path="/submit_artists" element={<SubmitArtist/>}/>
-              <Route path="/submit_businesses" element={<SubmitBusinesses/>}/>
-              <Route path="/resources" element={<Resources/>}/>
-          </Routes>
-        </BrowserRouter>
+      {/* <BrowserRouter>
+        <DropDownNav />
+        <Routes>
+          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/explore_artists" element={<CreatorPage />} />
+          <Route path="/explore_businesses" element={<Businesses />} />
+          <Route path="/submit_artists" element={<SubmitCreator />} />
+          <Route path="/submit_businesses" element={<SubmitBusinesses />} />
+          <Route path="/resources" element={<Resources />} />
+        </Routes>
+      </BrowserRouter> */}
+      <SubmitCreator />
     </div>
   );
 }

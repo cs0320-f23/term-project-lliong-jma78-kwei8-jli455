@@ -34,6 +34,10 @@ export interface CreatorProps {
  */
 export function Creator(props: CreatorProps) {
   // or should it be checking if it's an empty string?
+  /**
+   * function that adds the text "Price Range: " if creator has a price
+   * @returns
+   */
   function getPrice() {
     if (props.price != undefined) {
       return "Price Range: " + props.price;
@@ -42,20 +46,63 @@ export function Creator(props: CreatorProps) {
     }
   }
 
+  // could unit test these potentially?
+  function getWebsite() {
+    if (props.website != undefined) {
+      return (
+        <a href={props.website} target="_blank" rel="noreferrer">
+          <IoLink color="#8b1a10" />
+        </a>
+      );
+    }
+  }
+
+  // do we want to change this to just a link?
+  function getInstagram() {
+    if (props.instagram != undefined) {
+      const link = "https://www.instagram.com/" + props.instagram.substring(1);
+      return (
+        <a href={link} target="_blank" rel="noreferrer">
+          <FaInstagramSquare color="#8b1a10" />
+        </a>
+      );
+    }
+  }
+
+  function getFacebook() {
+    if (props.facebook != undefined) {
+      return (
+        <a href={props.facebook} target="_blank" rel="noreferrer">
+          <FaFacebookSquare color="#8b1a10" />
+        </a>
+      );
+    }
+  }
+
+  function getSpotify() {
+    if (props.spotify != undefined) {
+      return (
+        <a href={props.spotify} target="_blank" rel="noreferrer">
+          <FaSpotify color="#8b1a10" />
+        </a>
+      );
+    }
+  }
+
   return (
-    <div className="creator-single">
+    <div className="creator-single" data-testid="test:single-creator">
       <br></br>
-      <h1>{props.name}</h1>
+      <h1 aria-label={"Name:" + props.name}>{props.name}</h1>
       <br></br>
       <h2>{props.description}</h2>
 
       <h2>{getPrice()}</h2>
       <div>
-        <h2 className="icons">
-          {props.website && <IoLink />}
-          {props.instagram && <FaInstagramSquare />}
-          {props.facebook && <FaFacebookSquare />}
-          {props.spotify && <FaSpotify />}
+        <h2 className="website-icons">
+          {getWebsite()}
+          {getInstagram()}
+          {getFacebook()}
+          {getSpotify()}
         </h2>
       </div>
       <div className="creator-type">{props.type}</div>

@@ -1,20 +1,34 @@
 import React, { useState } from "react";
 import { IDInputBar } from "./delete_creator_input";
 
+// interface with fields expected of delete creator response from backend
 interface jsonDeleteResponse {
   result: string;
   details: string;
 }
 
+/**
+ * checks if delete creator response from backend is successful
+ * @param rjson 
+ * @returns 
+ */
 function isDeleteResponse(rjson: any): rjson is jsonDeleteResponse {
   if (!("result" in rjson)) return false;
   if (!("details" in rjson)) return false;
   return true;
 }
+
+/**
+ * main component for delete creator page, holds input box and submit button
+ * @returns
+ */
 export function DeleteCreator() {
   const [IDString, setIDString] = useState<string>("");
   const [message, setMessage] = useState<string>("");
 
+  /**
+   * function for calling to the backend and deleting a creator based on id
+   */
   function handleSubmit() {
     const url = "http://localhost:323/creators?action=delete&&id=" + IDString;
 
@@ -36,12 +50,6 @@ export function DeleteCreator() {
         }
       });
 
-    // result, details
-    // "id provided was not found"
-    // check if result is success or error
-    // give a successfully deleted --id--- message
-
-    // where to put these..
     setIDString("");
   }
 

@@ -2,8 +2,6 @@ import "../../styles/styles.css";
 import React from "react";
 import { Dispatch, SetStateAction } from "react";
 
-// probably two input boxes, one for number of songs and one for genre
-
 /**
  * Props to wrap input box
  * Fields:

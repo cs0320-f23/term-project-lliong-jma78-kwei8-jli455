@@ -17,6 +17,12 @@ h2 {
   font-size: 20px;
 }
 
+h3 {
+  font-family: "Tenor Sans";
+  color: #3c0d09;
+  font-size: 15px;
+}
+
 .spotify-grid {
   display: inline-grid;
   grid-template-columns: repeat(3, auto);
@@ -91,7 +97,7 @@ input::placeholder {
   font-size: 25px;
   border-radius: 25px;
   width: 250px;
-  height: 550px;
+  height: 600px;
   border: 2px solid #8b1a10;
   background-color: #ffd4d4;
 }
@@ -109,6 +115,7 @@ input::placeholder {
 .spotify-page {
   text-align: center;
   margin-left: 80px;
+  margin-top: 100px;
 }
 
 .checkboxes {
@@ -153,7 +160,7 @@ label {
 .creator-single {
   border-radius: 30px;
   width: 300px;
-  height: 350px;
+  height: 700px;
   border: 2px solid #8b1a10;
   background-color: none;
   position: relative;
@@ -247,6 +254,7 @@ label {
   align-items: center;
   flex-direction: column;
   text-align: center;
+  margin-top: 100px;
 }
 
 .submit-creator-type {
@@ -278,10 +286,10 @@ label {
   width: 370px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   outline: none;
-  margin-bottom: 30px;
   font-family: "Tenor Sans";
   font-size: 15px;
   color: white;
+  margin-top: 13px;
 }
 
 .creator-additional-input::placeholder {
@@ -311,4 +319,25 @@ label {
 
 .delete-creator-description {
   width: 800px;
+}
+
+a {
+  color: inherit;
+}
+
+.website-icons {
+  position: absolute;
+  width: 100%;
+  bottom: 45px;
+  display: flex;
+  justify-content: center;
+  column-gap: 8px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+textarea::placeholder {
+  color: white;
 }

@@ -4,24 +4,22 @@ import accountLogo from "../images/account-icon.png"
 import { Link, Outlet } from "react-router-dom";
 import "../styles/DropDown.css"
 
-export default function DropDownNav(){
+export default function DropDownNav() {
+  const [showExplore, setShowExplore] = useState<boolean>(false);
+  const [showSubmit, setShowSubmit] = useState<boolean>(false);
 
-    const [showExplore, setShowExplore] = useState<boolean>(false);
-    const [showSubmit, setShowSubmit] = useState<boolean>(false);
+  function handleHoverExplore() {
+    setShowExplore(true);
+  }
 
-    function handleHoverExplore(){
-        setShowExplore(true);
-    }
+  function handleHoverSubmit() {
+    setShowSubmit(true);
+  }
 
-    function handleHoverSubmit(){
-        setShowSubmit(true);
-    }
-
-    function handleMouseLeave(){
-        setShowSubmit(false);
-        setShowExplore(false);
-    }
-
+  function handleMouseLeave() {
+    setShowSubmit(false);
+    setShowExplore(false);
+  }
     return(
         <div id="nav-bar">
             <nav className="nav-container">
