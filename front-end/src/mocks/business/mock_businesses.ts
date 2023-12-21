@@ -9,8 +9,8 @@ export const business_dataset = [
             'title':'Thai',
         }],
         'rating': 4.6,
-        'latitude': 41.82784,
-        'longitude': 71.40122,
+        'latitude': 41.82780,
+        'longitude': -71.40125,
         'transactions':['pickup'],
         'price': '$$',
         'location':{
@@ -39,7 +39,7 @@ export const business_dataset = [
         ],
         'rating': 3.9,
         'latitude': 41.82803,
-        'longitude': 71.40046,
+        'longitude': -71.40046,
         'transactions':[],
         'price': '$',
         'location':{
@@ -68,7 +68,7 @@ export const business_dataset = [
         ],
         'rating': 4.6,
         'latitude': 41.82860,
-        'longitude': 71.39977,
+        'longitude': -71.39977,
         'transactions':[],
         'price': '$',
         'location':{
@@ -93,7 +93,7 @@ export const business_dataset = [
         ],
         'rating': 4.0,
         'latitude': 41.82925,
-        'longitude': 71.40092,
+        'longitude': -71.40092,
         'transactions':['pickup'],
         'price': '$$',
         'location':{
@@ -118,7 +118,7 @@ export const business_dataset = [
         ],
         'rating': 4.6,
         'latitude': 41.82831,
-        'longitude': 71.40031,
+        'longitude': -71.40031,
         'transactions':['pickup'],
         'price': '$$',
         'location':{
@@ -143,7 +143,7 @@ export const business_dataset = [
         ],
         'rating': 4.2,
         'latitude': 41.82986,
-        'longitude': 71.40105,
+        'longitude': -71.40105,
         'transactions':['pickup'],
         'price': '$',
         'location':{
@@ -168,7 +168,7 @@ export const business_dataset = [
         ],
         'rating': 4.1,
         'latitude': 41.82779,
-        'longitude': 71.40074,
+        'longitude': -71.40074,
         'transactions':['pickup'],
         'price': '$',
         'location':{
@@ -193,7 +193,7 @@ export const business_dataset = [
         ],
         'rating': 4.2,
         'latitude': 41.82754,
-        'longitude': 71.40033,
+        'longitude': -71.40033,
         'transactions':['pickup'],
         'price': '$',
         'location':{
@@ -222,7 +222,7 @@ export const business_dataset = [
         ],
         'rating': 4.1,
         'latitude': 41.82752,
-        'longitude': 71.40010,
+        'longitude': -71.40010,
         'transactions':['pickup'],
         'price': '$',
         'location':{
@@ -247,7 +247,7 @@ export const business_dataset = [
         ],
         'rating': 4.4,
         'latitude': 41.82752,
-        'longitude': 71.39994,
+        'longitude': -71.39994,
         'transactions':['pickup'],
         'price': '$',
         'location':{
@@ -272,7 +272,7 @@ export const business_dataset = [
         ],
         'rating': 4.3,
         'latitude': 41.82752,
-        'longitude': 71.39975,
+        'longitude': -71.39975,
         'transactions':['pickup'],
         'price': '$',
         'location':{
@@ -297,7 +297,7 @@ export const business_dataset = [
         ],
         'rating': 4.2,
         'latitude': 41.82744,
-        'longitude': 71.40073,
+        'longitude': -71.40073,
         'transactions':['pickup'],
         'price': '$',
         'location':{
@@ -322,7 +322,7 @@ export const business_dataset = [
         ],
         'rating': 4.4,
         'latitude': 41.82892,
-        'longitude': 71.40052,
+        'longitude': -71.40052,
         'transactions':['pickup'],
         'price': '$',
         'location':{
@@ -347,7 +347,7 @@ export const business_dataset = [
         ],
         'rating': 3.7,
         'latitude': 41.82476,
-        'longitude': 71.39906,
+        'longitude': -71.39906,
         'transactions':['pickup'],
         'price': '$',
         'location':{
@@ -372,7 +372,7 @@ export const business_dataset = [
         ],
         'rating': 4.7,
         'latitude': 41.82453,
-        'longitude': 71.39913,
+        'longitude': -71.39913,
         'transactions':[],
         'price': '$',
         'location':{
