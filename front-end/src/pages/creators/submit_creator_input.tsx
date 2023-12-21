@@ -54,14 +54,13 @@ export function DescriptionInputBar({
 }: CreatorInputProps) {
   return (
     <div>
-      <input
-        type="text"
+      <textarea
         className="creator-input"
         value={value}
         placeholder="Enter the creator's description or bio..."
         onChange={(ev) => setValue(ev.target.value)}
         aria-label={ariaLabel}
-      ></input>
+      ></textarea>
     </div>
   );
 }

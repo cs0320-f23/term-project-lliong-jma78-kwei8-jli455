@@ -333,3 +333,11 @@ a {
   justify-content: center;
   column-gap: 8px;
 }
+
+textarea {
+  resize: vertical;
+}
+
+textarea::placeholder {
+  color: white;
+}

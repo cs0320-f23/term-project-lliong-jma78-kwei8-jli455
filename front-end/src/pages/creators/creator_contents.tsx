@@ -2,9 +2,6 @@ import React, { useEffect, useRef } from "react";
 import { Creator, CreatorProps } from "./single_creator";
 import { small_creators_dataset } from "../../mocks/mock_creators";
 
-// how to stop components shifting around when screen width changes? though I guess this
-// is a problem for both spotify and creators
-
 // interface for this file
 interface CreatorPageProps {
   creators: CreatorProps[];
@@ -14,12 +11,9 @@ interface CreatorPageProps {
 // interface with fields expected from creator json response
 interface jsonCreatorResponse {
   result: string;
-  // is this the right type? do i need to change to a dict
   data: Array<Map<string, object>>;
 }
 
-// check valid and invalid?
-// is this right/complete?
 // type predicate to check if successful creator repsonse
 function isCreatorResponse(rjson: any): rjson is jsonCreatorResponse {
   if (!("result" in rjson)) return false;
@@ -30,17 +24,8 @@ function isCreatorResponse(rjson: any): rjson is jsonCreatorResponse {
   return true;
 }
 
-// need to check if this updates after pages are connected
-
 // array for storing all current creators
 export let allCreators: CreatorProps[] = [];
-
-// does not seem to automatically update when a new creator is submitted
-// also it reloads creators every time - can i just get it to get the new set of
-// creators each time?
-
-// if needed, could ultimately check if ids are not in the set but that seems like
-// a lot of looping...
 
 /**
  * function that fetches the existing set of creators from backend and adds each to the
@@ -97,67 +82,19 @@ function getCreators(props: CreatorPageProps) {
     .catch((error) => console.log("error"));
 }
 
-// function for mock creators
-function getMockCreators(props: CreatorPageProps) {
-  for (let i = 0; i < small_creators_dataset.length; i++) {
-    const creatorName: string = small_creators_dataset[i].get("name");
-
-    // not sure if this enum will work...
-    const creatorType: string = small_creators_dataset[i].get("type");
-    const creatorDescription: string =
-      small_creators_dataset[i].get("description");
-    const creatorWebsite: string | undefined =
-      small_creators_dataset[i].get("website");
-    const creatorInstagram: string | undefined =
-      small_creators_dataset[i].get("instagram");
-    const creatorFacebook: string | undefined =
-      small_creators_dataset[i].get("facebook");
-    const creatorSpotify: string | undefined =
-      small_creators_dataset[i].get("spotify");
-    const creatorPrice: string | undefined =
-      small_creators_dataset[i].get("price");
-    const creatorID: string = small_creators_dataset[i].get("id");
-
-    const creator: CreatorProps = {
-      name: creatorName,
-      type: creatorType,
-      description: creatorDescription,
-      website: creatorWebsite,
-      instagram: creatorInstagram,
-      facebook: creatorFacebook,
-      spotify: creatorSpotify,
-      price: creatorPrice,
-      id: creatorID,
-    };
-
-    allCreators.push(creator);
-  }
-  return allCreators;
-}
-
-// perhaps add mock images
-
 /**
  * component that displays all of the creators on the page
  * @param props
  * @returns
  */
 export function Creators(props: CreatorPageProps) {
-  const mockCreatorsRef = useRef(false);
+  const creatorsRef = useRef(false);
 
-  // useEffect(() => {
-  //   if (mockCreatorsRef.current) return;
-  //   mockCreatorsRef.current = true;
-  //   props.setCreators(getMockCreators(props)), [];
-  // });
-
-  // do i need a [] or something for it to change depending on
   useEffect(() => {
     console.log("creator contents use effect");
-    if (mockCreatorsRef.current) return;
-    mockCreatorsRef.current = true;
+    if (creatorsRef.current) return;
+    creatorsRef.current = true;
     getCreators(props).then((response) => {
-      console.log("setting");
       if (response != undefined) {
         props.setCreators(response);
       }
@@ -166,7 +103,7 @@ export function Creators(props: CreatorPageProps) {
   });
 
   return (
-    <div className="creator-grid">
+    <div className="creator-grid" aria-label="list of creators">
       {props.creators?.map((creator, index) => (
         <Creator
           name={creator.name}
