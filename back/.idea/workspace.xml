@@ -4,95 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0642f82e-cf99-4681-924e-82a13a34ce4f" name="Changes" comment="">
-<<<<<<< HEAD
-      <change beforePath="$PROJECT_DIR$/src/test/java/edu/brown/cs/student/TestCreators/Algorithms/TestAlgos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/brown/cs/student/TestCreators/Algorithms/TestAlgos.java" afterDir="false" />
-=======
-      <change afterPath="$PROJECT_DIR$/src/test/java/edu/brown/cs/student/TestBusinesses/TestBusinessIntegration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
->>>>>>> cc92c1fe177a4c03f5aa14dbf6579ed88cf6b232
-    </list>
+    <list default="true" id="0642f82e-cf99-4681-924e-82a13a34ce4f" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Interface" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="ProjectColorInfo">{
-    &quot;associatedIndex&quot;: 4
-    }</component>
   <component name="ProjectId" id="2Z57WijWXbdoCOuOFwlKV00rAkW" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-<<<<<<< HEAD
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/karisma/Desktop/cs0320/term-project-lliong-jma78-kwei8-jli455/back/pom.xml",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
-  }
-}]]></component>
-  <component name="RunManager" selected="JUnit.TestAlgos.testFilterType">
-    <configuration name="TestAlgos.testFilterType" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="s0" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="edu.brown.cs.student.TestCreators.Algorithms.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="edu.brown.cs.student.TestCreators.Algorithms" />
-      <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.TestCreators.Algorithms.TestAlgos" />
-      <option name="METHOD_NAME" value="testFilterType" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestAlgos.testKeywordSearch" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-=======
-  <component name="PropertiesComponent">{
-    &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;spotify-fetch&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/karisma/Desktop/cs0320/term-project-lliong-jma78-kwei8-jli455/back/pom.xml&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-    }
-    }</component>
-  <component name="RunManager" selected="JUnit.TestBusiness.testRank">
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RunManager">
     <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.main.Server.Server" />
->>>>>>> cc92c1fe177a4c03f5aa14dbf6579ed88cf6b232
       <module name="s0" />
       <extension name="coverage">
         <pattern>
@@ -104,101 +39,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestBusiness" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="s0" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="edu.brown.cs.student.TestBusinesses.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="edu.brown.cs.student.TestBusinesses" />
-      <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.TestBusinesses.TestBusiness" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestBusinessIntegration.testGetCreator" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="s0" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="edu.brown.cs.student.TestBusinesses.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="edu.brown.cs.student.TestBusinesses" />
-      <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.TestBusinesses.TestBusinessIntegration" />
-      <option name="METHOD_NAME" value="testGetCreator" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestBusiness.testRank" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="s0" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="edu.brown.cs.student.TestBusinesses.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="edu.brown.cs.student.TestBusinesses" />
-      <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.TestBusinesses.TestBusiness" />
-      <option name="METHOD_NAME" value="testRank" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestCreator" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="s0" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="edu.brown.cs.student.TestCreators.Creators.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="edu.brown.cs.student.TestCreators.Creators" />
-      <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.TestCreators.Creators.TestCreator" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-<<<<<<< HEAD
-    <configuration name="TestCreator.testDelNoCreator" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="s0" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="edu.brown.cs.student.TestCreators.Creators.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="edu.brown.cs.student.TestCreators.Creators" />
-      <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.TestCreators.Creators.TestCreator" />
-      <option name="METHOD_NAME" value="testDelNoCreator" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestAlgos.testFilterType" />
-        <item itemvalue="JUnit.TestCreator" />
-        <item itemvalue="JUnit.TestAlgos.testKeywordSearch" />
-        <item itemvalue="JUnit.TestAlgos.testSpotifySortDur" />
-        <item itemvalue="JUnit.TestCreator.testDelNoCreator" />
-=======
-    <recent_temporary>
-      <list>
-        <item itemvalue="JUnit.TestBusiness.testRank" />
-        <item itemvalue="JUnit.TestBusiness" />
-        <item itemvalue="JUnit.TestBusinessIntegration.testGetCreator" />
         <item itemvalue="Application.Server" />
-        <item itemvalue="JUnit.TestCreator" />
->>>>>>> cc92c1fe177a4c03f5aa14dbf6579ed88cf6b232
       </list>
     </recent_temporary>
   </component>
@@ -213,9 +56,8 @@
       <workItem from="1701700122956" duration="15000" />
       <workItem from="1701700156775" duration="414000" />
       <workItem from="1701700588082" duration="2808000" />
-      <workItem from="1702501053917" duration="21569000" />
-      <workItem from="1702930389905" duration="2448000" />
-      <workItem from="1703029810299" duration="2454000" />
+      <workItem from="1703124134169" duration="3356000" />
+      <workItem from="1703169399611" duration="4026000" />
     </task>
     <servers />
   </component>
@@ -232,5 +74,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
