@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   BrowserRouter,
-  useNavigate,
 } from "react-router-dom";
 import DropDownNav from "./components/DropDown";
 
@@ -21,8 +20,8 @@ import { Creator } from "./pages/creators/single_creator";
 import { NameInputBar } from "./pages/creators/submit_creator_input";
 import { DeleteCreator } from "./pages/creators/delete_creator";
 
-
 export default function App() {
+
   return (
     <div className="App">
         <BrowserRouter>
